@@ -1,11 +1,11 @@
 :root {
-  --primary-color: #1A1A1A;
+  --primary-color: #000000;
   --secondary-color: #FFFFFF;
-  --accent-color: #6366F1;
-  --background-color: #F8F9FA;
-  --text-color: #1F2937;
-  --text-secondary: #6B7280;
-  --border-color: #E5E7EB;
+  --accent-color: #FF5722;
+  --background-color: #FFFFFF;
+  --text-color: #212121;
+  --text-secondary: #757575;
+  --border-color: #E0E0E0;
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
@@ -131,7 +131,7 @@ main {
 }
 
 .btn:hover {
-  background-color: #4F46E5;
+  background-color: #E64A19;
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }

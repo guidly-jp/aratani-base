@@ -117,11 +117,11 @@ Aratani Baseは創造性と集中力を最大化する理想のワークスペ�
 
 ```css
 :root {
-  --primary-color: #1A1A1A;    /* ダークチャコール */
+  --primary-color: #000000;     /* ピュアブラック */
   --secondary-color: #FFFFFF;   /* ピュアホワイト */
-  --accent-color: #6366F1;      /* モダンパープル */
-  --background-color: #F8F9FA;  /* ライトグレー */
-  --text-color: #1F2937;        /* ダークグレー */
+  --accent-color: #FF5722;      /* 鮮やかなオレンジ */
+  --background-color: #FFFFFF;  /* ホワイト背景 */
+  --text-color: #212121;        /* ダークグレー */
 }
 ```
 
