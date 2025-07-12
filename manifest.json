@@ -1,0 +1,26 @@
+{
+  "name": "Aratani Base - コワーキングスペース",
+  "short_name": "Aratani Base",
+  "description": "創造性を解き放つ理想のワークスペース",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8F9FA",
+  "theme_color": "#6366F1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "coworking"],
+  "lang": "ja-JP"
+}

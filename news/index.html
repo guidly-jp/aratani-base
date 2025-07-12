@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニュース - Aratani Base</title>
+    <meta name="description" content="Aratani Baseの最新ニュースやお知らせをお届けします。イベント情報やメンテナンス情報もこちらから。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .news-card {
+            background: var(--secondary-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent-color), #8B5CF6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-size: 3rem;
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+        }
+        
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .news-category {
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        
+        .news-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+        
+        .news-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .read-more {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .read-more:hover {
+            color: #4F46E5;
+        }
+        
+        .category-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border-color);
+            background: var(--secondary-color);
+            color: var(--text-color);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--accent-color);
+            background: var(--accent-color);
+            color: var(--secondary-color);
+        }
+        
+        .error-message {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+        
+        .error-message h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-filter {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">Aratani Base</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">ホーム</a></li>
+                <li><a href="../concept/index.html" class="nav-link">コンセプト</a></li>
+                <li><a href="../plans/index.html" class="nav-link">料金プラン</a></li>
+                <li><a href="index.html" class="nav-link" style="color: var(--accent-color);">ニュース</a></li>
+                <li><a href="../access/index.html" class="nav-link">アクセス</a></li>
+                <li><a href="#reservation" class="btn">予約する</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(26, 26, 26, 0.05) 100%);">
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1>最新ニュース・お知らせ</h1>
+                    <p>Aratani Baseからの最新情報やイベント、お知らせをお届けします。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="category-filter fade-in">
+                    <a href="#" class="filter-btn active" data-category="all">すべて</a>
+                    <a href="#" class="filter-btn" data-category="news">お知らせ</a>
+                    <a href="#" class="filter-btn" data-category="event">イベント</a>
+                    <a href="#" class="filter-btn" data-category="maintenance">メンテナンス</a>
+                    <a href="#" class="filter-btn" data-category="update">アップデート</a>
+                </div>
+                
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>ニュースを読み込み中...</p>
+                </div>
+                
+                <div id="news-container" class="news-grid"></div>
+                
+                <div id="error-container" class="error-message" style="display: none;">
+                    <h3>ニュースの読み込みに失敗しました</h3>
+                    <p>しばらく時間をおいてから再度お試しください。</p>
+                    <button onclick="loadNews()" class="btn" style="margin-top: 1rem;">再読み込み</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta-section" id="reservation">
+            <div class="container">
+                <h2 class="section-title fade-in">見学予約受付中</h2>
+                <p class="section-subtitle fade-in">最新の設備と快適な環境を実際にご体験ください</p>
+                <div class="fade-in">
+                    <a href="#" class="btn" style="margin-right: 1rem;">無料見学を予約</a>
+                    <a href="../access/index.html" class="btn btn-outline">お問い合わせ</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Aratani Base</h3>
+                    <p>創造性を解き放つ理想のワークスペース</p>
+                    <p>〒000-0000<br>東京都新宿区〇〇 1-2-3</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>メニュー</h3>
+                    <a href="../concept/index.html">コンセプト</a>
+                    <a href="../plans/index.html">料金プラン</a>
+                    <a href="index.html">ニュース</a>
+                    <a href="../access/index.html">アクセス</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>お問い合わせ</h3>
+                    <p>TEL: 03-0000-0000</p>
+                    <p>Email: info@aratani-base.com</p>
+                    <p>営業時間: 24時間</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>フォローする</h3>
+                    <a href="#">Twitter</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Aratani Base. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // microCMS設定
+        const MICROCMS_CONFIG = {
+            serviceDomain: 'aratani-base',
+            endpoint: 'news',
+            apiKey: 'dPHUbszEmiNNv3trgWcn1TTcr9HnNK9CJNiA'
+        };
+
+        let allNews = [];
+        let currentCategory = 'all';
+
+        // ニュースデータを取得
+        async function loadNews() {
+            const loadingElement = document.querySelector('.loading');
+            const errorElement = document.getElementById('error-container');
+            const newsContainer = document.getElementById('news-container');
+            
+            loadingElement.style.display = 'block';
+            errorElement.style.display = 'none';
+            newsContainer.innerHTML = '';
+
+            try {
+                // microCMSからデータを取得
+                const response = await fetch(`https://${MICROCMS_CONFIG.serviceDomain}.microcms.io/api/v1/${MICROCMS_CONFIG.endpoint}`, {
+                    headers: {
+                        'X-MICROCMS-API-KEY': MICROCMS_CONFIG.apiKey
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch news');
+                }
+
+                const data = await response.json();
+                allNews = data.contents || [];
+                
+                if (allNews.length === 0) {
+                    // サンプルデータを表示（API未設定時）
+                    allNews = getSampleNews();
+                }
+                
+                displayNews(allNews);
+                
+            } catch (error) {
+                console.error('Error loading news:', error);
+                // エラー時はサンプルデータを表示
+                allNews = getSampleNews();
+                displayNews(allNews);
+            } finally {
+                loadingElement.style.display = 'none';
+            }
+        }
+
+        // サンプルニュースデータ
+        function getSampleNews() {
+            return [
+                {
+                    id: '1',
+                    title: 'Aratani Base グランドオープンのお知らせ',
+                    content: '2024年7月、ついにAratani Baseがグランドオープン！創造性と集中力を最大化する理想のワークスペースが誕生しました。',
+                    category: 'news',
+                    publishedAt: '2024-07-01T00:00:00.000Z',
+                    image: null
+                },
+                {
+                    id: '2',
+                    title: '無料見学会開催中！',
+                    content: 'オープン記念として、無料見学会を開催しています。実際の空間をご体験いただき、あなたにぴったりのプランをご提案いたします。',
+                    category: 'event',
+                    publishedAt: '2024-07-05T00:00:00.000Z',
+                    image: null
+                },
+                {
+                    id: '3',
+                    title: '会議室予約システムをアップデート',
+                    content: '会議室の予約がより便利になりました。新しいシステムでは、リアルタイムでの空き状況確認と簡単予約が可能です。',
+                    category: 'update',
+                    publishedAt: '2024-07-10T00:00:00.000Z',
+                    image: null
+                },
+                {
+                    id: '4',
+                    title: '夏季休暇期間の営業時間について',
+                    content: '8月13日〜16日の夏季休暇期間中も24時間ご利用いただけますが、受付業務は休止いたします。',
+                    category: 'news',
+                    publishedAt: '2024-07-15T00:00:00.000Z',
+                    image: null
+                },
+                {
+                    id: '5',
+                    title: 'ネットワーク機器メンテナンスのお知らせ',
+                    content: '7月30日（火）深夜2:00〜4:00の間、ネットワーク機器のメンテナンスを実施いたします。',
+                    category: 'maintenance',
+                    publishedAt: '2024-07-20T00:00:00.000Z',
+                    image: null
+                }
+            ];
+        }
+
+        // ニュースを表示
+        function displayNews(newsData) {
+            const newsContainer = document.getElementById('news-container');
+            
+            if (newsData.length === 0) {
+                newsContainer.innerHTML = '<div class="error-message"><h3>表示するニュースがありません</h3></div>';
+                return;
+            }
+
+            newsContainer.innerHTML = newsData.map(news => {
+                const date = new Date(news.publishedAt);
+                const formattedDate = date.toLocaleDateString('ja-JP', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                const categoryNames = {
+                    'news': 'お知らせ',
+                    'event': 'イベント',
+                    'maintenance': 'メンテナンス',
+                    'update': 'アップデート'
+                };
+
+                return `
+                    <article class="news-card fade-in">
+                        <div class="news-image">
+                            <i data-feather="file-text"></i>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-category">${categoryNames[news.category] || news.category}</span>
+                                <div class="news-date">
+                                    <i data-feather="calendar"></i>
+                                    ${formattedDate}
+                                </div>
+                            </div>
+                            <h3 class="news-title">${news.title}</h3>
+                            <p class="news-excerpt">${news.content}</p>
+                            <a href="#" class="read-more">
+                                続きを読む
+                                <i data-feather="arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+
+            // Featherアイコンを再描画
+            feather.replace();
+            
+            // フェードインアニメーションを追加
+            observeElements();
+        }
+
+        // カテゴリフィルター
+        function filterNews(category) {
+            currentCategory = category;
+            
+            // フィルターボタンのアクティブ状態を更新
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
+            
+            // ニュースをフィルタリング
+            const filteredNews = category === 'all' ? allNews : allNews.filter(news => news.category === category);
+            displayNews(filteredNews);
+        }
+
+        // フェードインアニメーション
+        function observeElements() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // イベントリスナー
+        document.addEventListener('DOMContentLoaded', function() {
+            // ニュースを読み込み
+            loadNews();
+            
+            // カテゴリフィルターのイベントリスナー
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const category = this.getAttribute('data-category');
+                    filterNews(category);
+                });
+            });
+            
+            // アニメーション初期化
+            observeElements();
+        });
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
