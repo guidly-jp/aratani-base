@@ -4,8 +4,8 @@
   "description": "創造性を解き放つ理想のワークスペース",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F8F9FA",
-  "theme_color": "#6366F1",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FF5722",
   "orientation": "portrait-primary",
   "icons": [
     {
