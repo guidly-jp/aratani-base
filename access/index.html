@@ -716,12 +716,15 @@
             submitBtn.textContent = '送信中...';
             
             try {
+                // フォームデータを収集
                 const formData = new FormData(this);
+                const formObject = {};
                 
-                // デバッグ用：送信データを確認
-                console.log('Formspreeに送信するデータ:');
+                // FormDataをオブジェクトに変換
                 for (let [key, value] of formData.entries()) {
-                    console.log(key + ': ' + value);
+                    if (!key.startsWith('_') && !key.startsWith('visit-date') && !key.startsWith('visit-time')) {
+                        formObject[key] = value;
+                    }
                 }
                 
                 // 見学希望日時を整形してFormspreeに送信
@@ -749,26 +752,65 @@
                         document.getElementById('visit-time-end-3').value
                     );
                     
-                    formData.append('visit-times', `第1希望: ${visitTime1}${visitTime2 ? '\n第2希望: ' + visitTime2 : ''}${visitTime3 ? '\n第3希望: ' + visitTime3 : ''}`);
+                    formObject['visit-times'] = `第1希望: ${visitTime1}${visitTime2 ? '\n第2希望: ' + visitTime2 : ''}${visitTime3 ? '\n第3希望: ' + visitTime3 : ''}`;
                 }
                 
-                const formspreeUrl = this.getAttribute('data-formspree-url');
-                const response = await fetch(formspreeUrl, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
+                // デバッグ用：送信データを確認
+                console.log('Formspreeに送信するデータ:', formObject);
                 
-                const result = await response.json();
+                const formspreeUrl = this.getAttribute('data-formspree-url') || 'https://formspree.io/f/xvgreerd';
+                console.log('Formspree URL:', formspreeUrl);
+                
+                // FormDataとJSON両方試してみる
+                let response;
+                try {
+                    // まずFormDataで送信
+                    const formDataToSend = new FormData();
+                    Object.keys(formObject).forEach(key => {
+                        formDataToSend.append(key, formObject[key]);
+                    });
+                    
+                    response = await fetch(formspreeUrl, {
+                        method: 'POST',
+                        body: formDataToSend,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                } catch (formDataError) {
+                    console.warn('FormData送信失敗、JSONで再試行:', formDataError);
+                    
+                    // FormDataが失敗した場合、JSONで送信
+                    response = await fetch(formspreeUrl, {
+                        method: 'POST',
+                        body: JSON.stringify(formObject),
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                }
+                
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                
+                let result;
+                try {
+                    result = await response.json();
+                    console.log('Response data:', result);
+                } catch (jsonError) {
+                    console.error('Failed to parse JSON:', jsonError);
+                    const textResult = await response.text();
+                    console.log('Response text:', textResult);
+                    throw new Error('サーバーからの応答を解析できませんでした');
+                }
                 
                 if (response.ok) {
                     // 送信成功フラグを設定
                     window.formSubmitted = true;
                     
                     // 送信されたデータを表示
-                    displaySubmittedData(formData, inquiryType);
+                    displaySubmittedData(formObject, inquiryType);
                     
                     // フォームを非表示にして成功メッセージを表示
                     this.style.display = 'none';
@@ -811,7 +853,7 @@
         });
 
         // 送信データを表示する関数
-        function displaySubmittedData(formData, inquiryType) {
+        function displaySubmittedData(data, inquiryType) {
             const dataDisplay = document.getElementById('data-display');
             const fieldLabels = {
                 'name': 'お名前',
@@ -825,34 +867,38 @@
 
             let dataHtml = '';
             
-            // 通常のフィールド
-            for (let [key, value] of formData.entries()) {
-                if (key.startsWith('_') || key.startsWith('visit-date') || key.startsWith('visit-time')) {
-                    continue; // 隠しフィールドと個別の日時フィールドはスキップ
+            // データがFormDataかオブジェクトかを判定
+            if (data instanceof FormData) {
+                // FormDataの場合
+                for (let [key, value] of data.entries()) {
+                    if (key.startsWith('_') || key.startsWith('visit-date') || key.startsWith('visit-time')) {
+                        continue; // 隠しフィールドと個別の日時フィールドはスキップ
+                    }
+                    
+                    if (value && value.trim() !== '') {
+                        const label = fieldLabels[key] || key;
+                        dataHtml += `
+                            <div class="data-item">
+                                <div class="data-label">${label}:</div>
+                                <div class="data-value">${value}</div>
+                            </div>
+                        `;
+                    }
                 }
-                
-                if (value && value.trim() !== '') {
-                    const label = fieldLabels[key] || key;
-                    dataHtml += `
-                        <div class="data-item">
-                            <div class="data-label">${label}:</div>
-                            <div class="data-value">${value}</div>
-                        </div>
-                    `;
-                }
-            }
-
-            // 見学予約の場合の日時情報
-            if (inquiryType === '見学予約') {
-                const visitTimes = formData.get('visit-times');
-                if (visitTimes) {
-                    dataHtml += `
-                        <div class="data-item">
-                            <div class="data-label">見学希望日時:</div>
-                            <div class="data-value">${visitTimes}</div>
-                        </div>
-                    `;
-                }
+            } else {
+                // オブジェクトの場合
+                Object.keys(data).forEach(key => {
+                    const value = data[key];
+                    if (value && value.trim() !== '') {
+                        const label = fieldLabels[key] || key;
+                        dataHtml += `
+                            <div class="data-item">
+                                <div class="data-label">${label}:</div>
+                                <div class="data-value">${value}</div>
+                            </div>
+                        `;
+                    }
+                });
             }
 
             // 送信日時を追加
