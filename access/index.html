@@ -11,6 +11,54 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://unpkg.com/feather-icons"></script>
     <style>
+        /* LINE フローティングバナー */
+        .line-floating-banner {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #00B900 0%, #00C300 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0, 185, 0, 0.3);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .line-floating-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 185, 0, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .line-floating-banner i {
+            font-size: 1.2rem;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 20px rgba(0, 185, 0, 0.3); }
+            50% { box-shadow: 0 4px 25px rgba(0, 185, 0, 0.5); }
+            100% { box-shadow: 0 4px 20px rgba(0, 185, 0, 0.3); }
+        }
+        
+        @media (max-width: 768px) {
+            .line-floating-banner {
+                bottom: 15px;
+                right: 15px;
+                padding: 10px 16px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+    <style>
         .access-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -579,13 +627,18 @@
         </section>
     </main>
 
+    <!-- LINE フローティングバナー -->
+    <a href="#" class="line-floating-banner" target="_blank">
+        <i data-feather="message-circle"></i>
+        LINE公式で相談
+    </a>
+
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Aratani Base</h3>
-                    <p>創造性を解き放つ理想のワークスペース</p>
-                    <p>〒064-0810<br>北海道札幌市中央区南１０条西１丁目１ 全国ビルニューオリンピア 2F</p>
+                    <p>〒064-0810<br>北海道札幌市中央区南10条西1丁目1 全国ビルニューオリンピア 2F</p>
                 </div>
                 
                 <div class="footer-section">
@@ -599,21 +652,20 @@
                 <div class="footer-section">
                     <h3>お問い合わせ</h3>
                     <p>TEL: 011-555-0000</p>
-                    <p>Email: info@aratani-base.com</p>
+                    <p>Email: aratani.base@gmail.com</p>
                     <p>営業時間: 24時間</p>
                 </div>
                 
                 <div class="footer-section">
                     <h3>フォローする</h3>
-                    <a href="#">Twitter</a>
-                    <a href="#">Facebook</a>
+                    <a href="#">X</a>
                     <a href="#">Instagram</a>
-                    <a href="#">LinkedIn</a>
+                    <a href="#">LINE公式アカウント</a>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 Aratani Base. All rights reserved.</p>
+                <p>&copy; 2025 Aratani Base. All rights reserved. | <a href="../privacy-policy/index.html" style="color: var(--accent-color); text-decoration: none;">プライバシーポリシー</a> | <a href="https://aratanidenki.co.jp/" target="_blank" style="color: var(--accent-color); text-decoration: none;">運営会社</a></p>
             </div>
         </div>
     </footer>
