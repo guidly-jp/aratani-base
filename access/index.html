@@ -555,6 +555,7 @@
 
         // フォーム送信処理
         document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            // JavaScriptでの処理を試行し、失敗した場合は通常のフォーム送信にフォールバック
             e.preventDefault();
             
             const submitBtn = document.getElementById('submit-btn');
@@ -648,12 +649,17 @@
                 
             } catch (error) {
                 console.error('Error:', error);
-                if (error.message.includes('fetch')) {
-                    errorMessage.textContent = 'ネットワークエラーが発生しました。インターネット接続を確認してください。';
-                } else {
-                    errorMessage.textContent = error.message || '送信に失敗しました。しばらく時間をおいて再度お試しください。';
-                }
-                errorMessage.style.display = 'block';
+                
+                // JavaScript送信に失敗した場合、通常のフォーム送信を試行
+                console.log('JavaScriptでの送信に失敗しました。通常のフォーム送信を実行します。');
+                
+                // ボタンを元に戻す
+                submitBtn.disabled = false;
+                submitBtn.textContent = '送信する';
+                
+                // 通常のフォーム送信を実行
+                this.submit();
+                return;
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = '送信する';
