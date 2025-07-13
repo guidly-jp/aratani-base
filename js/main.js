@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.includes('news')) {
         initNewsFeatures();
     }
+    
+    if (window.location.pathname.includes('concept')) {
+        initGallery();
+    }
 });
 
 // Mobile navigation menu
@@ -120,6 +124,53 @@ function initNewsFeatures() {
     // Category filtering is already handled in news/index.html
     // This function can be extended for additional news features
     console.log('News page features initialized');
+}
+
+// Gallery tab functionality for concept page
+function initGallery() {
+    const galleryTabs = document.querySelectorAll('.gallery-tab');
+    const gallerySections = document.querySelectorAll('.gallery-section-content');
+    
+    if (galleryTabs.length === 0 || gallerySections.length === 0) return;
+    
+    galleryTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+            
+            // Remove active class from all tabs and sections
+            galleryTabs.forEach(t => t.classList.remove('active'));
+            gallerySections.forEach(s => s.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            this.classList.add('active');
+            
+            // Show corresponding section
+            const targetSection = document.getElementById(targetTab);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                
+                // Reinitialize feather icons for the new content
+                if (typeof feather !== 'undefined') {
+                    feather.replace();
+                }
+                
+                // Trigger fade-in animations for gallery items
+                const fadeInElements = targetSection.querySelectorAll('.gallery-item');
+                fadeInElements.forEach((el, index) => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }
+        });
+    });
+    
+    console.log('Gallery features initialized');
 }
 
 // Header scroll effect

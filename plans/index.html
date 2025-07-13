@@ -145,6 +145,411 @@
             color: #E5E7EB;
         }
         
+        /* Options Grid Styles */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .option-card {
+            background: var(--secondary-color);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        
+        .option-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+        
+        .option-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-color), #FF7043);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .option-icon i {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .option-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .option-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .option-price span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        
+        .option-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .option-features {
+            list-style: none;
+        }
+        
+        .option-features li {
+            padding: 0.5rem 0;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .option-features li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-right: 0.75rem;
+        }
+        
+        /* Price Chart Styles */
+        .price-chart {
+            background: var(--secondary-color);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            margin-top: 3rem;
+        }
+        
+        .chart-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .chart-header h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .chart-header p {
+            color: var(--text-secondary);
+        }
+        
+        .chart-bars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .chart-bar {
+            text-align: center;
+        }
+        
+        .bar-label {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .bars {
+            display: flex;
+            align-items: end;
+            justify-content: center;
+            gap: 0.5rem;
+            height: 280px;
+            margin-bottom: 1rem;
+        }
+        
+        .bar {
+            width: 60px;
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+        
+        .bar.active {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .bar.dropin { background: #FF9800; }
+        .bar.flex { background: #2196F3; }
+        .bar.fulltime { background: #4CAF50; }
+        .bar.premium { background: #9C27B0; }
+        
+        .bar-value {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .bar-plan {
+            font-size: 0.7rem;
+            color: var(--secondary-color);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .recommendation {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            background: rgba(255, 87, 34, 0.1);
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+        
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+        
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+        
+        .legend-color.dropin { background: #FF9800; }
+        .legend-color.flex { background: #2196F3; }
+        .legend-color.fulltime { background: #4CAF50; }
+        .legend-color.premium { background: #9C27B0; }
+
+        /* New Room-Based Pricing Styles */
+        .pricing-tables {
+            margin-top: 3rem;
+        }
+
+        .pricing-table-section {
+            margin-bottom: 4rem;
+            background: var(--secondary-color);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+        }
+
+        .pricing-table-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .pricing-table-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .room-pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .room-pricing-card {
+            background: var(--background-color);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .room-pricing-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .room-type {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .room-type i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .room-type h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .room-count {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            background: rgba(255, 87, 34, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+        }
+
+        .room-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .room-price span {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .room-features {
+            margin-bottom: 2rem;
+        }
+
+        .room-features p {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .btn-room {
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .btn-room:hover {
+            background: #D84315;
+            border-color: #D84315;
+        }
+
+        .pricing-notes {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 87, 34, 0.05);
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .pricing-notes p {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        /* Drop-in Pricing Styles */
+        .dropin-tables {
+            margin-top: 3rem;
+        }
+
+        .dropin-section {
+            margin-bottom: 3rem;
+        }
+
+        .dropin-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .dropin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .dropin-card {
+            background: var(--background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .dropin-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .dropin-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .dropin-pricing {
+            margin-bottom: 1rem;
+        }
+
+        .hourly-rate, .night-rate {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .daily-cap {
+            display: block;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .dropin-note {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
         @media (max-width: 768px) {
             .pricing-card.popular {
                 transform: none;
@@ -152,6 +557,53 @@
             
             .comparison-table {
                 overflow-x: auto;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-bars {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            
+            .bars {
+                height: 200px;
+            }
+            
+            .bar {
+                width: 45px;
+            }
+            
+            .chart-legend {
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .chart-bars {
+                grid-template-columns: 1fr;
+            }
+            
+            .price-chart {
+                padding: 2rem 1rem;
+            }
+
+            .room-pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dropin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-table-section {
+                padding: 2rem;
+            }
+
+            .room-price {
+                font-size: 2rem;
             }
         }
     </style>
@@ -186,166 +638,247 @@
             </div>
         </section>
 
+        <!-- 月額プラン（部屋別料金） -->
         <section class="section">
             <div class="container">
-                <h2 class="section-title fade-in">料金プラン</h2>
-                <p class="section-subtitle fade-in">働き方に合わせて最適なプランをお選びください</p>
+                <h2 class="section-title fade-in">月額プラン</h2>
+                <p class="section-subtitle fade-in">部屋サイズと利用時間に応じた料金体系</p>
                 
-                <div class="pricing-grid">
-                    <div class="pricing-card fade-in">
-                        <h3 class="plan-name">ドロップイン</h3>
-                        <p class="plan-description">初回利用や一時的な利用に最適。気軽にお試しいただけます。</p>
-                        <div class="plan-price">¥2,000</div>
-                        <div class="plan-price-unit">1日利用</div>
-                        <ul class="plan-features">
-                            <li>全エリア利用可能</li>
-                            <li>高速Wi-Fi</li>
-                            <li>フリードリンク</li>
-                            <li>電源・モニター利用</li>
-                            <li class="unavailable">会議室利用</li>
-                            <li class="unavailable">24時間アクセス</li>
-                            <li class="unavailable">専用ロッカー</li>
-                        </ul>
-                        <a href="#reservation" class="btn" style="width: 100%;">今すぐ予約</a>
+                <div class="pricing-tables">
+                    <!-- 24時間365日プラン -->
+                    <div class="pricing-table-section fade-in">
+                        <h3 class="pricing-table-title">24時間365日プラン</h3>
+                        <p class="pricing-table-subtitle">いつでも自由に利用できる基本プラン</p>
+                        
+                        <div class="room-pricing-grid">
+                            <div class="room-pricing-card">
+                                <div class="room-type">
+                                    <i data-feather="user"></i>
+                                    <h4>1名用個室</h4>
+                                    <span class="room-count">全8部屋</span>
+                                </div>
+                                <div class="room-price">¥40,000<span>/月</span></div>
+                                <div class="room-features">
+                                    <p>集中作業・オンライン会議に最適</p>
+                                </div>
+                                <a href="#reservation" class="btn btn-room">申し込む</a>
+                            </div>
+                            
+                            <div class="room-pricing-card">
+                                <div class="room-type">
+                                    <i data-feather="users"></i>
+                                    <h4>2名用個室</h4>
+                                    <span class="room-count">限定1部屋</span>
+                                </div>
+                                <div class="room-price">¥80,000<span>/月</span></div>
+                                <div class="room-features">
+                                    <p>ペアワーク・コラボレーション向け</p>
+                                </div>
+                                <a href="#reservation" class="btn btn-room">申し込む</a>
+                            </div>
+                            
+                            <div class="room-pricing-card">
+                                <div class="room-type">
+                                    <i data-feather="users"></i>
+                                    <h4>3名用個室</h4>
+                                    <span class="room-count">全2部屋</span>
+                                </div>
+                                <div class="room-price">¥100,000<span>/月</span></div>
+                                <div class="room-features">
+                                    <p>チーム会議・グループワーク向け</p>
+                                </div>
+                                <a href="#reservation" class="btn btn-room">申し込む</a>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="pricing-card popular fade-in">
-                        <h3 class="plan-name">フレックス</h3>
-                        <p class="plan-description">定期的に利用したい方におすすめ。月10日まで自由に利用可能。</p>
-                        <div class="plan-price">¥15,000</div>
-                        <div class="plan-price-unit">月額（10日分）</div>
-                        <ul class="plan-features">
-                            <li>全エリア利用可能</li>
-                            <li>高速Wi-Fi</li>
-                            <li>フリードリンク</li>
-                            <li>電源・モニター利用</li>
-                            <li>会議室利用（月5時間）</li>
-                            <li>24時間アクセス</li>
-                            <li class="unavailable">専用ロッカー</li>
-                        </ul>
-                        <a href="#reservation" class="btn" style="width: 100%;">今すぐ予約</a>
+                    <!-- ナイト&ウィークエンドプラン -->
+                    <div class="pricing-table-section fade-in">
+                        <h3 class="pricing-table-title">ナイト&ウィークエンドプラン</h3>
+                        <p class="pricing-table-subtitle">平日18:00〜翌9:00 + 土日祝終日利用</p>
+                        
+                        <div class="room-pricing-grid">
+                            <div class="room-pricing-card">
+                                <div class="room-type">
+                                    <i data-feather="user"></i>
+                                    <h4>1名用個室</h4>
+                                    <span class="room-count">8部屋</span>
+                                </div>
+                                <div class="room-price">¥22,000<span>/月</span></div>
+                                <div class="room-features">
+                                    <p>夜型ワーカー・副業に最適</p>
+                                </div>
+                                <a href="#reservation" class="btn btn-room">申し込む</a>
+                            </div>
+                            
+                            <div class="room-pricing-card">
+                                <div class="room-type">
+                                    <i data-feather="users"></i>
+                                    <h4>2名用個室</h4>
+                                    <span class="room-count">1部屋</span>
+                                </div>
+                                <div class="room-price">¥42,000<span>/月</span></div>
+                                <div class="room-features">
+                                    <p>夜間チームワーク向け</p>
+                                </div>
+                                <a href="#reservation" class="btn btn-room">申し込む</a>
+                            </div>
+                            
+                            <div class="room-pricing-card">
+                                <div class="room-type">
+                                    <i data-feather="users"></i>
+                                    <h4>3名用個室</h4>
+                                    <span class="room-count">2部屋</span>
+                                </div>
+                                <div class="room-price">¥55,000<span>/月</span></div>
+                                <div class="room-features">
+                                    <p>夜間グループワーク向け</p>
+                                </div>
+                                <a href="#reservation" class="btn btn-room">申し込む</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pricing-notes fade-in">
+                    <p><strong>契約条件：</strong> 1年契約、初期費用として賃料1ヶ月分、更新時1ヶ月分、解約6ヶ月前予告</p>
+                    <p><strong>料金：</strong> 上記価格は税抜表示です</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ドロップイン料金 -->
+        <section class="section" style="background: var(--secondary-color);">
+            <div class="container">
+                <h2 class="section-title fade-in">ドロップイン料金</h2>
+                <p class="section-subtitle fade-in">短時間利用やお試し利用に最適</p>
+                
+                <div class="dropin-tables">
+                    <!-- 通常利用（9:00〜18:00） -->
+                    <div class="dropin-section fade-in">
+                        <h3 class="dropin-title">通常利用（9:00〜18:00）</h3>
+                        
+                        <div class="dropin-grid">
+                            <div class="dropin-card">
+                                <h4>1名用個室</h4>
+                                <div class="dropin-pricing">
+                                    <span class="hourly-rate">¥600/時間</span>
+                                    <span class="daily-cap">1日上限 ¥1,800</span>
+                                </div>
+                            </div>
+                            
+                            <div class="dropin-card">
+                                <h4>2名用個室</h4>
+                                <div class="dropin-pricing">
+                                    <span class="hourly-rate">¥900/時間</span>
+                                    <span class="daily-cap">1日上限 ¥2,700</span>
+                                </div>
+                                <p class="dropin-note">同伴利用可</p>
+                            </div>
+                            
+                            <div class="dropin-card">
+                                <h4>3名用個室</h4>
+                                <div class="dropin-pricing">
+                                    <span class="hourly-rate">¥1,200/時間</span>
+                                    <span class="daily-cap">1日上限 ¥3,600</span>
+                                </div>
+                                <p class="dropin-note">チーム利用向け</p>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="pricing-card fade-in">
-                        <h3 class="plan-name">フルタイム</h3>
-                        <p class="plan-description">毎日利用したい方向け。すべての設備を無制限でご利用いただけます。</p>
-                        <div class="plan-price">¥25,000</div>
-                        <div class="plan-price-unit">月額（無制限）</div>
-                        <ul class="plan-features">
-                            <li>全エリア利用可能</li>
-                            <li>高速Wi-Fi</li>
-                            <li>フリードリンク</li>
-                            <li>電源・モニター利用</li>
-                            <li>会議室利用（月15時間）</li>
-                            <li>24時間アクセス</li>
-                            <li>専用ロッカー</li>
-                        </ul>
-                        <a href="#reservation" class="btn" style="width: 100%;">今すぐ予約</a>
-                    </div>
-                    
-                    <div class="pricing-card fade-in">
-                        <h3 class="plan-name">プレミアム</h3>
-                        <p class="plan-description">法人・チーム利用に最適。専用デスクと充実したサービスをご提供。</p>
-                        <div class="plan-price">¥45,000</div>
-                        <div class="plan-price-unit">月額（1名分）</div>
-                        <ul class="plan-features">
-                            <li>専用固定デスク</li>
-                            <li>高速Wi-Fi</li>
-                            <li>フリードリンク</li>
-                            <li>電源・モニター利用</li>
-                            <li>会議室利用（月30時間）</li>
-                            <li>24時間アクセス</li>
-                            <li>専用ロッカー</li>
-                        </ul>
-                        <a href="#reservation" class="btn" style="width: 100%;">今すぐ予約</a>
+                    <!-- ナイトパック（18:00〜翌9:00） -->
+                    <div class="dropin-section fade-in">
+                        <h3 class="dropin-title">ナイトパック（18:00〜翌9:00）</h3>
+                        
+                        <div class="dropin-grid">
+                            <div class="dropin-card">
+                                <h4>1名用個室</h4>
+                                <div class="dropin-pricing">
+                                    <span class="night-rate">¥1,200/終日</span>
+                                </div>
+                                <p class="dropin-note">深夜の集中作業に</p>
+                            </div>
+                            
+                            <div class="dropin-card">
+                                <h4>2名用個室</h4>
+                                <div class="dropin-pricing">
+                                    <span class="night-rate">¥1,800/終日</span>
+                                </div>
+                                <p class="dropin-note">複数人作業・夜間勤務対応</p>
+                            </div>
+                            
+                            <div class="dropin-card">
+                                <h4>3名用個室</h4>
+                                <div class="dropin-pricing">
+                                    <span class="night-rate">¥2,400/終日</span>
+                                </div>
+                                <p class="dropin-note">複数人作業・夜間勤務対応</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section" style="background: var(--secondary-color);">
+
+        <!-- オプションサービス -->
+        <section class="section">
             <div class="container">
-                <h2 class="section-title fade-in">詳細比較表</h2>
-                <div class="comparison-table fade-in">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>サービス内容</th>
-                                <th>ドロップイン</th>
-                                <th>フレックス</th>
-                                <th>フルタイム</th>
-                                <th>プレミアム</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>利用時間</td>
-                                <td>1日</td>
-                                <td>月10日</td>
-                                <td>無制限</td>
-                                <td>無制限</td>
-                            </tr>
-                            <tr>
-                                <td>全エリア利用</td>
-                                <td class="check">✓</td>
-                                <td class="check">✓</td>
-                                <td class="check">✓</td>
-                                <td class="check">✓</td>
-                            </tr>
-                            <tr>
-                                <td>高速Wi-Fi</td>
-                                <td class="check">✓</td>
-                                <td class="check">✓</td>
-                                <td class="check">✓</td>
-                                <td class="check">✓</td>
-                            </tr>
-                            <tr>
-                                <td>フリードリンク</td>
-                                <td class="check">✓</td>
-                                <td class="check">✓</td>
-                                <td class="check">✓</td>
-                                <td class="check">✓</td>
-                            </tr>
-                            <tr>
-                                <td>会議室利用</td>
-                                <td class="cross">✗</td>
-                                <td>月5時間</td>
-                                <td>月15時間</td>
-                                <td>月30時間</td>
-                            </tr>
-                            <tr>
-                                <td>24時間アクセス</td>
-                                <td class="cross">✗</td>
-                                <td class="check">✓</td>
-                                <td class="check">✓</td>
-                                <td class="check">✓</td>
-                            </tr>
-                            <tr>
-                                <td>専用ロッカー</td>
-                                <td class="cross">✗</td>
-                                <td class="cross">✗</td>
-                                <td class="check">✓</td>
-                                <td class="check">✓</td>
-                            </tr>
-                            <tr>
-                                <td>専用固定デスク</td>
-                                <td class="cross">✗</td>
-                                <td class="cross">✗</td>
-                                <td class="cross">✗</td>
-                                <td class="check">✓</td>
-                            </tr>
-                            <tr>
-                                <td>郵便物受取</td>
-                                <td class="cross">✗</td>
-                                <td class="cross">✗</td>
-                                <td class="cross">✗</td>
-                                <td class="check">✓</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <h2 class="section-title fade-in">オプションサービス</h2>
+                <p class="section-subtitle fade-in">基本プランに追加できる便利なサービス</p>
+                
+                <div class="options-grid">
+                    <div class="option-card fade-in">
+                        <div class="option-icon">
+                            <i data-feather="package"></i>
+                        </div>
+                        <h3>法人パック</h3>
+                        <div class="option-price">¥5,000<span>/月</span></div>
+                        <p>法人登記＋ポスト利用のセット。法人利用に必要なサービスをまとめてご提供します。</p>
+                    </div>
+
+                    <div class="option-card fade-in">
+                        <div class="option-icon">
+                            <i data-feather="mail"></i>
+                        </div>
+                        <h3>郵便ポスト利用</h3>
+                        <div class="option-price">¥2,000<span>/月</span></div>
+                        <p>鍵付きポスト貸与。郵便物の受取が可能です。</p>
+                    </div>
+                    
+                    <div class="option-card fade-in">
+                        <div class="option-icon">
+                            <i data-feather="send"></i>
+                        </div>
+                        <h3>郵便物転送（月1回）</h3>
+                        <div class="option-price">¥1,500<span>/月</span></div>
+                        <p>毎月1回転送（レターパック等）。希望住所へ一括送付いたします。</p>
+                    </div>
+                    
+                    <div class="option-card fade-in">
+                        <div class="option-icon">
+                            <i data-feather="send"></i>
+                        </div>
+                        <h3>郵便物転送（都度）</h3>
+                        <div class="option-price">¥500<span>/回</span></div>
+                        <p>都度希望に応じて転送いたします。</p>
+                    </div>
+                    
+                    <div class="option-card fade-in">
+                        <div class="option-icon">
+                            <i data-feather="printer"></i>
+                        </div>
+                        <h3>複合機利用（従量）</h3>
+                        <div class="option-price">白黒¥10/枚<br>カラー¥30/枚</div>
+                        <p>高品質な印刷・コピー・スキャンサービスを従量制でご利用いただけます。</p>
+                    </div>
+                    
+
                 </div>
             </div>
         </section>
+
 
         <section class="section">
             <div class="container">
@@ -354,7 +887,7 @@
                     <div class="feature-card fade-in" style="text-align: left;">
                         <h3 style="color: var(--accent-color); margin-bottom: 1rem;">契約期間や解約について</h3>
                         <p><strong>Q: 最低契約期間はありますか？</strong><br>
-                        A: ドロップインプラン以外は1ヶ月からのご契約となります。解約は1ヶ月前までにお申し出ください。</p>
+                        A: 月額プランは1年間のご契約となります。解約は6ヶ月前までにお申し出ください。</p>
                     </div>
                     
                     <div class="feature-card fade-in" style="text-align: left;">
@@ -372,7 +905,7 @@
                     <div class="feature-card fade-in" style="text-align: left;">
                         <h3 style="color: var(--accent-color); margin-bottom: 1rem;">プラン変更について</h3>
                         <p><strong>Q: プランの変更はできますか？</strong><br>
-                        A: はい、翌月からのプラン変更が可能です。変更希望月の前月末までにお申し出ください。</p>
+                        A: 部屋の空き状況次第で要相談となります。</p>
                     </div>
                 </div>
             </div>
@@ -395,8 +928,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Aratani Base</h3>
-                    <p>創造性を解き放つ理想のワークスペース</p>
-                    <p>〒000-0000<br>東京都新宿区〇〇 1-2-3</p>
+                    <p>完全個室・静寂のワークスペース</p>
+                    <p>〒064-0810<br>北海道札幌市中央区南１０条西１丁目１ 全国ビルニューオリンピア 2F</p>
                 </div>
                 
                 <div class="footer-section">
@@ -409,7 +942,7 @@
                 
                 <div class="footer-section">
                     <h3>お問い合わせ</h3>
-                    <p>TEL: 03-0000-0000</p>
+                    <p>TEL: 011-555-0000</p>
                     <p>Email: info@aratani-base.com</p>
                     <p>営業時間: 24時間</p>
                 </div>
