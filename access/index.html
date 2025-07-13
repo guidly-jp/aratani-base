@@ -448,45 +448,12 @@
                 <p class="section-subtitle fade-in">ご質問・見学のご予約・その他お問い合わせはこちらから</p>
                 
                 <div style="max-width: 700px; margin: 0 auto;">
-                    <form class="contact-form fade-in" id="contact-form" action="javascript:void(0)" method="POST" data-formspree-url="https://formspree.io/f/xvgreerd">
+                    <form class="contact-form fade-in" id="contact-form" action="https://formspree.io/f/xvgreerd" method="POST">
                         <!-- Formspree用設定 -->
                         <input type="hidden" name="_subject" value="Aratani Base お問い合わせ">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="javascript:void(0)">
+                        <input type="hidden" name="_captcha" value="true">
+                        <input type="hidden" name="_next" value="success.html">
                         <input type="hidden" name="_autoresponse" value="false">
-                        <div class="success-message" id="success-message" style="display: none;">
-                            <div class="success-content">
-                                <div class="success-icon">
-                                    <i data-feather="check-circle" style="color: #10B981; font-size: 3rem;"></i>
-                                </div>
-                                <h3 style="color: var(--primary-color); font-size: 1.5rem; margin: 1rem 0;">お問い合わせありがとうございます</h3>
-                                <p style="color: var(--text-color); margin-bottom: 1.5rem;">
-                                    3営業日以内にご連絡いたします。<br>
-                                    お急ぎの場合は、直接お電話にてお問い合わせください。
-                                </p>
-                                
-                                <div class="submitted-data" id="submitted-data">
-                                    <h4 style="color: var(--accent-color); margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">送信内容</h4>
-                                    <div id="data-display"></div>
-                                </div>
-                                
-                                <div class="warning-notice" style="background: #FEF3C7; border: 1px solid #F59E0B; border-radius: 8px; padding: 1rem; margin-top: 1.5rem;">
-                                    <div style="display: flex; align-items: center; gap: 0.5rem; color: #92400E;">
-                                        <i data-feather="alert-triangle" style="font-size: 1.2rem;"></i>
-                                        <strong>重要なお知らせ</strong>
-                                    </div>
-                                    <p style="color: #92400E; margin: 0.5rem 0 0 0; font-size: 0.875rem;">
-                                        この画面を閉じると、送信内容を再確認することはできません。<br>
-                                        必要に応じて、この画面をブックマークまたはスクリーンショットで保存してください。
-                                    </p>
-                                </div>
-                                
-                                <div style="margin-top: 2rem; text-align: center;">
-                                    <a href="../index.html" class="btn" style="margin-right: 1rem;">ホームに戻る</a>
-                                    <button onclick="window.print()" class="btn btn-outline">この画面を印刷</button>
-                                </div>
-                            </div>
-                        </div>
                         
                         <div class="error-message" id="error-message">
                             送信に失敗しました。しばらく時間をおいて再度お試しください。
@@ -677,17 +644,12 @@
             }
         });
 
-        // フォーム送信処理
-        document.getElementById('contact-form').addEventListener('submit', async function(e) {
-            // 常にpreventDefaultでブラウザのデフォルト動作を阻止
-            e.preventDefault();
-            
+        // フォーム送信前の処理（見学日時の整形）
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
             const submitBtn = document.getElementById('submit-btn');
-            const successMessage = document.getElementById('success-message');
             const errorMessage = document.getElementById('error-message');
             
-            // メッセージを非表示
-            successMessage.style.display = 'none';
+            // エラーメッセージを非表示
             errorMessage.style.display = 'none';
             
             // 見学予約の場合のバリデーション
@@ -698,6 +660,7 @@
                 const visitTimeEnd1 = document.getElementById('visit-time-end-1').value;
                 
                 if (!visitDate1 || !visitTimeStart1 || !visitTimeEnd1) {
+                    e.preventDefault();
                     errorMessage.textContent = '見学予約の場合、第1希望の日時は必須です。';
                     errorMessage.style.display = 'block';
                     return;
@@ -705,221 +668,51 @@
                 
                 // 開始時間と終了時間の妥当性チェック
                 if (visitTimeStart1 >= visitTimeEnd1) {
+                    e.preventDefault();
                     errorMessage.textContent = '終了時間は開始時間より後に設定してください。';
                     errorMessage.style.display = 'block';
                     return;
                 }
+                
+                // 見学希望日時を整形して隠しフィールドに設定
+                const formatVisitTime = (date, timeStart, timeEnd) => {
+                    if (date && timeStart && timeEnd) {
+                        return `${date} ${timeStart} ~ ${timeEnd}`;
+                    }
+                    return '';
+                };
+                
+                const visitTime1 = formatVisitTime(visitDate1, visitTimeStart1, visitTimeEnd1);
+                const visitTime2 = formatVisitTime(
+                    document.getElementById('visit-date-2').value,
+                    document.getElementById('visit-time-start-2').value,
+                    document.getElementById('visit-time-end-2').value
+                );
+                const visitTime3 = formatVisitTime(
+                    document.getElementById('visit-date-3').value,
+                    document.getElementById('visit-time-start-3').value,
+                    document.getElementById('visit-time-end-3').value
+                );
+                
+                // 既存の隠しフィールドがあれば削除
+                const existingVisitField = document.querySelector('input[name="visit-times"]');
+                if (existingVisitField) {
+                    existingVisitField.remove();
+                }
+                
+                // 新しい隠しフィールドを作成
+                const visitTimesField = document.createElement('input');
+                visitTimesField.type = 'hidden';
+                visitTimesField.name = 'visit-times';
+                visitTimesField.value = `第1希望: ${visitTime1}${visitTime2 ? '\n第2希望: ' + visitTime2 : ''}${visitTime3 ? '\n第3希望: ' + visitTime3 : ''}`;
+                this.appendChild(visitTimesField);
             }
             
-            // ボタンを無効化
+            // 送信ボタンを無効化（送信中表示）
             submitBtn.disabled = true;
             submitBtn.textContent = '送信中...';
-            
-            try {
-                // フォームデータを収集
-                const formData = new FormData(this);
-                const formObject = {};
-                
-                // FormDataをオブジェクトに変換
-                for (let [key, value] of formData.entries()) {
-                    if (!key.startsWith('_') && !key.startsWith('visit-date') && !key.startsWith('visit-time')) {
-                        formObject[key] = value;
-                    }
-                }
-                
-                // 見学希望日時を整形してFormspreeに送信
-                if (inquiryType === '見学予約') {
-                    const formatVisitTime = (date, timeStart, timeEnd) => {
-                        if (date && timeStart && timeEnd) {
-                            return `${date} ${timeStart} ~ ${timeEnd}`;
-                        }
-                        return '';
-                    };
-                    
-                    const visitTime1 = formatVisitTime(
-                        document.getElementById('visit-date-1').value,
-                        document.getElementById('visit-time-start-1').value,
-                        document.getElementById('visit-time-end-1').value
-                    );
-                    const visitTime2 = formatVisitTime(
-                        document.getElementById('visit-date-2').value,
-                        document.getElementById('visit-time-start-2').value,
-                        document.getElementById('visit-time-end-2').value
-                    );
-                    const visitTime3 = formatVisitTime(
-                        document.getElementById('visit-date-3').value,
-                        document.getElementById('visit-time-start-3').value,
-                        document.getElementById('visit-time-end-3').value
-                    );
-                    
-                    formObject['visit-times'] = `第1希望: ${visitTime1}${visitTime2 ? '\n第2希望: ' + visitTime2 : ''}${visitTime3 ? '\n第3希望: ' + visitTime3 : ''}`;
-                }
-                
-                // デバッグ用：送信データを確認
-                console.log('Formspreeに送信するデータ:', formObject);
-                
-                const formspreeUrl = this.getAttribute('data-formspree-url') || 'https://formspree.io/f/xvgreerd';
-                console.log('Formspree URL:', formspreeUrl);
-                
-                // FormDataとJSON両方試してみる
-                let response;
-                try {
-                    // まずFormDataで送信
-                    const formDataToSend = new FormData();
-                    Object.keys(formObject).forEach(key => {
-                        formDataToSend.append(key, formObject[key]);
-                    });
-                    
-                    response = await fetch(formspreeUrl, {
-                        method: 'POST',
-                        body: formDataToSend,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-                } catch (formDataError) {
-                    console.warn('FormData送信失敗、JSONで再試行:', formDataError);
-                    
-                    // FormDataが失敗した場合、JSONで送信
-                    response = await fetch(formspreeUrl, {
-                        method: 'POST',
-                        body: JSON.stringify(formObject),
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        }
-                    });
-                }
-                
-                console.log('Response status:', response.status);
-                console.log('Response headers:', response.headers);
-                
-                let result;
-                try {
-                    result = await response.json();
-                    console.log('Response data:', result);
-                } catch (jsonError) {
-                    console.error('Failed to parse JSON:', jsonError);
-                    const textResult = await response.text();
-                    console.log('Response text:', textResult);
-                    throw new Error('サーバーからの応答を解析できませんでした');
-                }
-                
-                if (response.ok) {
-                    // 送信成功フラグを設定
-                    window.formSubmitted = true;
-                    
-                    // 送信されたデータを表示
-                    displaySubmittedData(formObject, inquiryType);
-                    
-                    // フォームを非表示にして成功メッセージを表示
-                    this.style.display = 'none';
-                    successMessage.style.display = 'block';
-                    
-                    // ページトップにスクロール
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    
-                    // Featherアイコンを再描画
-                    feather.replace();
-                    
-                    // ページのタイトルを変更して、成功状態を明確にする
-                    document.title = 'お問い合わせ完了 - Aratani Base';
-                } else {
-                    // Formspreeからのエラーメッセージを表示
-                    const errorMsg = result.errors ? result.errors.map(err => err.message).join(', ') : '送信に失敗しました';
-                    throw new Error(errorMsg);
-                }
-                
-            } catch (error) {
-                console.error('Error:', error);
-                
-                // エラーメッセージを表示
-                if (error.message.includes('fetch') || error.message.includes('Failed to fetch')) {
-                    errorMessage.textContent = 'ネットワークエラーが発生しました。インターネット接続を確認してください。';
-                } else if (error.message.includes('Failed to') || error.message.includes('NetworkError')) {
-                    errorMessage.textContent = 'サーバーに接続できませんでした。しばらく時間をおいて再度お試しください。';
-                } else {
-                    errorMessage.textContent = error.message || '送信に失敗しました。入力内容を確認して再度お試しください。';
-                }
-                errorMessage.style.display = 'block';
-                
-                // フォームをスクロール位置に戻す
-                this.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = '送信する';
-            }
         });
 
-        // 送信データを表示する関数
-        function displaySubmittedData(data, inquiryType) {
-            const dataDisplay = document.getElementById('data-display');
-            const fieldLabels = {
-                'name': 'お名前',
-                'email': 'メールアドレス',
-                'phone': '電話番号',
-                'company': '会社名・団体名',
-                'inquiry-type': 'お問い合わせ種別',
-                'message': 'お問い合わせ内容',
-                'visit-times': '見学希望日時'
-            };
-
-            let dataHtml = '';
-            
-            // データがFormDataかオブジェクトかを判定
-            if (data instanceof FormData) {
-                // FormDataの場合
-                for (let [key, value] of data.entries()) {
-                    if (key.startsWith('_') || key.startsWith('visit-date') || key.startsWith('visit-time')) {
-                        continue; // 隠しフィールドと個別の日時フィールドはスキップ
-                    }
-                    
-                    if (value && value.trim() !== '') {
-                        const label = fieldLabels[key] || key;
-                        dataHtml += `
-                            <div class="data-item">
-                                <div class="data-label">${label}:</div>
-                                <div class="data-value">${value}</div>
-                            </div>
-                        `;
-                    }
-                }
-            } else {
-                // オブジェクトの場合
-                Object.keys(data).forEach(key => {
-                    const value = data[key];
-                    if (value && value.trim() !== '') {
-                        const label = fieldLabels[key] || key;
-                        dataHtml += `
-                            <div class="data-item">
-                                <div class="data-label">${label}:</div>
-                                <div class="data-value">${value}</div>
-                            </div>
-                        `;
-                    }
-                });
-            }
-
-            // 送信日時を追加
-            const now = new Date();
-            const submitTime = now.toLocaleString('ja-JP', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-            
-            dataHtml += `
-                <div class="data-item">
-                    <div class="data-label">送信日時:</div>
-                    <div class="data-value">${submitTime}</div>
-                </div>
-            `;
-
-            dataDisplay.innerHTML = dataHtml;
-        }
 
         // フェードインアニメーション
         function observeElements() {
@@ -939,17 +732,6 @@
         // 初期化
         document.addEventListener('DOMContentLoaded', function() {
             observeElements();
-            
-            // フォーム送信後のリダイレクト防止のための処理
-            // window.onbeforeunloadでページ遷移を検知
-            let formSubmitted = false;
-            window.addEventListener('beforeunload', function(e) {
-                if (formSubmitted) {
-                    e.preventDefault();
-                    e.returnValue = '';
-                    return '';
-                }
-            });
         });
     </script>
     <script src="../js/main.js"></script>
