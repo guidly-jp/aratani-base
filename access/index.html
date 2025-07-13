@@ -451,9 +451,6 @@
                     <form class="contact-form fade-in" id="contact-form" action="https://formspree.io/f/xvgreerd" method="POST">
                         <!-- Formspree用設定 -->
                         <input type="hidden" name="_subject" value="Aratani Base お問い合わせ">
-                        <input type="hidden" name="_captcha" value="true">
-                        <input type="hidden" name="_next" value="success.html">
-                        <input type="hidden" name="_autoresponse" value="false">
                         
                         <div class="error-message" id="error-message">
                             送信に失敗しました。しばらく時間をおいて再度お試しください。
@@ -644,7 +641,7 @@
             }
         });
 
-        // フォーム送信前の処理（見学日時の整形）
+        // フォーム送信前の処理（見学日時の整形とバリデーション）
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             const submitBtn = document.getElementById('submit-btn');
             const errorMessage = document.getElementById('error-message');
@@ -712,7 +709,6 @@
             submitBtn.disabled = true;
             submitBtn.textContent = '送信中...';
         });
-
 
         // フェードインアニメーション
         function observeElements() {
