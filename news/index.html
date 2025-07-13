@@ -13,9 +13,11 @@
     <style>
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
             gap: 2rem;
             margin-top: 3rem;
+            min-height: 600px;
         }
         
         .news-card {
@@ -208,9 +210,42 @@
             transform: translateY(-3px);
         }
         
+        .empty-news-card {
+            background: linear-gradient(135deg, var(--border-color) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            border: 2px dashed var(--border-color);
+            opacity: 0.5;
+        }
+        
+        .empty-news-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+        
+        .empty-news-card p {
+            font-size: 0.875rem;
+            text-align: center;
+            margin: 0;
+        }
+        
+        @media (max-width: 1024px) {
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+            }
+        }
+        
         @media (max-width: 768px) {
             .news-grid {
                 grid-template-columns: 1fr;
+                grid-template-rows: auto;
+                min-height: auto;
             }
             
             .category-filter {
@@ -258,9 +293,9 @@
             <div class="container">
                 <div class="category-filter fade-in">
                     <a href="#" class="filter-btn active" data-category="all">すべて</a>
-                    <a href="#" class="filter-btn" data-category="news">お知らせ</a>
-                    <a href="#" class="filter-btn" data-category="event">イベント</a>
-                    <a href="#" class="filter-btn" data-category="maintenance">メンテナンス</a>
+                    <a href="#" class="filter-btn" data-category="384p0lq4han">お知らせ</a>
+                    <a href="#" class="filter-btn" data-category="czr1smmzrfu">イベント</a>
+                    <a href="#" class="filter-btn" data-category="hlfq51g8005i">メンテナンス</a>
                 </div>
                 
                 <div class="loading">
@@ -418,40 +453,24 @@
                 {
                     id: '1',
                     title: 'Aratani Base グランドオープンのお知らせ',
-                    content: '2024年7月、ついにAratani Baseがグランドオープン！創造性と集中力を最大化する理想のワークスペースが誕生しました。',
-                    category: 'news',
+                    content: '2025年9月1日、ついにAratani Baseがグランドオープン予定！創造性と集中力を最大化する理想のワークスペースが誕生します。',
+                    category: { id: '384p0lq4han', name: 'お知らせ' },
                     publishedAt: '2024-07-01T00:00:00.000Z',
                     image: null
                 },
                 {
                     id: '2',
                     title: '無料見学会開催中！',
-                    content: 'オープン記念として、無料見学会を開催しています。実際の空間をご体験いただき、あなたにぴったりのプランをご提案いたします。',
-                    category: 'event',
+                    content: 'オープンに先立ち、無料見学会を開催しています。実際の空間をご体験いただき、あなたにぴったりのプランをご提案いたします。',
+                    category: { id: 'czr1smmzrfu', name: 'イベント' },
                     publishedAt: '2024-07-05T00:00:00.000Z',
                     image: null
                 },
                 {
                     id: '3',
-                    title: '会議室予約システムをアップデート',
-                    content: '会議室の予約がより便利になりました。新しいシステムでは、リアルタイムでの空き状況確認と簡単予約が可能です。',
-                    category: 'update',
-                    publishedAt: '2024-07-10T00:00:00.000Z',
-                    image: null
-                },
-                {
-                    id: '4',
-                    title: '夏季休暇期間の営業時間について',
-                    content: '8月13日〜16日の夏季休暇期間中も24時間ご利用いただけますが、受付業務は休止いたします。',
-                    category: 'news',
-                    publishedAt: '2024-07-15T00:00:00.000Z',
-                    image: null
-                },
-                {
-                    id: '5',
                     title: 'ネットワーク機器メンテナンスのお知らせ',
-                    content: '7月30日（火）深夜2:00〜4:00の間、ネットワーク機器のメンテナンスを実施いたします。',
-                    category: 'maintenance',
+                    content: '8月30日（水）深夜2:00〜4:00の間、ネットワーク機器のメンテナンスを実施いたします。ご不便をおかけしますが、ご理解のほどよろしくお願いいたします。',
+                    category: { id: 'hlfq51g8005i', name: 'メンテナンス' },
                     publishedAt: '2024-07-20T00:00:00.000Z',
                     image: null
                 }
@@ -461,13 +480,11 @@
         // ニュースを表示
         function displayNews(newsData) {
             const newsContainer = document.getElementById('news-container');
+            const maxGridItems = 6; // 3×2のグリッド
+            const isMobile = window.innerWidth <= 768;
             
-            if (newsData.length === 0) {
-                newsContainer.innerHTML = '<div class="error-message"><h3>表示するニュースがありません</h3></div>';
-                return;
-            }
-
-            newsContainer.innerHTML = newsData.map(news => {
+            // ニュース記事のHTML生成
+            const newsItems = newsData.slice(0, maxGridItems).map(news => {
                 const date = new Date(news.publishedAt);
                 const formattedDate = date.toLocaleDateString('ja-JP', {
                     year: 'numeric',
@@ -476,9 +493,9 @@
                 });
 
                 const categoryNames = {
-                    'news': 'お知らせ',
-                    'event': 'イベント',
-                    'maintenance': 'メンテナンス',
+                    '384p0lq4han': 'お知らせ',
+                    'czr1smmzrfu': 'イベント',
+                    'hlfq51g8005i': 'メンテナンス',
                 };
 
                 // コンテンツを抜粋表示用に短縮
@@ -491,7 +508,7 @@
                         </div>
                         <div class="news-content">
                             <div class="news-meta">
-                                <span class="news-category">${categoryNames[news.category] || news.category}</span>
+                                <span class="news-category">${categoryNames[news.category?.id] || news.category?.name || news.category}</span>
                                 <div class="news-date">
                                     <i data-feather="calendar"></i>
                                     ${formattedDate}
@@ -506,7 +523,28 @@
                         </div>
                     </article>
                 `;
-            }).join('');
+            });
+
+            // 空のグリッドアイテムを生成（PCとタブレットのみ）
+            const emptyItems = [];
+            if (!isMobile) {
+                const emptyMessages = [
+                    'Coming Soon...',
+                ];
+                
+                for (let i = newsData.length; i < maxGridItems; i++) {
+                    const messageIndex = (i - newsData.length) % emptyMessages.length;
+                    emptyItems.push(`
+                        <div class="empty-news-card fade-in">
+                            <i data-feather="file-plus"></i>
+                            <p>${emptyMessages[messageIndex]}</p>
+                        </div>
+                    `);
+                }
+            }
+
+            // 全てのアイテムを結合して表示
+            newsContainer.innerHTML = [...newsItems, ...emptyItems].join('');
 
             // Featherアイコンを再描画
             feather.replace();
@@ -549,14 +587,18 @@
                     displayNews(data.contents || []);
                 } else {
                     // APIが使えない場合はローカルフィルタリング
-                    const filteredNews = category === 'all' ? allNews : allNews.filter(news => news.category === category);
+                    const filteredNews = category === 'all' ? allNews : allNews.filter(news => {
+                        return news.category && news.category.id === category;
+                    });
                     displayNews(filteredNews);
                 }
                 
             } catch (error) {
                 console.error('Error filtering news:', error);
                 // エラー時はローカルフィルタリング
-                const filteredNews = category === 'all' ? allNews : allNews.filter(news => news.category === category);
+                const filteredNews = category === 'all' ? allNews : allNews.filter(news => {
+                    return news.category && news.category.id === category;
+                });
                 displayNews(filteredNews);
             } finally {
                 loadingElement.style.display = 'none';
@@ -628,14 +670,14 @@
             });
             
             const categoryNames = {
-                'news': 'お知らせ',
-                'event': 'イベント',
-                'maintenance': 'メンテナンス',
+                '384p0lq4han': 'お知らせ',
+                'czr1smmzrfu': 'イベント',
+                'hlfq51g8005i': 'メンテナンス',
             };
             
             modalContent.innerHTML = `
                 <div class="news-meta" style="margin-bottom: 1rem;">
-                    <span class="news-category">${categoryNames[news.category] || news.category}</span>
+                    <span class="news-category">${categoryNames[news.category?.id] || news.category?.name || news.category}</span>
                     <span style="margin-left: 1rem; color: var(--text-secondary);">${formattedDate}</span>
                 </div>
                 <h2 style="margin-bottom: 1.5rem; color: var(--primary-color);">${news.title}</h2>
@@ -676,6 +718,13 @@
             
             // アニメーション初期化
             observeElements();
+            
+            // ウィンドウリサイズ時に再描画
+            window.addEventListener('resize', function() {
+                if (allNews.length > 0) {
+                    displayNews(allNews);
+                }
+            });
         });
     </script>
     <script src="../js/main.js"></script>
