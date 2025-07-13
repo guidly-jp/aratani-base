@@ -369,6 +369,9 @@
                 
                 <div style="max-width: 700px; margin: 0 auto;">
                     <form class="contact-form fade-in" id="contact-form" action="https://formspree.io/f/xvgreerd" method="POST">
+                        <!-- Formspree用設定 -->
+                        <input type="hidden" name="_subject" value="Aratani Base お問い合わせ">
+                        <input type="hidden" name="_captcha" value="false">
                         <div class="success-message" id="success-message">
                             お問い合わせありがとうございます。2営業日以内にご返信いたします。
                         </div>
@@ -552,11 +555,16 @@
 
         // フォーム送信処理
         document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            // JavaScriptでの処理を試行し、失敗した場合は通常のフォーム送信にフォールバック
             e.preventDefault();
             
             const submitBtn = document.getElementById('submit-btn');
             const successMessage = document.getElementById('success-message');
             const errorMessage = document.getElementById('error-message');
+            
+            // メッセージを非表示
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
             
             // 見学予約の場合のバリデーション
             const inquiryType = document.getElementById('inquiry-type').value;
@@ -579,16 +587,18 @@
                 }
             }
             
-            // メッセージを非表示
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
-            
             // ボタンを無効化
             submitBtn.disabled = true;
             submitBtn.textContent = '送信中...';
             
             try {
                 const formData = new FormData(this);
+                
+                // デバッグ用：送信データを確認
+                console.log('Formspreeに送信するデータ:');
+                for (let [key, value] of formData.entries()) {
+                    console.log(key + ': ' + value);
+                }
                 
                 // 見学希望日時を整形してFormspreeに送信
                 if (inquiryType === '見学予約') {
@@ -626,19 +636,36 @@
                     }
                 });
                 
+                const result = await response.json();
+                
                 if (response.ok) {
                     successMessage.style.display = 'block';
                     this.reset();
                     // 見学日時フィールドを非表示に戻す
                     document.getElementById('visit-dates-group').style.display = 'none';
+                    // 必須フィールドもリセット
+                    ['visit-date-1', 'visit-time-start-1', 'visit-time-end-1'].forEach(id => {
+                        document.getElementById(id).required = false;
+                    });
                 } else {
-                    throw new Error('送信に失敗しました');
+                    // Formspreeからのエラーメッセージを表示
+                    const errorMsg = result.errors ? result.errors.map(err => err.message).join(', ') : '送信に失敗しました';
+                    throw new Error(errorMsg);
                 }
                 
             } catch (error) {
                 console.error('Error:', error);
-                errorMessage.textContent = '送信に失敗しました。しばらく時間をおいて再度お試しください。';
-                errorMessage.style.display = 'block';
+                
+                // JavaScript送信に失敗した場合、通常のフォーム送信を試行
+                console.log('JavaScriptでの送信に失敗しました。通常のフォーム送信を実行します。');
+                
+                // ボタンを元に戻す
+                submitBtn.disabled = false;
+                submitBtn.textContent = '送信する';
+                
+                // 通常のフォーム送信を実行
+                this.submit();
+                return;
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = '送信する';
