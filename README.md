@@ -174,6 +174,4 @@ aratani-base/
 
 ## お問い合わせ
 
-- **Email**: info@aratani-base.com
-- **TEL**: 03-0000-0000
-- **住所**: 〒160-0022 東京都新宿区新宿3-1-1 新宿ビル5F
+- **Email**: aratani-base@gmail.com
