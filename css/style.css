@@ -50,6 +50,12 @@ nav {
   padding: 1rem 0;
 }
 
+@media (max-width: 768px) {
+  nav {
+    padding: 1.5rem 0;
+  }
+}
+
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
