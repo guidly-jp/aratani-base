@@ -1,4 +1,4 @@
-// Main JavaScript file for Aratani Base website
+// Main JavaScript file for ARATANI BASE website
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
