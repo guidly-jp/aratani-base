@@ -56,13 +56,41 @@
                 padding: 10px 16px;
                 font-size: 0.85rem;
             }
+            
+            .nature-environment-grid {
+                display: flex !important;
+                overflow-x: auto !important;
+                gap: 1.5rem !important;
+                padding-bottom: 1rem;
+            }
+            
+            .nature-environment-grid .feature-card {
+                flex: 0 0 280px;
+                min-width: 280px;
+            }
+            
+            .nature-environment-grid::-webkit-scrollbar {
+                height: 6px;
+            }
+            
+            .nature-environment-grid::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 3px;
+            }
+            
+            .nature-environment-grid::-webkit-scrollbar-thumb {
+                background: var(--accent-color);
+                border-radius: 3px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
-            <a href="../index.html" class="logo">ARATANI BASE</a>
+            <a href="../index.html" class="logo">
+                <img src="../images/logo_white.svg" alt="ARATANI BASE" height="48">
+            </a>
             <ul class="nav-menu">
                 <li><a href="../index.html" class="nav-link">ホーム</a></li>
                 <li><a href="index.html" class="nav-link" style="color: var(--accent-color);">コンセプト</a></li>
@@ -80,7 +108,7 @@
     </header>
 
     <main>
-        <section class="hero" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(26, 26, 26, 0.08) 100%);">
+        <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../images/big-photo0000-3383.jpg') center/cover no-repeat;">
             <div class="container">
                 <div class="hero-content fade-in">
                     <h1>"完全個室"<br>静寂のワークスペース</h1>
@@ -98,7 +126,7 @@
                             <i data-feather="unlock" style="font-size: 2.5rem;"></i>
                         </div>
                         <h3>完全プライベート個室</h3>
-                        <p>大型コワーキングとは一線を画す、「自分の部屋」のような落ち着いた環境。オンライン会議も集中作業も、誰にも邪魔されない静寂な空間で最高のパフォーマンスを発揮できます。</p>
+                        <p>大型コワーキングとは一線を画す、全12部屋だけの「自分の部屋」のような落ち着いた環境。オンライン会議も集中作業も、誰にも邪魔されない静寂な空間で最高のパフォーマンスを発揮できます。</p>
                     </div>
 
                     <div class="feature-card fade-in" style="text-align: left;">
@@ -120,6 +148,34 @@
             </div>
         </section>
 
+        <!-- 環境の魅力セクション -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title fade-in">美しい自然環境に囲まれて</h2>
+                <p class="section-subtitle fade-in">豊平川と中島公園の豊かな自然が創造性を育む</p>
+                
+                <div class="nature-environment-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 3rem;">
+                    <div class="feature-card fade-in" style="text-align: center;">
+                        <img src="../images/big-photo0000-3392.jpg" alt="豊平川の景色" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">豊平川の流れ</h4>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary);">清らかな水音が心を落ち着かせ、深い集中状態へ導きます</p>
+                    </div>
+                    
+                    <div class="feature-card fade-in" style="text-align: center;">
+                        <img src="../images/1321904_s.jpg" alt="中島公園の緑" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">四季の移ろい</h4>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary);">季節ごとに変わる公園の風景が、新鮮なインスピレーションをもたらします</p>
+                    </div>
+                    
+                    <div class="feature-card fade-in" style="text-align: center;">
+                        <img src="../images/32104671_s.jpg" alt="静寂な環境" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">静寂の空間</h4>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary);">都市の喧騒から離れた静かな環境で、思考を深めることができます</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="section" style="background: var(--secondary-color);">
             <div class="container">
                 <h2 class="section-title fade-in">施設・設備のご紹介</h2>
@@ -131,7 +187,7 @@
                             <i data-feather="wifi"></i>
                         </div>
                         <h3>高速インターネット</h3>
-                        <p>光回線1Gbps対応の高速Wi-Fiを全エリアで提供。大容量ファイルのアップロードやビデオ会議もストレスなく行えます。</p>
+                        <p>光回線対応の高速Wi-Fiを全部屋で提供。各個室には有線も引き込んでいます。</p>
                     </div>
                     
                     <div class="feature-card fade-in">
@@ -208,14 +264,14 @@
                                 <div class="gallery-placeholder">
                                     <i data-feather="users"></i>
                                     <h4>2名用個室</h4>
-                                    <p>ペアワーク専用の防音個室（1部屋）</p>
+                                    <p>ペアワーク専用の防音個室（2部屋）</p>
                                 </div>
                             </div>
                             <div class="gallery-item">
                                 <div class="gallery-placeholder">
                                     <i data-feather="sun"></i>
                                     <h4>3名用個室</h4>
-                                    <p>小規模チーム会議用個室（2部屋）</p>
+                                    <p>小規模チーム会議用個室（1部屋）</p>
                                 </div>
                             </div>
                         </div>
@@ -293,7 +349,7 @@
                         <div class="feature-icon" style="text-align: left; margin-bottom: 1.5rem;">
                             <i data-feather="message-circle" style="font-size: 2.5rem;"></i>
                         </div>
-                        <h3>2名用個室（1部屋）</h3>
+                        <h3>2名用個室（2部屋）</h3>
                         <p><strong>収容人数：</strong> 2名専用<br>
                         <strong>特徴：</strong> ペアワークや小規模なコラボレーションに最適な個室。防音設計により、周囲を気にせず議論や打ち合わせができます。</p>
                     </div>
@@ -302,7 +358,7 @@
                         <div class="feature-icon" style="text-align: left; margin-bottom: 1.5rem;">
                             <i data-feather="video" style="font-size: 2.5rem;"></i>
                         </div>
-                        <h3>3名用個室（2部屋）</h3>
+                        <h3>3名用個室（1部屋）</h3>
                         <p><strong>収容人数：</strong> 3名専用<br>
                         <strong>特徴：</strong> 小規模チーム会議やグループワークに最適な個室。高い防音性により集中した議論が可能です。</p>
                     </div>
@@ -317,7 +373,7 @@
                 <h2 class="section-title fade-in">見学予約受付中</h2>
                 <p class="section-subtitle fade-in">実際の空間を体感して、あなたにぴったりのワークスタイルを見つけてください</p>
                 <div class="fade-in">
-                    <a href="#" class="btn" style="margin-right: 1rem;">無料見学を予約</a>
+                    <a href="../access/index.html#contact" class="btn" style="margin-right: 1rem;">無料見学を予約</a>
                     <a href="../plans/index.html" class="btn btn-outline">料金プランを確認</a>
                 </div>
             </div>
@@ -325,7 +381,7 @@
     </main>
 
     <!-- LINE フローティングバナー -->
-    <a href="#" class="line-floating-banner" target="_blank">
+    <a href="https://line.me/R/ti/p/@630fkmkm" class="line-floating-banner" target="_blank">
         <i data-feather="message-circle"></i>
         LINE公式で相談
     </a>
@@ -356,7 +412,7 @@
                     <h3>フォローする</h3>
                     <a href="#">X</a>
                     <a href="#">Instagram</a>
-                    <a href="#">LINE公式アカウント</a>
+                    <a href="https://line.me/R/ti/p/@630fkmkm" target="_blank">LINE公式アカウント</a>
                 </div>
             </div>
             

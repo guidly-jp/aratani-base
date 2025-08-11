@@ -627,6 +627,12 @@
             .chart-legend {
                 gap: 1rem;
             }
+            
+            /* 月額プラン特典のモバイル対応 */
+            .plan-benefits div[style*="display: grid; grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
         }
         
         @media (max-width: 480px) {
@@ -659,14 +665,16 @@
 <body>
     <header>
         <nav class="container">
-            <a href="../index.html" class="logo">ARATANI BASE</a>
+            <a href="../index.html" class="logo">
+                <img src="../images/logo_white.svg" alt="ARATANI BASE" height="48">
+            </a>
             <ul class="nav-menu">
                 <li><a href="../index.html" class="nav-link">ホーム</a></li>
                 <li><a href="../concept/index.html" class="nav-link">コンセプト</a></li>
                 <li><a href="index.html" class="nav-link" style="color: var(--accent-color);">料金プラン</a></li>
                 <li><a href="../news/index.html" class="nav-link">ニュース</a></li>
                 <li><a href="../access/index.html" class="nav-link">アクセス</a></li>
-                <li><a href="#reservation" class="btn">予約する</a></li>
+                <li><a href="../access/index.html#contact" class="btn">予約する</a></li>
             </ul>
             <div class="nav-toggle">
                 <span class="hamburger"></span>
@@ -677,11 +685,11 @@
     </header>
 
     <main>
-        <section class="hero" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(26, 26, 26, 0.06) 100%);">
+        <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/32104671_s.jpg') center/cover no-repeat;">
             <div class="container">
                 <div class="hero-content fade-in">
-                    <h1>あなたにピッタリの<br>プランを見つけよう</h1>
-                    <p>ワークスタイルに合わせて選べる柔軟な料金プラン。まずは無料見学からお試しください。</p>
+                    <h1>料金プラン</h1>
+                    <p>ワークスタイルに合わせて選べる柔軟な料金プラン。まずは気軽にお問い合わせください。</p>
                 </div>
             </div>
         </section>
@@ -699,7 +707,11 @@
                         <p class="pricing-table-subtitle">いつでも自由に利用できる基本プラン</p>
                         
                         <div class="room-pricing-grid">
-                            <div class="room-pricing-card">
+                            <div class="room-pricing-card" style="position: relative;">
+                                <div style="position: absolute; top: -10px; right: -10px; background: linear-gradient(135deg, #FF9800, #FFB74D); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);">
+                                    <i data-feather="gift" style="width: 12px; height: 12px; margin-right: 0.25rem;"></i>
+                                    特典付き
+                                </div>
                                 <div class="room-type">
                                     <i data-feather="user"></i>
                                     <h4>1名用個室</h4>
@@ -708,34 +720,66 @@
                                 <div class="room-price">¥40,000<span>/月</span></div>
                                 <div class="room-features">
                                     <p>集中作業・オンライン会議に最適</p>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                                        <span style="background: rgba(255, 87, 34, 0.1); color: var(--accent-color); padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500;">
+                                            <i data-feather="thermometer" style="width: 10px; height: 10px; margin-right: 0.25rem;"></i>冷暖房費込み
+                                        </span>
+                                        <span style="background: rgba(33, 150, 243, 0.1); color: #2196F3; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500;">
+                                            <i data-feather="coffee" style="width: 10px; height: 10px; margin-right: 0.25rem;"></i>ドリンク1本/日 無料
+                                        </span>
+                                    </div>
                                 </div>
-                                <a href="#reservation" class="btn btn-room">申し込む</a>
+                                <a href="../access/index.html#contact" class="btn btn-room">申し込む</a>
                             </div>
                             
-                            <div class="room-pricing-card">
+                            <div class="room-pricing-card" style="position: relative;">
+                                <div style="position: absolute; top: -10px; right: -10px; background: linear-gradient(135deg, #FF9800, #FFB74D); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);">
+                                    <i data-feather="gift" style="width: 12px; height: 12px; margin-right: 0.25rem;"></i>
+                                    特典付き
+                                </div>
                                 <div class="room-type">
                                     <i data-feather="users"></i>
                                     <h4>2名用個室</h4>
-                                    <span class="room-count">限定1部屋</span>
+                                    <span class="room-count">全2部屋</span>
                                 </div>
                                 <div class="room-price">¥80,000<span>/月</span></div>
                                 <div class="room-features">
                                     <p>ペアワーク・コラボレーション向け</p>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                                        <span style="background: rgba(255, 87, 34, 0.1); color: var(--accent-color); padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500;">
+                                            <i data-feather="thermometer" style="width: 10px; height: 10px; margin-right: 0.25rem;"></i>冷暖房費込み
+                                        </span>
+                                        <span style="background: rgba(33, 150, 243, 0.1); color: #2196F3; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500;">
+                                            <i data-feather="coffee" style="width: 10px; height: 10px; margin-right: 0.25rem;"></i>ドリンク1本/日 無料
+                                        </span>
+                                    </div>
                                 </div>
-                                <a href="#reservation" class="btn btn-room">申し込む</a>
+                                <a href="../access/index.html#contact" class="btn btn-room">申し込む</a>
                             </div>
                             
-                            <div class="room-pricing-card">
+                            <div class="room-pricing-card" style="position: relative;">
+                                <div style="position: absolute; top: -10px; right: -10px; background: linear-gradient(135deg, #FF9800, #FFB74D); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);">
+                                    <i data-feather="gift" style="width: 12px; height: 12px; margin-right: 0.25rem;"></i>
+                                    特典付き
+                                </div>
                                 <div class="room-type">
                                     <i data-feather="users"></i>
                                     <h4>3名用個室</h4>
-                                    <span class="room-count">全2部屋</span>
+                                    <span class="room-count">限定1部屋</span>
                                 </div>
-                                <div class="room-price">¥100,000<span>/月</span></div>
+                                <div class="room-price">¥99,800<span>/月</span></div>
                                 <div class="room-features">
                                     <p>チーム会議・グループワーク向け</p>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                                        <span style="background: rgba(255, 87, 34, 0.1); color: var(--accent-color); padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500;">
+                                            <i data-feather="thermometer" style="width: 10px; height: 10px; margin-right: 0.25rem;"></i>冷暖房費込み
+                                        </span>
+                                        <span style="background: rgba(33, 150, 243, 0.1); color: #2196F3; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500;">
+                                            <i data-feather="coffee" style="width: 10px; height: 10px; margin-right: 0.25rem;"></i>ドリンク1本/日 無料
+                                        </span>
+                                    </div>
                                 </div>
-                                <a href="#reservation" class="btn btn-room">申し込む</a>
+                                <a href="../access/index.html#contact" class="btn btn-room">申し込む</a>
                             </div>
                         </div>
                     </div>
@@ -746,7 +790,11 @@
                         <p class="pricing-table-subtitle">平日18:00〜翌9:00 + 土日祝終日利用</p>
                         
                         <div class="room-pricing-grid">
-                            <div class="room-pricing-card">
+                            <div class="room-pricing-card" style="position: relative;">
+                                <div style="position: absolute; top: -10px; right: -10px; background: linear-gradient(135deg, #FF9800, #FFB74D); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);">
+                                    <i data-feather="gift" style="width: 12px; height: 12px; margin-right: 0.25rem;"></i>
+                                    特典付き
+                                </div>
                                 <div class="room-type">
                                     <i data-feather="user"></i>
                                     <h4>1名用個室</h4>
@@ -755,11 +803,23 @@
                                 <div class="room-price">¥22,000<span>/月</span></div>
                                 <div class="room-features">
                                     <p>夜型ワーカー・副業に最適</p>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                                        <span style="background: rgba(255, 87, 34, 0.1); color: var(--accent-color); padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500;">
+                                            <i data-feather="thermometer" style="width: 10px; height: 10px; margin-right: 0.25rem;"></i>冷暖房費込み
+                                        </span>
+                                        <span style="background: rgba(33, 150, 243, 0.1); color: #2196F3; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500;">
+                                            <i data-feather="coffee" style="width: 10px; height: 10px; margin-right: 0.25rem;"></i>ドリンク1本/日 無料
+                                        </span>
+                                    </div>
                                 </div>
-                                <a href="#reservation" class="btn btn-room">申し込む</a>
+                                <a href="../access/index.html#contact" class="btn btn-room">申し込む</a>
                             </div>
                             
-                            <div class="room-pricing-card">
+                            <div class="room-pricing-card" style="position: relative;">
+                                <div style="position: absolute; top: -10px; right: -10px; background: linear-gradient(135deg, #FF9800, #FFB74D); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);">
+                                    <i data-feather="gift" style="width: 12px; height: 12px; margin-right: 0.25rem;"></i>
+                                    特典付き
+                                </div>
                                 <div class="room-type">
                                     <i data-feather="users"></i>
                                     <h4>2名用個室</h4>
@@ -768,11 +828,23 @@
                                 <div class="room-price">¥42,000<span>/月</span></div>
                                 <div class="room-features">
                                     <p>夜間チームワーク向け</p>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                                        <span style="background: rgba(255, 87, 34, 0.1); color: var(--accent-color); padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500;">
+                                            <i data-feather="thermometer" style="width: 10px; height: 10px; margin-right: 0.25rem;"></i>冷暖房費込み
+                                        </span>
+                                        <span style="background: rgba(33, 150, 243, 0.1); color: #2196F3; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500;">
+                                            <i data-feather="coffee" style="width: 10px; height: 10px; margin-right: 0.25rem;"></i>ドリンク1本/日 無料
+                                        </span>
+                                    </div>
                                 </div>
-                                <a href="#reservation" class="btn btn-room">申し込む</a>
+                                <a href="../access/index.html#contact" class="btn btn-room">申し込む</a>
                             </div>
                             
-                            <div class="room-pricing-card">
+                            <div class="room-pricing-card" style="position: relative;">
+                                <div style="position: absolute; top: -10px; right: -10px; background: linear-gradient(135deg, #FF9800, #FFB74D); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);">
+                                    <i data-feather="gift" style="width: 12px; height: 12px; margin-right: 0.25rem;"></i>
+                                    特典付き
+                                </div>
                                 <div class="room-type">
                                     <i data-feather="users"></i>
                                     <h4>3名用個室</h4>
@@ -781,8 +853,62 @@
                                 <div class="room-price">¥55,000<span>/月</span></div>
                                 <div class="room-features">
                                     <p>夜間グループワーク向け</p>
+                                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                                        <span style="background: rgba(255, 87, 34, 0.1); color: var(--accent-color); padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500;">
+                                            <i data-feather="thermometer" style="width: 10px; height: 10px; margin-right: 0.25rem;"></i>冷暖房費込み
+                                        </span>
+                                        <span style="background: rgba(33, 150, 243, 0.1); color: #2196F3; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500;">
+                                            <i data-feather="coffee" style="width: 10px; height: 10px; margin-right: 0.25rem;"></i>ドリンク1本/日 無料
+                                        </span>
+                                    </div>
                                 </div>
-                                <a href="#reservation" class="btn btn-room">申し込む</a>
+                                <a href="../access/index.html#contact" class="btn btn-room">申し込む</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 月額プラン特典セクション -->
+                <div class="plan-benefits fade-in" style="margin-top: 3rem;">
+                    <h3 style="text-align: center; font-size: 1.75rem; font-weight: 700; color: var(--primary-color); margin-bottom: 2rem;">月額プラン特典</h3>
+                    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">追加費用なしでご利用いただける充実の特典</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 800px; margin: 0 auto;">
+                        <div style="background: linear-gradient(135deg, #FF5722 0%, #FF7043 100%); border-radius: 16px; padding: 2rem; color: white; text-align: center; box-shadow: var(--shadow-lg); transform: scale(1.02);">
+                            <div style="margin-bottom: 1.5rem;">
+                                <i data-feather="thermometer" style="font-size: 3rem; stroke-width: 1.5;"></i>
+                            </div>
+                            <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: white;">冷暖房費無料</h4>
+                            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.6; margin: 0;">
+                                年中快適な温度で作業できます。<br>
+                                光熱費の心配は一切不要で、<br>
+                                <strong>追加料金0円</strong>でご利用いただけます。
+                            </p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #2196F3 0%, #42A5F5 100%); border-radius: 16px; padding: 2rem; color: white; text-align: center; box-shadow: var(--shadow-lg); transform: scale(1.02);">
+                            <div style="margin-bottom: 1.5rem;">
+                                <i data-feather="coffee" style="font-size: 3rem; stroke-width: 1.5;"></i>
+                            </div>
+                            <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: white;">1日1本無料ドリンク</h4>
+                            <p style="color: rgba(255, 255, 255, 0.9); line-height: 1.6; margin: 0;">
+                                自動販売機から毎日1本、<br>
+                                お好きなドリンクを<br>
+                                <strong>無料</strong>でお選びいただけます。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 特典の詳細説明 -->
+                    <div style="background: rgba(255, 152, 0, 0.08); border-radius: 12px; padding: 1.5rem; margin-top: 2rem; border-left: 4px solid #FF9800;">
+                        <div style="display: flex; align-items: start; gap: 1rem;">
+                            <i data-feather="gift" style="color: #FF9800; margin-top: 0.25rem; flex-shrink: 0;"></i>
+                            <div>
+                                <h5 style="color: var(--primary-color); font-weight: 600; margin-bottom: 0.5rem;">特典の詳細</h5>
+                                <ul style="color: var(--text-color); line-height: 1.6; margin: 0; padding-left: 1rem;">
+                                    <li><strong>冷暖房費：</strong>各個室に設置されたエアコンの電気代は月額料金に含まれています</li>
+                                    <li><strong>無料ドリンク：</strong>コーヒー、お茶、ジュースなど約20種類から選択可能（1日1本まで）</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -813,6 +939,7 @@
                                     <span class="hourly-rate">¥600/時間</span>
                                     <span class="daily-cap">1日上限 ¥1,800</span>
                                 </div>
+                                <a href="https://coubic.com/ARATANI-BASE/2887634#pageContent" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
                             </div>
                             
                             <div class="dropin-card">
@@ -821,7 +948,7 @@
                                     <span class="hourly-rate">¥900/時間</span>
                                     <span class="daily-cap">1日上限 ¥2,700</span>
                                 </div>
-                                <p class="dropin-note">同伴利用可</p>
+                                <a href="https://coubic.com/ARATANI-BASE/2152070#pageContent" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
                             </div>
                             
                             <div class="dropin-card">
@@ -830,7 +957,7 @@
                                     <span class="hourly-rate">¥1,200/時間</span>
                                     <span class="daily-cap">1日上限 ¥3,600</span>
                                 </div>
-                                <p class="dropin-note">チーム利用向け</p>
+                                <a href="https://coubic.com/ARATANI-BASE/3712157#pageContent" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
                             </div>
                         </div>
                     </div>
@@ -846,6 +973,7 @@
                                     <span class="night-rate">¥1,200/終日</span>
                                 </div>
                                 <p class="dropin-note">深夜の集中作業に</p>
+                                <a href="https://coubic.com/ARATANI-BASE/2887634#pageContent" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
                             </div>
                             
                             <div class="dropin-card">
@@ -854,6 +982,7 @@
                                     <span class="night-rate">¥1,800/終日</span>
                                 </div>
                                 <p class="dropin-note">複数人作業・夜間勤務対応</p>
+                                <a href="https://coubic.com/ARATANI-BASE/2152070#pageContent" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
                             </div>
                             
                             <div class="dropin-card">
@@ -862,6 +991,7 @@
                                     <span class="night-rate">¥2,400/終日</span>
                                 </div>
                                 <p class="dropin-note">複数人作業・夜間勤務対応</p>
+                                <a href="https://coubic.com/ARATANI-BASE/3712157#pageContent" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
                             </div>
                         </div>
                     </div>
@@ -917,8 +1047,8 @@
                         <div class="option-icon">
                             <i data-feather="printer"></i>
                         </div>
-                        <h3>複合機利用（従量）</h3>
-                        <div class="option-price">白黒¥10/枚<br>カラー¥30/枚</div>
+                        <h3>複合機利用（従量課金）</h3>
+                        <div class="option-price">白黒 ¥10/枚<br>カラー ¥60/枚</div>
                         <p>高品質な印刷・コピー・スキャンサービスを従量制でご利用いただけます。</p>
                     </div>
                     
@@ -964,7 +1094,7 @@
                 <h2 class="section-title fade-in">まずは無料見学から</h2>
                 <p class="section-subtitle fade-in">実際の空間をご体験いただき、最適なプランをご提案いたします</p>
                 <div class="fade-in">
-                    <a href="#" class="btn" style="margin-right: 1rem;">無料見学を予約</a>
+                    <a href="../access/index.html#contact" class="btn" style="margin-right: 1rem;">無料見学を予約</a>
                     <a href="../access/index.html" class="btn btn-outline">お問い合わせ</a>
                 </div>
             </div>
@@ -972,7 +1102,7 @@
     </main>
 
     <!-- LINE フローティングバナー -->
-    <a href="#" class="line-floating-banner" target="_blank">
+    <a href="https://line.me/R/ti/p/@630fkmkm" class="line-floating-banner" target="_blank">
         <i data-feather="message-circle"></i>
         LINE公式で相談
     </a>
@@ -1003,7 +1133,7 @@
                     <h3>フォローする</h3>
                     <a href="#">X</a>
                     <a href="#">Instagram</a>
-                    <a href="#">LINE公式アカウント</a>
+                    <a href="https://line.me/R/ti/p/@630fkmkm" target="_blank">LINE公式アカウント</a>
                 </div>
             </div>
             
