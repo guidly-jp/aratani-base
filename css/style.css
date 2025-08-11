@@ -109,13 +109,13 @@ main {
   font-size: 3.5rem;
   font-weight: 800;
   margin-bottom: 1.5rem;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   line-height: 1.2;
 }
 
 .hero-content p {
   font-size: 1.25rem;
-  color: var(--text-secondary);
+  color: var(--secondary-color);
   margin-bottom: 2.5rem;
   max-width: 600px;
   margin-left: auto;
@@ -431,6 +431,13 @@ footer {
 
   .nav-toggle {
     display: flex;
+  }
+
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .hero-content h1 {

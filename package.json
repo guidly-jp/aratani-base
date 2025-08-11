@@ -1,0 +1,24 @@
+{
+  "name": "aratani-base",
+  "version": "1.0.0",
+  "description": "ARATANI BASE - 札幌市中島公園付近のコワーキングスペース",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --host=localhost --open=/",
+    "start": "live-server --port=3000 --host=localhost",
+    "build": "echo 'Build completed'",
+    "serve": "python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "keywords": [
+    "coworking",
+    "workspace",
+    "札幌",
+    "中島公園"
+  ],
+  "author": "ARATANI BASE",
+  "license": "ISC",
+  "build": "mkdir -p public && cp -r *.html *.css *.js images assets favicon.ico public/ 2>/dev/null || echo 'Some files may not exist, continuing...'"
+}
