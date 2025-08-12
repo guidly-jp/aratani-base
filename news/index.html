@@ -278,16 +278,28 @@
         }
         
         .modal-close {
-            position: absolute;
+            position: fixed;
             top: 1rem;
             right: 1rem;
             font-size: 2rem;
             cursor: pointer;
             color: var(--text-secondary);
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.9);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
         
         .modal-close:hover {
             color: var(--primary-color);
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
         }
         
         .news-card {
@@ -357,7 +369,9 @@
 <body>
     <header>
         <nav class="container">
-            <a href="../index.html" class="logo">ARATANI BASE</a>
+            <a href="../index.html" class="logo">
+                <img src="../images/logo_white.svg" alt="ARATANI BASE" height="48">
+            </a>
             <ul class="nav-menu">
                 <li><a href="../index.html" class="nav-link">ホーム</a></li>
                 <li><a href="../concept/index.html" class="nav-link">コンセプト</a></li>
