@@ -247,6 +247,25 @@
             position: relative;
             margin: 1rem;
         }
+
+        /* microCMS記事内画像のレスポンシブ対応 */
+        .modal-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: block;
+        }
+
+        /* 記事内容の段落スタイル */
+        .modal-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .modal-content p:last-child {
+            margin-bottom: 0;
+        }
         
         .modal-close {
             position: absolute;
@@ -315,6 +334,12 @@
             .modal-content {
                 margin: 0.5rem;
                 padding: 1.5rem;
+            }
+
+            /* モバイルでの記事内画像 */
+            .modal-content img {
+                margin: 0.5rem 0;
+                border-radius: 6px;
             }
         }
     </style>
@@ -753,6 +778,23 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
+        // ニュースコンテンツの改行を適切に処理
+        function formatNewsContent(content) {
+            if (!content) return '';
+            
+            return content
+                // 連続する改行を段落区切りに変換
+                .replace(/\n\s*\n/g, '</p><p>')
+                // 単一の改行を<br>に変換
+                .replace(/\n/g, '<br>')
+                // 段落タグで全体を囲む
+                .replace(/^/, '<p>')
+                .replace(/$/, '</p>')
+                // 空の段落を削除
+                .replace(/<p><\/p>/g, '')
+                .replace(/<p><br><\/p>/g, '');
+        }
+
         // OGP情報を更新
         function updateOGP(news) {
             // ページタイトルを更新
@@ -834,7 +876,7 @@
                     </div>` : 
                     ''
                 }
-                <div style="line-height: 1.8; color: var(--text-color);">${news.content.replace(/\n/g, '<br>')}</div>
+                <div style="line-height: 1.8; color: var(--text-color); white-space: pre-wrap;">${formatNewsContent(news.content)}</div>
             `;
             
             modal.style.display = 'flex';
