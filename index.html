@@ -72,6 +72,47 @@
                 font-size: 0.85rem;
             }
         }
+
+        /* Hero Slideshow */
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
     </style>
 </head>
 <body>
@@ -97,7 +138,13 @@
     </header>
 
     <main>
-        <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/24856225_l.jpg') center/cover no-repeat;">
+        <section class="hero">
+            <div class="hero-slideshow">
+                <div class="hero-slide active" style="background-image: url('images/2796607_s.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/24856225_l.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/big-photo0000-3368.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/big-photo0000-7064.jpg');"></div>
+            </div>
             <div class="container">
                 <div class="hero-content fade-in">
                     <h1>完全個室・静寂のワークスペース</h1>
@@ -325,6 +372,22 @@
         </div>
     </footer>
 
+    <script>
+        // Hero Slideshow
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+
+            function nextSlide() {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+
+            // 2秒間隔で画像を切り替え
+            setInterval(nextSlide, 2000);
+        });
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>
