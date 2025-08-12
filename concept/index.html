@@ -56,6 +56,48 @@
                 padding: 10px 16px;
                 font-size: 0.85rem;
             }
+            
+            .nature-environment-grid {
+                display: flex !important;
+                overflow-x: auto !important;
+                gap: 1.5rem !important;
+                padding-bottom: 1rem;
+                scroll-snap-type: x mandatory;
+            }
+            
+            .nature-environment-grid .feature-card {
+                flex: 0 0 280px;
+                min-width: 280px;
+                scroll-snap-align: center;
+            }
+            
+            .nature-environment-grid::-webkit-scrollbar {
+                height: 6px;
+            }
+            
+            .nature-environment-grid::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 3px;
+            }
+            
+            .nature-environment-grid::-webkit-scrollbar-thumb {
+                background: var(--accent-color);
+                border-radius: 3px;
+            }
+            
+            .cta-buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .cta-buttons .btn {
+                margin-right: 0 !important;
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -69,7 +111,7 @@
                 <li><a href="../plans/index.html" class="nav-link">料金プラン</a></li>
                 <li><a href="../news/index.html" class="nav-link">ニュース</a></li>
                 <li><a href="../access/index.html" class="nav-link">アクセス</a></li>
-                <li><a href="#reservation" class="btn">予約する</a></li>
+                <li><a href="#reservation" class="btn">お問い合わせ</a></li>
             </ul>
             <div class="nav-toggle">
                 <span class="hamburger"></span>
@@ -126,7 +168,7 @@
                 <h2 class="section-title fade-in">美しい自然環境に囲まれて</h2>
                 <p class="section-subtitle fade-in">豊平川と中島公園の豊かな自然が創造性を育む</p>
                 
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 3rem;">
+                <div class="nature-environment-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 3rem;">
                     <div class="feature-card fade-in" style="text-align: center;">
                         <img src="../images/big-photo0000-3392.jpg" alt="豊平川の景色" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
                         <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">豊平川の流れ</h4>
@@ -140,9 +182,9 @@
                     </div>
                     
                     <div class="feature-card fade-in" style="text-align: center;">
-                        <img src="../images/32104671_s.jpg" alt="静寂な環境" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
-                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">静寂の空間</h4>
-                        <p style="font-size: 0.875rem; color: var(--text-secondary);">都市の喧騒から離れた静かな環境で、思考を深めることができます</p>
+                        <img src="../images/2796607_s.jpg" alt="静寂な環境" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">夏を彩る花火</h4>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary);">夏には個室から、眼前に打ち上がる花火も鑑賞できます</p>
                     </div>
                 </div>
             </div>
@@ -198,106 +240,29 @@
                     <div class="gallery-section-content active" id="floormap">
                         <div class="floor-map">
                             <div class="floor-map-placeholder">
-                                <i data-feather="map"></i>
+                                <i data-feather="clock"></i>
                                 <h3>フロアマップ</h3>
-                                <p>効率的なレイアウトで設計された3フロア構成</p>
-                                <div class="floor-map-legend">
-                                    <div class="legend-item">
-                                        <span class="legend-color" style="background: #FF5722;"></span>
-                                        <span>サイレントエリア</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <span class="legend-color" style="background: #2196F3;"></span>
-                                        <span>コラボエリア</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <span class="legend-color" style="background: #4CAF50;"></span>
-                                        <span>会議室</span>
-                                    </div>
-                                    <div class="legend-item">
-                                        <span class="legend-color" style="background: #FFC107;"></span>
-                                        <span>共用エリア</span>
-                                    </div>
-                                </div>
+                                <p style="font-size: 1.2rem; color: var(--accent-color); font-weight: 600;">Coming Soon</p>
+                                <p>詳細なフロアマップは準備中です。近日公開予定。</p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="gallery-section-content" id="workspace">
-                        <div class="gallery-grid">
-                            <div class="gallery-item">
-                                <div class="gallery-placeholder">
-                                    <i data-feather="monitor"></i>
-                                    <h4>1名用個室</h4>
-                                    <p>完全プライベートな集中空間（8部屋）</p>
-                                </div>
-                            </div>
-                            <div class="gallery-item">
-                                <div class="gallery-placeholder">
-                                    <i data-feather="users"></i>
-                                    <h4>2名用個室</h4>
-                                    <p>ペアワーク専用の防音個室（2部屋）</p>
-                                </div>
-                            </div>
-                            <div class="gallery-item">
-                                <div class="gallery-placeholder">
-                                    <i data-feather="sun"></i>
-                                    <h4>3名用個室</h4>
-                                    <p>小規模チーム会議用個室（1部屋）</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-section-content" id="meeting">
-                        <div class="gallery-grid">
-                            <div class="gallery-item">
-                                <div class="gallery-placeholder">
-                                    <i data-feather="video"></i>
-                                    <h4>会議室A（8名用）</h4>
-                                    <p>大型ディスプレイ完備の本格会議室</p>
-                                </div>
-                            </div>
-                            <div class="gallery-item">
-                                <div class="gallery-placeholder">
-                                    <i data-feather="message-square"></i>
-                                    <h4>会議室B（6名用）</h4>
-                                    <p>中規模チーム向けの機能的な空間</p>
-                                </div>
-                            </div>
-                            <div class="gallery-item">
-                                <div class="gallery-placeholder">
-                                    <i data-feather="phone"></i>
-                                    <h4>電話ブース</h4>
-                                    <p>プライベートな通話に最適</p>
-                                </div>
-                            </div>
+                        <div class="coming-soon-placeholder">
+                            <i data-feather="clock"></i>
+                            <h3>ワークスペース</h3>
+                            <p style="font-size: 1.2rem; color: var(--accent-color); font-weight: 600;">Coming Soon</p>
+                            <p>ワークスペースの詳細写真は準備中です。近日公開予定。</p>
                         </div>
                     </div>
                     
                     <div class="gallery-section-content" id="common">
-                        <div class="gallery-grid">
-                            <div class="gallery-item">
-                                <div class="gallery-placeholder">
-                                    <i data-feather="coffee"></i>
-                                    <h4>ドリンク</h4>
-                                    <p>完全キャッシュレスの自動販売機を設置</p>
-                                </div>
-                            </div>
-                            <div class="gallery-item">
-                                <div class="gallery-placeholder">
-                                    <i data-feather="printer"></i>
-                                    <h4>プリンターエリア</h4>
-                                    <p>高性能複合機完備</p>
-                                </div>
-                            </div>
-                            <div class="gallery-item">
-                                <div class="gallery-placeholder">
-                                    <i data-feather="archive"></i>
-                                    <h4>ポストエリア</h4>
-                                    <p>ご利用者様向けのポストを設置</p>
-                                </div>
-                            </div>
+                        <div class="coming-soon-placeholder">
+                            <i data-feather="clock"></i>
+                            <h3>共用エリア</h3>
+                            <p style="font-size: 1.2rem; color: var(--accent-color); font-weight: 600;">Coming Soon</p>
+                            <p>共用エリアの詳細は準備中です。近日公開予定。</p>
                         </div>
                     </div>
                 </div>
@@ -344,7 +309,7 @@
             <div class="container">
                 <h2 class="section-title fade-in">見学予約受付中</h2>
                 <p class="section-subtitle fade-in">実際の空間を体感して、あなたにぴったりのワークスタイルを見つけてください</p>
-                <div class="fade-in">
+                <div class="cta-buttons fade-in">
                     <a href="../access/index.html#contact" class="btn" style="margin-right: 1rem;">無料見学を予約</a>
                     <a href="../plans/index.html" class="btn btn-outline">料金プランを確認</a>
                 </div>
