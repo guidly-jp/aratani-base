@@ -205,6 +205,10 @@ function changeSlide(direction) {
     if (currentIndicator) {
         currentIndicator.classList.remove('active');
     }
+    const currentCaption = document.querySelectorAll('.slide-caption')[currentSlideIndex];
+    if (currentCaption) {
+        currentCaption.classList.remove('active');
+    }
     
     // Calculate new index
     currentSlideIndex += direction;
@@ -228,6 +232,10 @@ function currentSlide(index) {
     if (currentIndicator) {
         currentIndicator.classList.remove('active');
     }
+    const currentCaption = document.querySelectorAll('.slide-caption')[currentSlideIndex];
+    if (currentCaption) {
+        currentCaption.classList.remove('active');
+    }
     
     // Show selected slide
     currentSlideIndex = index - 1;
@@ -244,6 +252,12 @@ function showSlide(index) {
     const indicator = document.querySelectorAll('.indicator')[index];
     if (indicator) {
         indicator.classList.add('active');
+    }
+    
+    // Update caption
+    const caption = document.querySelectorAll('.slide-caption')[index];
+    if (caption) {
+        caption.classList.add('active');
     }
 }
 
