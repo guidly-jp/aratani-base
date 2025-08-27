@@ -673,7 +673,7 @@ footer {
   background: var(--secondary-color);
   border-radius: 16px;
   box-shadow: var(--shadow);
-  overflow: hidden;
+  overflow: visible;
   width: 100%;
   margin: 0;
 }
@@ -687,6 +687,8 @@ footer {
   align-items: center;
   height: 500px;
   padding: 0;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .slide {
@@ -716,19 +718,25 @@ footer {
   margin: 0 auto;
 }
 
+.slide-captions {
+  text-align: center;
+  padding: 15px 20px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .slide-caption {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  display: none;
   color: #999;
-  padding: 4px 8px;
   font-size: 12px;
   text-align: center;
-  white-space: nowrap;
-  max-width: 80%;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.slide-caption.active {
+  display: block;
 }
 
 .slideshow-btn {
@@ -769,11 +777,11 @@ footer {
 
 .slide-indicators {
   text-align: center;
-  padding: 15px 20px;
-  background: var(--secondary-color);
+  padding: 20px;
+  background: transparent;
   position: relative;
   z-index: 10;
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 .indicator {
@@ -908,10 +916,13 @@ footer {
     max-width: 95%;
   }
 
+  .slide-captions {
+    padding: 10px 15px;
+    min-height: 35px;
+  }
+
   .slide-caption {
     font-size: 11px;
-    padding: 3px 6px;
-    max-width: 90%;
   }
 }
 
