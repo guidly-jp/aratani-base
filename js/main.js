@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (window.location.pathname.includes('concept')) {
         initGallery();
+        initSlideshow();
+        initImageModal();
     }
 });
 
@@ -171,6 +173,240 @@ function initGallery() {
     });
     
     console.log('Gallery features initialized');
+}
+
+// Slideshow functionality
+let currentSlideIndex = 0;
+let slides = [];
+
+function initSlideshow() {
+    slides = document.querySelectorAll('.slide');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    if (slides.length === 0) return;
+    
+    // Show first slide
+    showSlide(0);
+    
+    // Auto-advance slides every 5 seconds
+    setInterval(() => {
+        changeSlide(1);
+    }, 5000);
+    
+    console.log('Slideshow initialized');
+}
+
+function changeSlide(direction) {
+    if (slides.length === 0) return;
+    
+    // Hide current slide
+    slides[currentSlideIndex].classList.remove('active');
+    const currentIndicator = document.querySelectorAll('.indicator')[currentSlideIndex];
+    if (currentIndicator) {
+        currentIndicator.classList.remove('active');
+    }
+    
+    // Calculate new index
+    currentSlideIndex += direction;
+    
+    if (currentSlideIndex >= slides.length) {
+        currentSlideIndex = 0;
+    } else if (currentSlideIndex < 0) {
+        currentSlideIndex = slides.length - 1;
+    }
+    
+    // Show new slide
+    showSlide(currentSlideIndex);
+}
+
+function currentSlide(index) {
+    if (slides.length === 0) return;
+    
+    // Hide current slide
+    slides[currentSlideIndex].classList.remove('active');
+    const currentIndicator = document.querySelectorAll('.indicator')[currentSlideIndex];
+    if (currentIndicator) {
+        currentIndicator.classList.remove('active');
+    }
+    
+    // Show selected slide
+    currentSlideIndex = index - 1;
+    showSlide(currentSlideIndex);
+}
+
+function showSlide(index) {
+    if (slides.length === 0 || index < 0 || index >= slides.length) return;
+    
+    // Show slide
+    slides[index].classList.add('active');
+    
+    // Update indicator
+    const indicator = document.querySelectorAll('.indicator')[index];
+    if (indicator) {
+        indicator.classList.add('active');
+    }
+}
+
+// 画像モーダル機能
+let modalImageData = {
+    isDragging: false,
+    isZoomed: false,
+    startX: 0,
+    startY: 0,
+    translateX: 0,
+    translateY: 0
+};
+
+function initImageModal() {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    
+    if (!modal || !modalImage) return;
+    
+    // ESCキーでモーダルを閉じる
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            closeImageModal();
+        }
+    });
+    
+    // モーダル背景をクリックして閉じる
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeImageModal();
+        }
+    });
+    
+    // 画像のドラッグ機能
+    modalImage.addEventListener('mousedown', startDrag);
+    modalImage.addEventListener('mousemove', drag);
+    modalImage.addEventListener('mouseup', endDrag);
+    modalImage.addEventListener('mouseleave', endDrag);
+    
+    // ダブルクリックでズーム
+    modalImage.addEventListener('dblclick', toggleZoom);
+    
+    // タッチデバイス対応
+    modalImage.addEventListener('touchstart', startDragTouch);
+    modalImage.addEventListener('touchmove', dragTouch);
+    modalImage.addEventListener('touchend', endDragTouch);
+    
+    console.log('Image modal initialized');
+}
+
+function openImageModal(src, alt) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    
+    if (!modal || !modalImage || !modalCaption) return;
+    
+    modalImage.src = src;
+    modalImage.alt = alt;
+    modalCaption.textContent = alt;
+    modal.style.display = 'block';
+    
+    // リセット
+    resetImagePosition();
+    
+    // アイコンを再描画
+    if (typeof feather !== 'undefined') {
+        feather.replace();
+    }
+}
+
+function closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    if (modal) {
+        modal.style.display = 'none';
+        resetImagePosition();
+    }
+}
+
+function resetImagePosition() {
+    const modalImage = document.getElementById('modalImage');
+    if (!modalImage) return;
+    
+    modalImage.classList.remove('zoomed');
+    modalImage.style.transform = 'translate(0, 0)';
+    modalImageData = {
+        isDragging: false,
+        isZoomed: false,
+        startX: 0,
+        startY: 0,
+        translateX: 0,
+        translateY: 0
+    };
+}
+
+function toggleZoom() {
+    const modalImage = document.getElementById('modalImage');
+    if (!modalImage) return;
+    
+    modalImageData.isZoomed = !modalImageData.isZoomed;
+    
+    if (modalImageData.isZoomed) {
+        modalImage.classList.add('zoomed');
+    } else {
+        modalImage.classList.remove('zoomed');
+        modalImage.style.transform = 'translate(0, 0)';
+        modalImageData.translateX = 0;
+        modalImageData.translateY = 0;
+    }
+}
+
+function startDrag(e) {
+    if (!modalImageData.isZoomed) return;
+    
+    modalImageData.isDragging = true;
+    modalImageData.startX = e.clientX - modalImageData.translateX;
+    modalImageData.startY = e.clientY - modalImageData.translateY;
+    e.preventDefault();
+}
+
+function drag(e) {
+    if (!modalImageData.isDragging || !modalImageData.isZoomed) return;
+    
+    modalImageData.translateX = e.clientX - modalImageData.startX;
+    modalImageData.translateY = e.clientY - modalImageData.startY;
+    
+    const modalImage = document.getElementById('modalImage');
+    if (modalImage) {
+        modalImage.style.transform = `translate(${modalImageData.translateX}px, ${modalImageData.translateY}px)`;
+    }
+}
+
+function endDrag() {
+    modalImageData.isDragging = false;
+}
+
+// タッチイベント対応
+function startDragTouch(e) {
+    if (!modalImageData.isZoomed || e.touches.length !== 1) return;
+    
+    const touch = e.touches[0];
+    modalImageData.isDragging = true;
+    modalImageData.startX = touch.clientX - modalImageData.translateX;
+    modalImageData.startY = touch.clientY - modalImageData.translateY;
+    e.preventDefault();
+}
+
+function dragTouch(e) {
+    if (!modalImageData.isDragging || !modalImageData.isZoomed || e.touches.length !== 1) return;
+    
+    const touch = e.touches[0];
+    modalImageData.translateX = touch.clientX - modalImageData.startX;
+    modalImageData.translateY = touch.clientY - modalImageData.startY;
+    
+    const modalImage = document.getElementById('modalImage');
+    if (modalImage) {
+        modalImage.style.transform = `translate(${modalImageData.translateX}px, ${modalImageData.translateY}px)`;
+    }
+    e.preventDefault();
+}
+
+function endDragTouch() {
+    modalImageData.isDragging = false;
 }
 
 // Header scroll effect
