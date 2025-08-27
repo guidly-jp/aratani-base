@@ -251,16 +251,63 @@
                 <div class="gallery-content">
                     <div class="gallery-section-content active" id="floormap">
                         <div class="floor-map">
-                            <img src="../images/floormap.png" alt="フロアマップ" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+                            <img src="../images/floormap.png" alt="フロアマップ" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); cursor: pointer;" onclick="openImageModal(this.src, this.alt)">
+                            <p style="text-align: center; margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
+                                <i data-feather="zoom-in" style="width: 16px; height: 16px; vertical-align: middle;"></i>
+                                クリックして拡大表示
+                            </p>
                         </div>
                     </div>
                     
                     <div class="gallery-section-content" id="workspace">
-                        <div class="coming-soon-placeholder">
-                            <i data-feather="clock"></i>
-                            <h3>ワークスペース</h3>
-                            <p style="font-size: 1.2rem; color: var(--accent-color); font-weight: 600;">Coming Soon</p>
-                            <p>ワークスペースの詳細は準備中です。近日公開予定。</p>
+                        <div class="image-slideshow">
+                            <div class="slideshow-container">
+                                <div class="slide active">
+                                    <img src="../images/base07_1.jpg" alt="ワークスペース写真1">
+                                    <div class="slide-caption">各部屋は電子錠でセキュリティ万全</div>
+                                </div>
+                                <div class="slide">
+                                    <img src="../images/base07_2.jpg" alt="ワークスペース写真2">
+                                    <div class="slide-caption">1名用個室は全部屋 全面採光</div>
+                                </div>
+                                <div class="slide">
+                                    <img src="../images/base07_3.jpg" alt="ワークスペース写真3">
+                                    <div class="slide-caption">各部屋に広いデスクと快適なチェアを配備</div>
+                                </div>
+                                <div class="slide">
+                                    <img src="../images/base07_4.jpg" alt="ワークスペース写真4">
+                                    <div class="slide-caption">ブラインドを下ろせば外からのノイズもシャットアウト</div>
+                                </div>
+                                <div class="slide">
+                                    <img src="../images/base09_1.jpg" alt="ワークスペース写真5">
+                                    <div class="slide-caption">2名用個室 - コラボレーションに最適</div>
+                                </div>
+                                <div class="slide">
+                                    <img src="../images/base09_2.jpg" alt="ワークスペース写真6">
+                                    <div class="slide-caption">ペアワークや打ち合わせに最適な広さ</div>
+                                </div>
+                                <div class="slide">
+                                    <img src="../images/base09_3.jpg" alt="ワークスペース写真7">
+                                    <div class="slide-caption">チームワークを促進する快適な環境</div>
+                                </div>
+                                
+                                <button class="slideshow-btn prev-btn" onclick="changeSlide(-1)">
+                                    <i data-feather="chevron-left"></i>
+                                </button>
+                                <button class="slideshow-btn next-btn" onclick="changeSlide(1)">
+                                    <i data-feather="chevron-right"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="slide-indicators">
+                                <span class="indicator active" onclick="currentSlide(1)"></span>
+                                <span class="indicator" onclick="currentSlide(2)"></span>
+                                <span class="indicator" onclick="currentSlide(3)"></span>
+                                <span class="indicator" onclick="currentSlide(4)"></span>
+                                <span class="indicator" onclick="currentSlide(5)"></span>
+                                <span class="indicator" onclick="currentSlide(6)"></span>
+                                <span class="indicator" onclick="currentSlide(7)"></span>
+                            </div>
                         </div>
                     </div>
                     
@@ -329,6 +376,23 @@
         <i data-feather="message-circle"></i>
         LINE公式で相談
     </a>
+
+    <!-- 画像モーダル -->
+    <div id="imageModal" class="image-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeImageModal()">&times;</span>
+            <img id="modalImage" class="modal-image" src="" alt="">
+            <div class="modal-caption">
+                <p id="modalCaption"></p>
+                <p class="modal-hint">
+                    <i data-feather="move"></i>
+                    ドラッグで移動 | 
+                    <i data-feather="zoom-in"></i>
+                    ダブルクリックで拡大・縮小
+                </p>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="container">
