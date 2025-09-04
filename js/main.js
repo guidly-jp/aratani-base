@@ -179,19 +179,32 @@ function initGallery() {
 let currentSlideIndex = 0;
 let slides = [];
 
+// 共用エリア専用のスライドショー変数
+let currentSlideIndexCommon = 0;
+let slidesCommon = [];
+
 function initSlideshow() {
-    slides = document.querySelectorAll('.slide');
-    const indicators = document.querySelectorAll('.indicator');
+    // ワークスペースのスライドショー初期化
+    slides = document.querySelectorAll('#workspace .slide');
+    if (slides.length > 0) {
+        showSlide(0);
+        // Auto-advance slides every 5 seconds
+        setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+    }
     
-    if (slides.length === 0) return;
-    
-    // Show first slide
-    showSlide(0);
-    
-    // Auto-advance slides every 5 seconds
-    setInterval(() => {
-        changeSlide(1);
-    }, 5000);
+    // 共用エリアのスライドショー初期化
+    slidesCommon = document.querySelectorAll('#common .slide');
+    if (slidesCommon.length > 0) {
+        showSlideCommon(0);
+        // Auto-advance slides every 5 seconds (offset by 2.5 seconds)
+        setTimeout(() => {
+            setInterval(() => {
+                changeSlideCommon(1);
+            }, 5000);
+        }, 2500);
+    }
     
     console.log('Slideshow initialized');
 }
@@ -201,11 +214,11 @@ function changeSlide(direction) {
     
     // Hide current slide
     slides[currentSlideIndex].classList.remove('active');
-    const currentIndicator = document.querySelectorAll('.indicator')[currentSlideIndex];
+    const currentIndicator = document.querySelectorAll('#workspace .indicator')[currentSlideIndex];
     if (currentIndicator) {
         currentIndicator.classList.remove('active');
     }
-    const currentCaption = document.querySelectorAll('.slide-caption')[currentSlideIndex];
+    const currentCaption = document.querySelectorAll('#workspace .slide-caption')[currentSlideIndex];
     if (currentCaption) {
         currentCaption.classList.remove('active');
     }
@@ -223,16 +236,44 @@ function changeSlide(direction) {
     showSlide(currentSlideIndex);
 }
 
+// 共用エリア専用のスライドショー関数
+function changeSlideCommon(direction) {
+    if (slidesCommon.length === 0) return;
+    
+    // Hide current slide
+    slidesCommon[currentSlideIndexCommon].classList.remove('active');
+    const currentIndicator = document.querySelectorAll('#common .indicator')[currentSlideIndexCommon];
+    if (currentIndicator) {
+        currentIndicator.classList.remove('active');
+    }
+    const currentCaption = document.querySelectorAll('#common .slide-caption')[currentSlideIndexCommon];
+    if (currentCaption) {
+        currentCaption.classList.remove('active');
+    }
+    
+    // Calculate new index
+    currentSlideIndexCommon += direction;
+    
+    if (currentSlideIndexCommon >= slidesCommon.length) {
+        currentSlideIndexCommon = 0;
+    } else if (currentSlideIndexCommon < 0) {
+        currentSlideIndexCommon = slidesCommon.length - 1;
+    }
+    
+    // Show new slide
+    showSlideCommon(currentSlideIndexCommon);
+}
+
 function currentSlide(index) {
     if (slides.length === 0) return;
     
     // Hide current slide
     slides[currentSlideIndex].classList.remove('active');
-    const currentIndicator = document.querySelectorAll('.indicator')[currentSlideIndex];
+    const currentIndicator = document.querySelectorAll('#workspace .indicator')[currentSlideIndex];
     if (currentIndicator) {
         currentIndicator.classList.remove('active');
     }
-    const currentCaption = document.querySelectorAll('.slide-caption')[currentSlideIndex];
+    const currentCaption = document.querySelectorAll('#workspace .slide-caption')[currentSlideIndex];
     if (currentCaption) {
         currentCaption.classList.remove('active');
     }
@@ -242,6 +283,26 @@ function currentSlide(index) {
     showSlide(currentSlideIndex);
 }
 
+// 共用エリア専用のcurrentSlide関数
+function currentSlideCommon(index) {
+    if (slidesCommon.length === 0) return;
+    
+    // Hide current slide
+    slidesCommon[currentSlideIndexCommon].classList.remove('active');
+    const currentIndicator = document.querySelectorAll('#common .indicator')[currentSlideIndexCommon];
+    if (currentIndicator) {
+        currentIndicator.classList.remove('active');
+    }
+    const currentCaption = document.querySelectorAll('#common .slide-caption')[currentSlideIndexCommon];
+    if (currentCaption) {
+        currentCaption.classList.remove('active');
+    }
+    
+    // Show selected slide
+    currentSlideIndexCommon = index - 1;
+    showSlideCommon(currentSlideIndexCommon);
+}
+
 function showSlide(index) {
     if (slides.length === 0 || index < 0 || index >= slides.length) return;
     
@@ -249,13 +310,33 @@ function showSlide(index) {
     slides[index].classList.add('active');
     
     // Update indicator
-    const indicator = document.querySelectorAll('.indicator')[index];
+    const indicator = document.querySelectorAll('#workspace .indicator')[index];
     if (indicator) {
         indicator.classList.add('active');
     }
     
     // Update caption
-    const caption = document.querySelectorAll('.slide-caption')[index];
+    const caption = document.querySelectorAll('#workspace .slide-caption')[index];
+    if (caption) {
+        caption.classList.add('active');
+    }
+}
+
+// 共用エリア専用のshowSlide関数
+function showSlideCommon(index) {
+    if (slidesCommon.length === 0 || index < 0 || index >= slidesCommon.length) return;
+    
+    // Show slide
+    slidesCommon[index].classList.add('active');
+    
+    // Update indicator
+    const indicator = document.querySelectorAll('#common .indicator')[index];
+    if (indicator) {
+        indicator.classList.add('active');
+    }
+    
+    // Update caption
+    const caption = document.querySelectorAll('#common .slide-caption')[index];
     if (caption) {
         caption.classList.add('active');
     }

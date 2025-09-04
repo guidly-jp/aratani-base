@@ -267,11 +267,31 @@
                     </div>
                     
                     <div class="gallery-section-content" id="common">
-                        <div class="coming-soon-placeholder">
-                            <i data-feather="clock"></i>
-                            <h3>共用エリア</h3>
-                            <p style="font-size: 1.2rem; color: var(--accent-color); font-weight: 600;">Coming Soon</p>
-                            <p>共用エリアの詳細は準備中です。近日公開予定。</p>
+                        <div class="image-slideshow">
+                            <div class="slideshow-container">
+                                <div class="slide active">
+                                    <img src="../images/co-space1.jpg" alt="共用エリア写真1">
+                                </div>
+                                <div class="slide">
+                                    <img src="../images/co-space3.jpg" alt="共用エリア写真2">
+                                </div>
+                                <button class="slideshow-btn prev-btn" onclick="changeSlideCommon(-1)">
+                                    <i data-feather="chevron-left"></i>
+                                </button>
+                                <button class="slideshow-btn next-btn" onclick="changeSlideCommon(1)">
+                                    <i data-feather="chevron-right"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="slide-captions">
+                                <div class="slide-caption active">複合機でコピー・印刷も可能</div>
+                                <div class="slide-caption">ウォーターサーバーを設置</div>
+                            </div>
+                            
+                            <div class="slide-indicators">
+                                <span class="indicator active" onclick="currentSlideCommon(1)"></span>
+                                <span class="indicator" onclick="currentSlideCommon(2)"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
