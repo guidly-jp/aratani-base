@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NHGDMTNL3E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-NHGDMTNL3E');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭教師向けプラン - ARATANI BASE</title>
+    <meta name="description" content="ARATANI BASEの家庭教師向けプラン。カフェより安くて完全個室。曜日・時間を固定して「第2の教室」として使えるスクール契約をご用意しています。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        /* LINE フローティングバナー */
+        .line-floating-banner {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #00B900 0%, #00C300 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0, 185, 0, 0.3);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .line-floating-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 185, 0, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        .line-floating-banner i {
+            font-size: 1.2rem;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 20px rgba(0, 185, 0, 0.3); }
+            50% { box-shadow: 0 4px 25px rgba(0, 185, 0, 0.5); }
+            100% { box-shadow: 0 4px 20px rgba(0, 185, 0, 0.3); }
+        }
+
+        @media (max-width: 768px) {
+            .line-floating-banner {
+                bottom: 15px;
+                right: 15px;
+                padding: 10px 16px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+    <style>
+        /* コンセプトセクション */
+        .concept-box {
+            background: var(--secondary-color);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent-color);
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+
+        .concept-box h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .concept-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .concept-box ul li {
+            padding: 0.5rem 0;
+            color: var(--text-color);
+            line-height: 1.8;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .concept-box ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* 部屋カード */
+        .room-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .room-card {
+            background: var(--secondary-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .room-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .room-card .room-label {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF5722 0%, #FF7043 100%);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .room-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .room-card .room-use {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .room-card .room-target {
+            display: inline-block;
+            background: rgba(255, 87, 34, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 0.75rem;
+        }
+
+        /* 料金テーブル */
+        .pricing-table-wrap {
+            max-width: 900px;
+            margin: 2.5rem auto 0;
+            overflow-x: auto;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .pricing-table thead th {
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1rem 1.25rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .pricing-table tbody td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .pricing-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pricing-table tbody tr:nth-child(even) {
+            background: #FAFAFA;
+        }
+
+        .pricing-table .plan-name {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .pricing-table .price-main {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .pricing-table .price-sub {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .pricing-table .merit-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* 補足ノート */
+        .plan-notes {
+            max-width: 800px;
+            margin: 2rem auto 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .plan-notes li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .plan-notes li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* カフェ比較ハイライト */
+        .cafe-comparison {
+            max-width: 700px;
+            margin: 2.5rem auto 0;
+            background: linear-gradient(135deg, #FF5722 0%, #FF7043 100%);
+            border-radius: 16px;
+            padding: 2rem 2.5rem;
+            color: white;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cafe-comparison p {
+            margin: 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .cafe-comparison strong {
+            font-size: 1.3rem;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .concept-box {
+                padding: 2rem;
+            }
+
+            .room-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .room-card {
+                padding: 2rem;
+            }
+
+            .pricing-table thead th,
+            .pricing-table tbody td {
+                padding: 0.75rem 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .pricing-table .price-main {
+                font-size: 1.1rem;
+            }
+
+            .cafe-comparison {
+                padding: 1.5rem;
+            }
+
+            .cafe-comparison p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pricing-table thead th,
+            .pricing-table tbody td {
+                padding: 0.6rem 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            .pricing-table .price-main {
+                font-size: 1rem;
+            }
+
+            .concept-box {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="../index.html" class="logo">
+                <img src="../images/logo_white.svg" alt="ARATANI BASE" height="48">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">ホーム</a></li>
+                <li><a href="../concept/index.html" class="nav-link">コンセプト</a></li>
+                <li><a href="../plans/index.html" class="nav-link">料金プラン</a></li>
+                <li><a href="index.html" class="nav-link" style="color: var(--accent-color);">家庭教師向けプラン</a></li>
+                <li><a href="../news/index.html" class="nav-link">ニュース</a></li>
+                <li><a href="../access/index.html" class="nav-link">アクセス</a></li>
+                <li><a href="../access/index.html#contact" class="btn">お問い合わせ</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../images/32104671_s.jpg') center/cover no-repeat;">
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1>家庭教師向けプラン</h1>
+                    <p>カフェより安くて、完全個室。曜日・時間を固定して使える「第2の教室」</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- コンセプト：第2の教室 -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title fade-in">コンセプト：第2の教室</h2>
+                <p class="section-subtitle fade-in">単なる「時間貸し」ではない、先生専用の固定教室</p>
+
+                <div class="concept-box fade-in">
+                    <h3><i data-feather="home" style="width: 20px; height: 20px; margin-right: 0.5rem; vertical-align: middle;"></i>スクール契約（固定枠）</h3>
+                    <ul>
+                        <li>曜日・時間を固定して確保する<strong>「スクール契約（固定枠）」</strong>をメインに据えています</li>
+                        <li>先生は<strong>「毎週月曜17時はここ」</strong>と生徒・保護者に案内できます</li>
+                        <li>毎回の予約作業が不要。授業に集中できる環境を提供します</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 部屋の役割分担 -->
+        <section class="section" style="background: #FAFAFA;">
+            <div class="container">
+                <h2 class="section-title fade-in">部屋の役割分担</h2>
+                <p class="section-subtitle fade-in">授業スタイルに合わせて選べる2タイプ</p>
+
+                <div class="room-cards">
+                    <div class="room-card fade-in">
+                        <span class="room-label">
+                            <i data-feather="user" style="width: 14px; height: 14px; margin-right: 0.25rem;"></i>
+                            2名用ルーム（2室）
+                        </span>
+                        <h3>マンツーマン特化教室</h3>
+                        <p class="room-use"><i data-feather="book-open" style="width: 14px; height: 14px; margin-right: 0.25rem; vertical-align: middle;"></i> 用途：家庭教師、語学レッスン、カウンセリング</p>
+                        <p class="room-use"><i data-feather="target" style="width: 14px; height: 14px; margin-right: 0.25rem; vertical-align: middle;"></i> ターゲット：個人契約のプロ家庭教師、副業講師</p>
+                        <span class="room-target">1対1の集中環境</span>
+                    </div>
+
+                    <div class="room-card fade-in">
+                        <span class="room-label">
+                            <i data-feather="users" style="width: 14px; height: 14px; margin-right: 0.25rem;"></i>
+                            3名用ルーム（1室）
+                        </span>
+                        <h3>セミプライベート教室</h3>
+                        <p class="room-use"><i data-feather="book-open" style="width: 14px; height: 14px; margin-right: 0.25rem; vertical-align: middle;"></i> 用途：講師1名＋生徒2名の兄弟指導、または「親御さん同伴」の面談・体験授業</p>
+                        <p class="room-use"><i data-feather="target" style="width: 14px; height: 14px; margin-right: 0.25rem; vertical-align: middle;"></i> ターゲット：単価を上げたいベテラン講師</p>
+                        <span class="room-target">少人数グループ対応</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 料金プラン -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title fade-in">料金プラン</h2>
+                <p class="section-subtitle fade-in">月4回×90分のスクール枠を、カフェ代以下で</p>
+
+                <div class="pricing-table-wrap fade-in">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>プラン種別</th>
+                                <th>対象</th>
+                                <th>内容</th>
+                                <th>2名部屋 料金（2室）</th>
+                                <th>3名部屋 料金（1室）</th>
+                                <th>先生のメリット</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="plan-name">① レギュラー会員</td>
+                                <td>定期利用</td>
+                                <td><strong>曜日・時間固定</strong><br><span style="font-size: 0.85rem; color: var(--text-secondary);">（月4回×90分）</span></td>
+                                <td>
+                                    <span class="price-main">4,800円/月</span>
+                                    <span class="price-sub">（実質 800円/時）</span>
+                                </td>
+                                <td>
+                                    <span class="price-main">6,000円/月</span>
+                                    <span class="price-sub">（実質 1,000円/時）</span>
+                                </td>
+                                <td class="merit-text">予約不要。<br>カフェ代より安い。</td>
+                            </tr>
+                            <tr>
+                                <td class="plan-name">② チケット会員</td>
+                                <td>不定期</td>
+                                <td><strong>回数券</strong><br><span style="font-size: 0.85rem; color: var(--text-secondary);">（5時間分・2ヶ月有効）</span></td>
+                                <td>
+                                    <span class="price-main">4,500円/束</span>
+                                    <span class="price-sub">（実質 900円/時）</span>
+                                </td>
+                                <td>
+                                    <span class="price-main">6,000円/束</span>
+                                    <span class="price-sub">（実質 1,200円/時）</span>
+                                </td>
+                                <td class="merit-text">テスト前など<br>柔軟に使える。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <ul class="plan-notes fade-in">
+                    <li>90分設定：授業60分＋予備・入退室30分で、最も使いやすい枠設定</li>
+                    <li>冷暖房費込み。追加料金はかかりません</li>
+                </ul>
+
+                <div class="cafe-comparison fade-in">
+                    <p>札幌のカフェでコーヒー2杯頼むと1,000円前後します。<br><strong>「カフェより安くて、完全個室」で<br>実質800円/時</strong>というインパクト。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section cta-section">
+            <div class="container">
+                <h2 class="section-title fade-in">まずは無料見学から</h2>
+                <p class="section-subtitle fade-in">実際の教室をご体験いただき、授業での使い方をご提案します</p>
+                <div class="fade-in">
+                    <a href="../access/index.html#contact" class="btn" style="margin-right: 1rem;">無料見学を予約</a>
+                    <a href="../access/index.html" class="btn btn-outline">お問い合わせ</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- LINE フローティングバナー -->
+    <a href="https://line.me/R/ti/p/@630fkmkm" class="line-floating-banner" target="_blank">
+        <i data-feather="message-circle"></i>
+        LINE公式で相談
+    </a>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ARATANI BASE</h3>
+                    <p>〒064-0810<br>北海道札幌市中央区南10条西1丁目1 全国ビルニューオリンピア 2F</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>メニュー</h3>
+                    <a href="../concept/index.html">コンセプト</a>
+                    <a href="../plans/index.html">料金プラン</a>
+                    <a href="index.html">家庭教師向けプラン</a>
+                    <a href="../news/index.html">ニュース</a>
+                    <a href="../access/index.html">アクセス</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>お問い合わせ</h3>
+                    <p>Email: aratani-base@aratanidenki.co.jp</p>
+                    <p>営業時間: 24時間</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>フォローする</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61580317409649" target="_blank" class="social-link">
+                            <img src="../images/facebook-icon.svg" alt="Facebook" width="24" height="24">
+                        </a>
+                        <a href="https://www.tiktok.com/@user1555449494370/video/7555871290595282194?_r=1&_t=ZS-90A1HMvV6US" target="_blank" class="social-link">
+                            <img src="../images/tiktok-icon.svg" alt="TikTok" width="24" height="24">
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCMSiVWPzjQ5N1FzEd46cPlg" target="_blank" class="social-link">
+                            <img src="../images/youtube-icon.svg" alt="YouTube" width="24" height="24">
+                        </a>
+                        <a href="https://x.com/ARATANI_BASE" target="_blank" class="social-link">
+                            <img src="../images/x-icon.svg" alt="X" width="24" height="24">
+                        </a>
+                        <a href="https://www.instagram.com/aratani_base/" target="_blank" class="social-link">
+                            <img src="../images/instagram-icon.svg" alt="Instagram" width="24" height="24">
+                        </a>
+                        <a href="https://line.me/R/ti/p/@630fkmkm" target="_blank" class="social-link">LINE公式アカウント</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 ARATANI BASE. All rights reserved. | <a href="../privacy-policy/index.html" style="color: var(--accent-color); text-decoration: none;">プライバシーポリシー</a> | 運営会社：株式会社ARATANI BASE</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
