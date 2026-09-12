@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ARATANI BASE｜SNS運用 引き継ぎ資料</title>
+<style>
+  :root{
+    --ink:#1b1d22;
+    --sub:#5c6370;
+    --muted:#8b93a3;
+    --line:#e4e7ec;
+    --accent:#e8551f;
+    --accent-soft:#fdf1ec;
+    --head-bg:#22262e;
+    --zebra:#f7f8fa;
+    --hi:#fbf6ec;
+    --warn:#fff6f2;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  body{
+    font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-serif;
+    color:var(--ink);
+    font-size:10.5pt;
+    line-height:1.75;
+    margin:0;
+  }
+  .page{max-width:190mm; margin:0 auto; padding:14mm 13mm;}
+
+  .cover{border-top:4px solid var(--accent); padding-top:14px; margin-bottom:22px;}
+  .cover .eyebrow{font-size:8.5pt; letter-spacing:.22em; color:var(--accent); font-weight:700; margin:0 0 6px;}
+  .cover h1{font-size:19pt; font-weight:800; letter-spacing:.01em; margin:0; line-height:1.3;}
+  .cover .meta{
+    font-size:8.5pt; color:var(--muted);
+    border-top:1px solid var(--line); padding-top:8px; margin-top:12px;
+    display:flex; justify-content:space-between; gap:12px;
+  }
+
+  h2{
+    font-size:13pt; font-weight:800; color:var(--ink);
+    margin:24px 0 11px; padding:6px 0 6px 12px;
+    border-left:4px solid var(--accent);
+    background:linear-gradient(90deg,var(--accent-soft),transparent 70%);
+  }
+  h3{
+    font-size:10.5pt; font-weight:700; color:var(--head-bg);
+    margin:15px 0 6px; padding-bottom:3px;
+    border-bottom:1px solid var(--line);
+  }
+
+  p{margin:8px 0;}
+  ul,ol{margin:8px 0; padding-left:1.35em;}
+  li{margin:3px 0;}
+  strong{color:var(--ink); font-weight:700;}
+  code{
+    font-family:'SF Mono',Menlo,Consolas,monospace; font-size:9pt;
+    background:var(--zebra); border:1px solid var(--line);
+    border-radius:3px; padding:1px 4px;
+  }
+  .note{font-size:8.5pt; color:var(--muted); margin:4px 0; line-height:1.6;}
+
+  blockquote{
+    margin:12px 0; padding:11px 15px;
+    background:var(--warn); border-left:3px solid var(--accent);
+    border-radius:0 5px 5px 0;
+    font-size:9.5pt; color:var(--sub);
+  }
+  blockquote p{margin:0;}
+
+  table{width:100%; border-collapse:collapse; margin:10px 0 6px; font-size:9.5pt;}
+  th,td{border:1px solid var(--line); padding:6px 9px; text-align:left; vertical-align:top;}
+  thead th{background:var(--head-bg); color:#fff; font-weight:600; font-size:9pt; letter-spacing:.02em;}
+  tbody tr:nth-child(even){background:var(--zebra);}
+  .kv td:first-child{width:26%; font-weight:600;}
+  .ch td:first-child{width:19%; font-weight:600;}
+  .ch td:nth-child(2){width:24%;}
+  .ch td:last-child{width:24%;}
+  .fmt td:first-child{width:5%; text-align:center; color:var(--muted);}
+  .fmt td:nth-child(2){width:17%; font-weight:600;}
+  .fmt td:last-child{width:22%; font-size:9pt; color:var(--sub);}
+  .cred{font-family:'SF Mono',Menlo,Consolas,monospace; font-size:9pt;}
+  .cred td:first-child{width:26%; font-family:inherit; font-weight:600;}
+
+  .ng li{list-style:none; margin-left:-1.35em;}
+  .ng li::before{content:"\00d7"; color:var(--accent); font-weight:800; margin-right:.5em;}
+
+  hr{border:none; border-top:1px solid var(--line); margin:22px 0;}
+
+  @media print{
+    .page{padding:0;}
+    h2,h3{break-after:avoid;}
+    blockquote{break-inside:avoid;}
+    tr{break-inside:avoid;}
+    thead{display:table-header-group;}
+  }
+  @page{ size:A4; margin:16mm 14mm 18mm; }
+  .newpage{ break-before:page; page-break-before:always; margin-top:0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="cover">
+    <p class="eyebrow">SNS OPERATION HANDOVER</p>
+    <h1>ARATANI BASE｜SNS運用 引き継ぎ資料</h1>
+    <div class="meta">
+      <span>対象：SNS運用 業務委託先（外部パートナー）</span>
+      <span>発注元窓口：ガイドリー株式会社 宮田</span>
+      <span>2026年9月3日</span>
+    </div>
+  </div>
+
+  <blockquote><p><strong>本資料は関係者限りです。</strong>アカウント情報（ID／パスワード）を含みます。第三者への共有・転載はご遠慮ください。</p></blockquote>
+
+  <h2>1. この業務の目的（30秒サマリー）</h2>
+  <p>札幌・中島公園にある<strong>完全個室型コワーキングスペース「ARATANI BASE」</strong>のSNS運用を担っていただきます。</p>
+  <ul>
+    <li><strong>ゴール</strong>：施設の認知を維持しつつ、①ドロップイン（時間貸し）の新規・リピート予約、②月極会員の見学申込 につなげること</li>
+    <li><strong>投稿頻度</strong>：<strong>週2回</strong>（月8回程度）＋ HPニュースは月1〜2回</li>
+    <li><strong>役割分担</strong>：企画・作成・投稿までを委託先、最終承認を発注元（宮田）</li>
+  </ul>
+
+  <h2>2. 施設の基本情報</h2>
+  <table class="kv">
+    <thead><tr><th>項目</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td>施設名</td><td>ARATANI BASE（アラタニベース）</td></tr>
+      <tr><td>所在地</td><td>札幌市中央区（中島公園・すすきの近接）</td></tr>
+      <tr><td>公式サイト</td><td>https://aratani-base.com/</td></tr>
+      <tr><td>業態</td><td>完全個室型コワーキングスペース（全11室／1〜3名用）</td></tr>
+      <tr><td>特徴</td><td><strong>完全個室 × 24時間365日 × 完全無人運営（電子鍵）</strong></td></tr>
+      <tr><td>料金</td><td>月極プラン／ドロップイン（時間貸し）／ナイトパック</td></tr>
+      <tr><td>予約</td><td>Coubic：https://coubic.com/ARATANI-BASE/</td></tr>
+      <tr><td>運営</td><td>アラタニ電気株式会社（運用支援：ガイドリー株式会社）</td></tr>
+    </tbody>
+  </table>
+
+  <h3>提供プラン（詳細は https://aratani-base.com/plans/ ）</h3>
+  <ul>
+    <li><strong>月極</strong>：24時間365日プラン／ナイト&amp;ウィークエンドプラン／U30プラン（30歳以下割引）</li>
+    <li><strong>ドロップイン</strong>：通常利用（9:00〜18:00・時間課金）／ナイトパック（18:00〜翌9:00）</li>
+    <li><strong>オプション</strong>：法人パック（登記＋ポスト）、郵便ポスト、郵便転送、複合機</li>
+    <li><strong>家庭教師向けプラン</strong>：https://aratani-base.com/tutor/ （「第2の教室」として個室を使う訴求）</li>
+  </ul>
+
+  <h3>訴求の核（ここを外さない）</h3>
+  <ol>
+    <li><strong>完全個室</strong>＝Web会議も通話もできる、他人の目線がない</li>
+    <li><strong>24時間365日・無人</strong>＝深夜も早朝も自由。鍵はスマホ</li>
+    <li><strong>立地</strong>＝中島公園×すすきのの間。静かな“隠れ家”</li>
+  </ol>
+
+  <h2>3. 運用チャネルと役割分担</h2>
+  <table class="ch">
+    <thead><tr><th>チャネル</th><th>アカウント</th><th>位置づけ</th><th>頻度</th></tr></thead>
+    <tbody>
+      <tr><td>Instagram</td><td>@aratani_base</td><td><strong>主戦場</strong>。写真・リールで空間の雰囲気を伝える</td><td>週2回（うち月2本はリール推奨）</td></tr>
+      <tr><td>X（旧Twitter）</td><td>@ARATANI_BASE</td><td>速報・空室・キャンペーンのテキスト告知</td><td>週2回（Instagramと同内容の横展開でOK）</td></tr>
+      <tr><td>Threads</td><td>※要確認（6章）</td><td>Xと同内容。テキスト中心</td><td>週2回（Xと同時）</td></tr>
+      <tr><td>自社HP ニュース</td><td>microCMS（aratani-base）</td><td>公式のお知らせ。イベント・料金改定・メンテ情報</td><td>月1〜2回</td></tr>
+    </tbody>
+  </table>
+  <p><strong>「週2回」の定義</strong>：Instagramの投稿本数を基準に週2本。X・Threadsは同じネタをテキストへリライトして同日に流す（＝1ネタ＝3チャネル同時展開）。HPニュースは「公式に残すべき情報」のみ。</p>
+
+  <h2>4. 何を投稿するか（ネタの型・ローテーション）</h2>
+  <p>過去データ上、以下が反応が良い／需要が実在するテーマです。<strong>月8回を型でローテ</strong>させれば企画で詰まりません。</p>
+  <table class="fmt">
+    <thead><tr><th>#</th><th>型</th><th>内容例</th><th>相性の良いチャネル</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>部屋紹介</td><td>BASE01〜11の個室を1室ずつ紹介。広さ・机・椅子・コンセント位置</td><td>IG（写真／リール）</td></tr>
+      <tr><td>2</td><td>使い方提案</td><td>「Web会議専用に」「副業の作業部屋に」「オンライン家庭教師の教室に」</td><td>IG／X／Threads</td></tr>
+      <tr><td>3</td><td>夜の使い方</td><td><strong>18時台の利用が全曜日で最多</strong>。ナイトパックの訴求</td><td>IG／X</td></tr>
+      <tr><td>4</td><td>設備・アメニティ</td><td>Wi-Fi・複合機・電子鍵の使い方・郵便ポスト</td><td>IG／HP</td></tr>
+      <tr><td>5</td><td>立地・周辺</td><td>中島公園、すすきの、近隣カフェ・コンビニ</td><td>IG（リール）</td></tr>
+      <tr><td>6</td><td>料金・プラン解説</td><td>U30プラン、法人パック、ドロップインの料金早見</td><td>X／Threads／HP</td></tr>
+      <tr><td>7</td><td>予約〜入室の流れ</td><td>Coubic予約 → 電子鍵 → 入室の3ステップ</td><td>IG（リール）／HP</td></tr>
+      <tr><td>8</td><td>季節・イベント連動</td><td>花火大会・年末年始・繁忙期など。特別プランがあればHPにも掲載</td><td>全チャネル</td></tr>
+      <tr><td>9</td><td>空室・キャンペーン告知</td><td>月極の空室、期間限定割引</td><td>X／Threads／HP</td></tr>
+      <tr><td>10</td><td>利用者の声</td><td>※本人許諾が取れた場合のみ。個人名・顔は出さない</td><td>IG</td></tr>
+    </tbody>
+  </table>
+
+  <h3>月間の組み方（例）</h3>
+  <ul>
+    <li>第1週：①部屋紹介 ＋ ③夜の使い方</li>
+    <li>第2週：②使い方提案 ＋ ⑥料金解説</li>
+    <li>第3週：⑤立地・周辺（リール） ＋ ④設備</li>
+    <li>第4週：⑦予約の流れ ＋ ⑨空室・キャンペーン</li>
+    <li>HPニュース：月初に1本（お知らせ）／イベント時に1本</li>
+  </ul>
+
+  <h2>5. トーン＆マナー・NG事項</h2>
+  <h3>トーン</h3>
+  <ul>
+    <li><strong>静か・ミニマル・隠れ家</strong>。ブランドの世界観は「静寂と自由のワークプレイス」</li>
+    <li>過度に賑やか／煽る表現は避ける（例：「今すぐ！」「絶対お得！」の連呼）</li>
+    <li>敬体（です・ます）。絵文字は多用しない（1投稿1〜2個まで）</li>
+    <li>カラー：ブラック／ホワイト基調＋アクセントのオレンジ（<code>#FF5722</code>）</li>
+  </ul>
+  <h3>表記ルール</h3>
+  <ul>
+    <li>施設名は <strong>「ARATANI BASE」</strong>（全角スペースなし・大文字）。「アラタニベース」は本文中の読み補助のみ</li>
+    <li>部屋の呼称は <strong>BASE01〜BASE11</strong></li>
+    <li>料金を書くときは<strong>必ず税込／税抜を明記</strong>し、公式サイトの最新値と一致させる</li>
+  </ul>
+  <h3>NG（厳守）</h3>
+  <ul class="ng">
+    <li>利用者の氏名・顔・所属が特定できる写真／投稿（許諾がある場合のみ可）</li>
+    <li>室内に写り込んだ他利用者・私物・PC画面の掲載</li>
+    <li>売上・会員数・稼働率などの経営数値の公開</li>
+    <li>競合施設の名指し比較・批判</li>
+    <li>公式サイトに載っていない料金・条件を勝手に告知すること</li>
+    <li>政治・宗教・時事論評など施設と無関係な話題</li>
+  </ul>
+
+  <h2>6. アカウント・アクセス権</h2>
+  <table class="cred">
+    <thead><tr><th>チャネル</th><th>ID／アカウント</th><th>パスワード</th></tr></thead>
+    <tbody>
+      <tr><td>Instagram</td><td>aratani-base@aratanidenki.co.jp</td><td>（別途お渡し）</td></tr>
+      <tr><td>X</td><td>aratani-base@aratanidenki.co.jp</td><td>（別途お渡し）</td></tr>
+      <tr><td>Threads</td><td colspan="2">Instagram連携で開設（要確認）</td></tr>
+      <tr><td>microCMS</td><td>aratani.base@gmail.com</td><td>（別途お渡し）</td></tr>
+      <tr><td>Googleビジネスプロフィール</td><td>aratani.base@gmail.com</td><td>（別途お渡し）</td></tr>
+    </tbody>
+  </table>
+  <p><strong>セキュリティのお願い</strong></p>
+  <ul>
+    <li>パスワードはパスワードマネージャーで管理し、メール・チャットの平文で再送しないこと</li>
+    <li>二段階認証を有効化し、リカバリーコードは発注元にも共有</li>
+    <li>契約終了時はアカウント権限を即時返却（発注元側で権限剥奪します）</li>
+  </ul>
+
+  <h2>7. HPニュース（microCMS）の入稿手順</h2>
+  <ul>
+    <li>サービスドメイン：<code>aratani-base</code> ／ エンドポイント：<code>news</code></li>
+    <li>表示先：https://aratani-base.com/news/</li>
+    <li>入力項目：<code>title</code>（タイトル）／<code>content</code>（リッチエディタ）／<code>category</code>／<code>publishedAt</code>／<code>image</code>（任意）</li>
+    <li>カテゴリは3種：<strong>お知らせ／イベント／メンテナンス</strong></li>
+    <li>公開すると即座にサイトへ反映されます（サイト側のビルド作業は不要）</li>
+    <li>画像は横長（16:9推奨）、1MB以下に圧縮してからアップロード</li>
+  </ul>
+
+</div>
+</body>
+</html>
