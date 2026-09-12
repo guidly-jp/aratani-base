@@ -666,25 +666,6 @@
         }
 
         /* --- 新ドロップイン料金表（2026-10-01 改定） --- */
-        .revision-notice {
-            border: 1px solid var(--accent-color);
-            background: #FFF6F2;
-            border-radius: 12px;
-            padding: 1.25rem 1.5rem;
-            margin-bottom: 2.5rem;
-            text-align: center;
-        }
-        .revision-notice strong {
-            display: block;
-            color: var(--accent-color);
-            font-weight: 700;
-            font-size: 1.05rem;
-            margin-bottom: 0.35rem;
-        }
-        .revision-notice span {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
         .plan-lines {
             list-style: none;
             margin: 0 0 1.5rem;
@@ -819,6 +800,75 @@
             .event-dates li { flex-direction: column; align-items: flex-start; gap: 0.2rem; }
             .ev-name { text-align: left; }
         }
+
+        /* --- ページ内目次 --- */
+        .page-toc {
+            /* 共通の nav スタイル（padding / flex）を打ち消す */
+            display: block;
+            padding: 0;
+            position: sticky;
+            top: var(--header-h, 60px);
+            z-index: 900;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: saturate(180%) blur(10px);
+            -webkit-backdrop-filter: saturate(180%) blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .page-toc .container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .page-toc .toc-label {
+            flex: 0 0 auto;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: var(--text-secondary);
+            padding: 0.9rem 0;
+        }
+        .page-toc ul {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            list-style: none;
+            margin: 0;
+            padding: 0.7rem 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        .page-toc ul::-webkit-scrollbar { display: none; }
+        .page-toc li { flex: 0 0 auto; }
+        .page-toc a {
+            display: block;
+            padding: 0.45rem 0.95rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .page-toc a:hover {
+            color: var(--accent-color);
+            background: var(--background-color);
+        }
+        .page-toc a.is-active {
+            color: var(--secondary-color);
+            background: var(--accent-color);
+        }
+        .page-toc a:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+        main > section[id] { scroll-margin-top: calc(var(--header-h, 60px) + 72px); }
+
+        @media (max-width: 768px) {
+            .page-toc .toc-label { display: none; }
+            .page-toc .container { padding-right: 0; }
+        }
     </style>
 </head>
 <body>
@@ -854,8 +904,23 @@
             </div>
         </section>
 
+        <nav class="page-toc" aria-label="ページ内目次">
+            <div class="container">
+                <span class="toc-label">目次</span>
+                <ul>
+                    <li><a href="#monthly">月額プラン</a></li>
+                    <li><a href="#u30">U30プラン</a></li>
+                    <li><a href="#dropin">ドロップイン料金</a></li>
+                    <li><a href="#event">イベント限定プラン</a></li>
+                    <li><a href="#options">オプションサービス</a></li>
+                    <li><a href="#faq">よくあるご質問</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
         <!-- 月額プラン（部屋別料金） -->
-        <section class="section">
+        <section id="monthly" class="section">
             <div class="container">
                 <h2 class="section-title fade-in">月額プラン</h2>
                 <p class="section-subtitle fade-in">部屋サイズと利用時間に応じた料金体系</p>
@@ -1023,7 +1088,7 @@
         </section>
 
         <!-- U30プラン -->
-        <section class="section" style="background: linear-gradient(135deg, rgba(255, 87, 34, 0.05), rgba(255, 112, 67, 0.05));">
+        <section id="u30" class="section" style="background: linear-gradient(135deg, rgba(255, 87, 34, 0.05), rgba(255, 112, 67, 0.05));">
             <div class="container">
                 <div style="text-align: center; margin-bottom: 1rem;">
                     <span style="display: inline-block; background: linear-gradient(135deg, #FF5722, #FF7043); color: white; padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem;">
@@ -1093,15 +1158,10 @@
         </section>
 
         <!-- ドロップイン料金 -->
-        <section class="section" style="background: var(--secondary-color);">
+        <section id="dropin" class="section" style="background: var(--secondary-color);">
             <div class="container">
                 <h2 class="section-title fade-in">ドロップイン料金</h2>
                 <p class="section-subtitle fade-in">短時間利用やお試し利用に最適</p>
-
-                <div class="revision-notice">
-                    <strong>2026年10月1日より、ドロップイン料金を改定いたします</strong>
-                    <span>2026年10月1日以降にお申し込みいただくご予約より、下記の新料金となります。9月30日までにお申し込み済みのご予約は、ご利用日が10月以降であっても現行料金が適用されます。</span>
-                </div>
 
                 <div class="dropin-tables">
                     <div class="dropin-section fade-in">
@@ -1110,20 +1170,16 @@
                                 <h4>1名用個室</h4>
                                 <ul class="plan-lines">
                                     <li class="pl-line">
-                                        <span class="pl-name"><b>スポット</b><em>9:00〜18:00 のうち1〜3時間</em></span>
+                                        <span class="pl-name"><b>スポット</b><em>9:00〜18:00 のうち1〜2時間</em></span>
                                         <span class="pl-price">¥550<small>/時</small></span>
                                     </li>
                                     <li class="pl-line">
-                                        <span class="pl-name"><b>デイパス</b><em>9:00〜18:00 通し</em></span>
+                                        <span class="pl-name"><b>デイパス</b><em>9:00〜18:00 通し（3時間以上のご利用に）</em></span>
                                         <span class="pl-price">¥1,500</span>
                                     </li>
                                     <li class="pl-line pl-hi">
                                         <span class="pl-name"><b>ナイトパス</b><em>18:00〜翌9:00</em></span>
                                         <span class="pl-price">¥1,800</span>
-                                    </li>
-                                    <li class="pl-line">
-                                        <span class="pl-name"><b>24時間パス</b><em>9:00〜翌9:00</em></span>
-                                        <span class="pl-price">¥2,800</span>
                                     </li>
                                 </ul>
                                 <a href="https://coubic.com/ARATANI-BASE/4872070" target="_blank" class="btn btn-room">予約する</a>
@@ -1132,20 +1188,16 @@
                                 <h4>2名用個室</h4>
                                 <ul class="plan-lines">
                                     <li class="pl-line">
-                                        <span class="pl-name"><b>スポット</b><em>9:00〜18:00 のうち1〜3時間</em></span>
+                                        <span class="pl-name"><b>スポット</b><em>9:00〜18:00 のうち1〜2時間</em></span>
                                         <span class="pl-price">¥825<small>/時</small></span>
                                     </li>
                                     <li class="pl-line">
-                                        <span class="pl-name"><b>デイパス</b><em>9:00〜18:00 通し</em></span>
+                                        <span class="pl-name"><b>デイパス</b><em>9:00〜18:00 通し（3時間以上のご利用に）</em></span>
                                         <span class="pl-price">¥2,250</span>
                                     </li>
                                     <li class="pl-line pl-hi">
                                         <span class="pl-name"><b>ナイトパス</b><em>18:00〜翌9:00</em></span>
                                         <span class="pl-price">¥2,700</span>
-                                    </li>
-                                    <li class="pl-line">
-                                        <span class="pl-name"><b>24時間パス</b><em>9:00〜翌9:00</em></span>
-                                        <span class="pl-price">¥4,200</span>
                                     </li>
                                 </ul>
                                 <a href="https://coubic.com/ARATANI-BASE/2070412" target="_blank" class="btn btn-room">予約する</a>
@@ -1154,20 +1206,16 @@
                                 <h4>3名用個室</h4>
                                 <ul class="plan-lines">
                                     <li class="pl-line">
-                                        <span class="pl-name"><b>スポット</b><em>9:00〜18:00 のうち1〜3時間</em></span>
+                                        <span class="pl-name"><b>スポット</b><em>9:00〜18:00 のうち1〜2時間</em></span>
                                         <span class="pl-price">¥1,100<small>/時</small></span>
                                     </li>
                                     <li class="pl-line">
-                                        <span class="pl-name"><b>デイパス</b><em>9:00〜18:00 通し</em></span>
+                                        <span class="pl-name"><b>デイパス</b><em>9:00〜18:00 通し（3時間以上のご利用に）</em></span>
                                         <span class="pl-price">¥3,000</span>
                                     </li>
                                     <li class="pl-line pl-hi">
                                         <span class="pl-name"><b>ナイトパス</b><em>18:00〜翌9:00</em></span>
                                         <span class="pl-price">¥3,600</span>
-                                    </li>
-                                    <li class="pl-line">
-                                        <span class="pl-name"><b>24時間パス</b><em>9:00〜翌9:00</em></span>
-                                        <span class="pl-price">¥5,600</span>
                                     </li>
                                 </ul>
                                 <a href="https://coubic.com/ARATANI-BASE/4548116" target="_blank" class="btn btn-room">予約する</a>
@@ -1176,7 +1224,8 @@
 
                         <p class="dropin-foot">
                             ※表示価格はすべて<strong>税込</strong>です。<br>
-                            ※スポットは1時間単位・最大3時間までのご利用です。4時間以上ご利用の場合はデイパスがお得です。<br>
+                            ※スポットは1時間単位・最大2時間までのご利用です。3時間以上ご利用の場合はデイパスをお選びください。<br>
+                            ※24時間通してご利用の場合は、デイパスとナイトパスを続けてご予約ください。<br>
                             ※ナイトパスは深夜の集中作業を想定した区分です。イベント開催日の仮眠・休憩には、下記の「イベント限定プラン」をご利用ください。<br>
                             ※キャンセルは前日まで無料、当日は50%、ご連絡のないキャンセルは100%を申し受けます。
                         </p>
@@ -1187,7 +1236,7 @@
 
 
         <!-- イベント限定プラン -->
-        <section class="section">
+        <section id="event" class="section">
             <div class="container">
                 <h2 class="section-title fade-in">イベント限定プラン</h2>
                 <p class="section-subtitle fade-in">ライブ・イベント開催日限定。仮眠と荷物置きの拠点としてご利用いただけます</p>
@@ -1247,7 +1296,7 @@
 
 
         <!-- オプションサービス -->
-        <section class="section">
+        <section id="options" class="section">
             <div class="container">
                 <h2 class="section-title fade-in">オプションサービス</h2>
                 <p class="section-subtitle fade-in">基本プランに追加できる便利なサービス</p>
@@ -1319,7 +1368,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section id="faq" class="section">
             <div class="container">
                 <h2 class="section-title fade-in">よくあるご質問</h2>
                 <div class="features-grid" style="grid-template-columns: 1fr;">
@@ -1445,5 +1494,68 @@
     </footer>
 
     <script src="../js/main.js"></script>
+
+    <script>
+    // ページ内目次：現在地のハイライト
+    (function () {
+        // ヘッダー実高をCSS変数に反映（目次の吸着位置・アンカー位置に使用）
+        var header = document.querySelector('header');
+        function syncHeaderHeight() {
+            if (!header) return;
+            document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+        }
+        syncHeaderHeight();
+        window.addEventListener('resize', syncHeaderHeight);
+        window.addEventListener('load', syncHeaderHeight);
+
+        var links = Array.prototype.slice.call(document.querySelectorAll('.page-toc a'));
+        if (!links.length) return;
+        var items = [];
+        links.forEach(function (a) {
+            var el = document.querySelector(a.getAttribute('href'));
+            if (el) items.push({ link: a, el: el });
+        });
+        if (!items.length) return;
+
+        var current = null;
+        function activate(a) {
+            if (current === a) return;
+            links.forEach(function (l) { l.classList.remove('is-active'); });
+            if (a) {
+                a.classList.add('is-active');
+                var ul = a.parentElement.parentElement;
+                if (ul.scrollWidth > ul.clientWidth) {
+                    ul.scrollTo({ left: a.offsetLeft - (ul.clientWidth - a.offsetWidth) / 2, behavior: 'smooth' });
+                }
+            }
+            current = a;
+        }
+
+        var ticking = false;
+        function update() {
+            ticking = false;
+            var toc = document.querySelector('.page-toc');
+            var line = (header ? header.offsetHeight : 60) + (toc ? toc.offsetHeight : 60) + 8;
+            // ページ最下部に到達したら最後の項目を選ぶ
+            if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) {
+                activate(items[items.length - 1].link);
+                return;
+            }
+            var best = null;
+            items.forEach(function (it) {
+                if (it.el.getBoundingClientRect().top <= line) best = it.link;
+            });
+            activate(best);
+        }
+        function onScroll() {
+            if (ticking) return;
+            ticking = true;
+            window.requestAnimationFrame(update);
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        update();
+    })();
+    </script>
 </body>
 </html>
