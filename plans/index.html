@@ -664,6 +664,161 @@
                 font-size: 2rem;
             }
         }
+
+        /* --- 新ドロップイン料金表（2026-10-01 改定） --- */
+        .revision-notice {
+            border: 1px solid var(--accent-color);
+            background: #FFF6F2;
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+        .revision-notice strong {
+            display: block;
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
+        }
+        .revision-notice span {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        .plan-lines {
+            list-style: none;
+            margin: 0 0 1.5rem;
+            padding: 0;
+            text-align: left;
+        }
+        .plan-lines li {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 0.75rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .plan-lines li:last-child { border-bottom: none; }
+        .pl-name { display: flex; flex-direction: column; }
+        .pl-name b {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+        }
+        .pl-name em {
+            font-style: normal;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            margin-top: 3px;
+            letter-spacing: 0.01em;
+        }
+        .pl-price {
+            font-weight: 800;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            white-space: nowrap;
+        }
+        .pl-price small {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+        .plan-lines li.pl-hi .pl-price { color: var(--accent-color); }
+        .dropin-foot {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-top: 2rem;
+        }
+
+        /* --- イベント限定プラン --- */
+        .event-banner {
+            background: #22262E;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2.5rem;
+            color: #fff;
+        }
+        .event-banner h3 {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .event-dates {
+            list-style: none;
+            margin: 0 auto 1.75rem;
+            padding: 0;
+            max-width: 520px;
+        }
+        .event-dates li {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        .event-dates li:last-child { border-bottom: none; }
+        .ev-date {
+            font-size: 1.0625rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .ev-name {
+            font-size: 0.9375rem;
+            color: rgba(255,255,255,0.75);
+            text-align: right;
+        }
+        .event-time {
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 600;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            margin: 0;
+        }
+        .event-time span {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+        .event-feature {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.625rem;
+            margin-bottom: 2.5rem;
+        }
+        .event-feature li {
+            list-style: none;
+            font-size: 0.8125rem;
+            color: var(--text-color);
+            background: var(--background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0.4rem 1rem;
+        }
+        .event-price {
+            display: block;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 0.25rem;
+        }
+        .event-price-unit {
+            display: block;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        @media (max-width: 480px) {
+            .event-banner { padding: 2rem 1.25rem; }
+            .event-dates li { flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+            .ev-name { text-align: left; }
+        }
     </style>
 </head>
 <body>
@@ -943,104 +1098,150 @@
                 <h2 class="section-title fade-in">ドロップイン料金</h2>
                 <p class="section-subtitle fade-in">短時間利用やお試し利用に最適</p>
 
-                <!-- 限定キャンペーンバナー -->
-                <div style="background: linear-gradient(135deg, #FF9800, #FFB74D); border-radius: 16px; padding: 2rem; text-align: center; margin-bottom: 3rem; box-shadow: 0 8px 24px rgba(255, 152, 0, 0.3);">
-                    <div style="display: inline-block; background: white; color: #FF9800; padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem;">
-                        🎊 限定キャンペーン実施中
-                    </div>
-                    <h3 style="font-size: 2rem; font-weight: 800; color: white; margin-bottom: 0.5rem;">全ドロップイン料金 50%OFF!</h3>
-                    <p style="color: rgba(255, 255, 255, 0.95); font-size: 1.1rem; margin: 0;">
-                        今なら全てのドロップイン利用が半額でご利用いただけます
-                    </p>
+                <div class="revision-notice">
+                    <strong>2026年10月1日より、ドロップイン料金を改定いたします</strong>
+                    <span>2026年10月1日以降にお申し込みいただくご予約より、下記の新料金となります。9月30日までにお申し込み済みのご予約は、ご利用日が10月以降であっても現行料金が適用されます。</span>
                 </div>
 
                 <div class="dropin-tables">
-                    <!-- 通常利用（9:00〜18:00） -->
                     <div class="dropin-section fade-in">
-                        <h3 class="dropin-title">通常利用（9:00〜18:00）</h3>
-                        
                         <div class="dropin-grid">
                             <div class="dropin-card">
                                 <h4>1名用個室</h4>
-                                <div class="dropin-pricing">
-                                    <div style="margin-bottom: 0.5rem;">
-                                        <span style="text-decoration: line-through; color: var(--text-secondary); font-size: 0.9rem;">通常: ¥600/時間</span>
-                                    </div>
-                                    <span class="hourly-rate" style="color: #FF9800;">¥300/時間 <span style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 400;">(税込¥330)</span></span>
-                                    <span class="daily-cap">1日上限 ¥900 <span style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 400;">(税込¥990)</span></span>
-                                </div>
-                                <a href="https://coubic.com/ARATANI-BASE/4872070/book/course_type/detail?express=true" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
+                                <ul class="plan-lines">
+                                    <li class="pl-line">
+                                        <span class="pl-name"><b>スポット</b><em>9:00〜18:00 のうち1〜3時間</em></span>
+                                        <span class="pl-price">¥550<small>/時</small></span>
+                                    </li>
+                                    <li class="pl-line">
+                                        <span class="pl-name"><b>デイパス</b><em>9:00〜18:00 通し</em></span>
+                                        <span class="pl-price">¥1,500</span>
+                                    </li>
+                                    <li class="pl-line pl-hi">
+                                        <span class="pl-name"><b>ナイトパス</b><em>18:00〜翌9:00</em></span>
+                                        <span class="pl-price">¥1,800</span>
+                                    </li>
+                                    <li class="pl-line">
+                                        <span class="pl-name"><b>24時間パス</b><em>9:00〜翌9:00</em></span>
+                                        <span class="pl-price">¥2,800</span>
+                                    </li>
+                                </ul>
+                                <a href="https://coubic.com/ARATANI-BASE/4872070" target="_blank" class="btn btn-room">予約する</a>
                             </div>
-                            
                             <div class="dropin-card">
                                 <h4>2名用個室</h4>
-                                <div class="dropin-pricing">
-                                    <div style="margin-bottom: 0.5rem;">
-                                        <span style="text-decoration: line-through; color: var(--text-secondary); font-size: 0.9rem;">通常: ¥900/時間</span>
-                                    </div>
-                                    <span class="hourly-rate" style="color: #FF9800;">¥450/時間 <span style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 400;">(税込¥495)</span></span>
-                                    <span class="daily-cap">1日上限 ¥1,350 <span style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 400;">(税込¥1,485)</span></span>
-                                </div>
-                                <a href="https://coubic.com/ARATANI-BASE/2070412/book/course_type/detail?express=true" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
+                                <ul class="plan-lines">
+                                    <li class="pl-line">
+                                        <span class="pl-name"><b>スポット</b><em>9:00〜18:00 のうち1〜3時間</em></span>
+                                        <span class="pl-price">¥825<small>/時</small></span>
+                                    </li>
+                                    <li class="pl-line">
+                                        <span class="pl-name"><b>デイパス</b><em>9:00〜18:00 通し</em></span>
+                                        <span class="pl-price">¥2,250</span>
+                                    </li>
+                                    <li class="pl-line pl-hi">
+                                        <span class="pl-name"><b>ナイトパス</b><em>18:00〜翌9:00</em></span>
+                                        <span class="pl-price">¥2,700</span>
+                                    </li>
+                                    <li class="pl-line">
+                                        <span class="pl-name"><b>24時間パス</b><em>9:00〜翌9:00</em></span>
+                                        <span class="pl-price">¥4,200</span>
+                                    </li>
+                                </ul>
+                                <a href="https://coubic.com/ARATANI-BASE/2070412" target="_blank" class="btn btn-room">予約する</a>
                             </div>
-                            
                             <div class="dropin-card">
                                 <h4>3名用個室</h4>
-                                <div class="dropin-pricing">
-                                    <div style="margin-bottom: 0.5rem;">
-                                        <span style="text-decoration: line-through; color: var(--text-secondary); font-size: 0.9rem;">通常: ¥1,200/時間</span>
-                                    </div>
-                                    <span class="hourly-rate" style="color: #FF9800;">¥600/時間 <span style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 400;">(税込¥660)</span></span>
-                                    <span class="daily-cap">1日上限 ¥1,800 <span style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 400;">(税込¥1,980)</span></span>
-                                </div>
-                                <a href="https://coubic.com/ARATANI-BASE/4548116/book/course_type/detail?express=true" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
+                                <ul class="plan-lines">
+                                    <li class="pl-line">
+                                        <span class="pl-name"><b>スポット</b><em>9:00〜18:00 のうち1〜3時間</em></span>
+                                        <span class="pl-price">¥1,100<small>/時</small></span>
+                                    </li>
+                                    <li class="pl-line">
+                                        <span class="pl-name"><b>デイパス</b><em>9:00〜18:00 通し</em></span>
+                                        <span class="pl-price">¥3,000</span>
+                                    </li>
+                                    <li class="pl-line pl-hi">
+                                        <span class="pl-name"><b>ナイトパス</b><em>18:00〜翌9:00</em></span>
+                                        <span class="pl-price">¥3,600</span>
+                                    </li>
+                                    <li class="pl-line">
+                                        <span class="pl-name"><b>24時間パス</b><em>9:00〜翌9:00</em></span>
+                                        <span class="pl-price">¥5,600</span>
+                                    </li>
+                                </ul>
+                                <a href="https://coubic.com/ARATANI-BASE/4548116" target="_blank" class="btn btn-room">予約する</a>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- ナイトパック（18:00〜翌9:00） -->
-                    <div class="dropin-section fade-in">
-                        <h3 class="dropin-title">ナイトパック（18:00〜翌9:00）</h3>
-                        
-                        <div class="dropin-grid">
-                            <div class="dropin-card">
-                                <h4>1名用個室</h4>
-                                <div class="dropin-pricing">
-                                    <div style="margin-bottom: 0.5rem;">
-                                        <span style="text-decoration: line-through; color: var(--text-secondary); font-size: 0.9rem;">通常: ¥1,200/終日</span>
-                                    </div>
-                                    <span class="night-rate" style="color: #FF9800;">¥600/終日 <span style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 400;">(税込¥660)</span></span>
-                                </div>
-                                <p class="dropin-note">深夜の集中作業に</p>
-                                <a href="https://coubic.com/ARATANI-BASE/4872070/book/course_type?courseCanonicalId=968537" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
-                            </div>
-                            
-                            <div class="dropin-card">
-                                <h4>2名用個室</h4>
-                                <div class="dropin-pricing">
-                                    <div style="margin-bottom: 0.5rem;">
-                                        <span style="text-decoration: line-through; color: var(--text-secondary); font-size: 0.9rem;">通常: ¥1,800/終日</span>
-                                    </div>
-                                    <span class="night-rate" style="color: #FF9800;">¥900/終日 <span style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 400;">(税込¥990)</span></span>
-                                </div>
-                                <p class="dropin-note">複数人作業・夜間勤務対応</p>
-                                <a href="https://coubic.com/ARATANI-BASE/2070412/book/course_type?courseCanonicalId=900357" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
-                            </div>
-                            
-                            <div class="dropin-card">
-                                <h4>3名用個室</h4>
-                                <div class="dropin-pricing">
-                                    <div style="margin-bottom: 0.5rem;">
-                                        <span style="text-decoration: line-through; color: var(--text-secondary); font-size: 0.9rem;">通常: ¥2,400/終日</span>
-                                    </div>
-                                    <span class="night-rate" style="color: #FF9800;">¥1,200/終日 <span style="font-size: 0.7rem; color: var(--text-secondary); font-weight: 400;">(税込¥1,320)</span></span>
-                                </div>
-                                <p class="dropin-note">複数人作業・夜間勤務対応</p>
-                                <a href="https://coubic.com/ARATANI-BASE/4548116/book/course_type?courseCanonicalId=1064202" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
-                            </div>
-                        </div>
+
+                        <p class="dropin-foot">
+                            ※表示価格はすべて<strong>税込</strong>です。<br>
+                            ※スポットは1時間単位・最大3時間までのご利用です。4時間以上ご利用の場合はデイパスがお得です。<br>
+                            ※ナイトパスは深夜の集中作業を想定した区分です。イベント開催日の仮眠・休憩には、下記の「イベント限定プラン」をご利用ください。<br>
+                            ※キャンセルは前日まで無料、当日は50%、ご連絡のないキャンセルは100%を申し受けます。
+                        </p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+
+        <!-- イベント限定プラン -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title fade-in">イベント限定プラン</h2>
+                <p class="section-subtitle fade-in">ライブ・イベント開催日限定。仮眠と荷物置きの拠点としてご利用いただけます</p>
+
+                <div class="event-banner fade-in">
+                    <h3>対 象 日</h3>
+                    <ul class="event-dates">
+                        <li><span class="ev-date">10月24日<small>（土）</small></span><span class="ev-name">Number_i</span></li>
+                        <li><span class="ev-date">10月29日〜11月1日</span><span class="ev-name">Snow Man（各日程でご予約いただけます）</span></li>
+                        <li><span class="ev-date">11月14日<small>（土）</small></span><span class="ev-name">YOASOBI</span></li>
+                    </ul>
+                    <p class="event-time"><span>15:00</span> 入室　→　翌 <span>11:00</span> 退室</p>
+                </div>
+
+                <ul class="event-feature fade-in">
+                    <li>仮眠用マット・毛布つき</li>
+                    <li>完全個室</li>
+                    <li>すすきのエリアまで徒歩圏</li>
+                    <li>入退室は時間内自由</li>
+                    <li>各室に電気ストーブ完備</li>
+                </ul>
+
+                <div class="dropin-grid fade-in">
+                        <div class="dropin-card">
+                            <h4>1名用個室</h4>
+                            <span class="event-price">¥7,000</span>
+                            <span class="event-price-unit">税込／1回（15:00〜翌11:00）</span>
+                            <p class="dropin-note">おひとり様・仮眠と荷物置きの拠点に</p>
+                            <a href="https://coubic.com/ARATANI-BASE/1794549" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
+                        </div>
+                        <div class="dropin-card">
+                            <h4>2名用個室</h4>
+                            <span class="event-price">¥14,000</span>
+                            <span class="event-price-unit">税込／1回（15:00〜翌11:00）</span>
+                            <p class="dropin-note">ご友人・ご夫婦での遠征に</p>
+                            <a href="https://coubic.com/ARATANI-BASE/3116715" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
+                        </div>
+                        <div class="dropin-card">
+                            <h4>3名用個室</h4>
+                            <span class="event-price">¥20,000</span>
+                            <span class="event-price-unit">税込／1回（15:00〜翌11:00）</span>
+                            <p class="dropin-note">グループ遠征・少人数での仮眠・休憩に</p>
+                            <a href="https://coubic.com/ARATANI-BASE/2974334" target="_blank" class="btn btn-room" style="margin-top: 1rem;">予約する</a>
+                        </div>
+                </div>
+
+                <p class="dropin-foot">
+                    ※表示価格はすべて<strong>税込</strong>です。<br>
+                    ※連日でご予約いただいた場合は同じお部屋をご用意しますので、退室から翌日の入室までの11:00〜15:00の間もそのままご利用いただけます。<br>
+                    ※お手洗いはございますが、シャワー設備はございません。<br>
+                    ※本施設は完全無人で運営しております。<br>
+                    ※日程変更は承っておりません。キャンセルはご予約日時まで可能です（事前決済の場合、ご予約から25日を過ぎるとキャンセルができません）。<br>
+                    ※システムの都合上、予約画面では「18:00〜09:00」と表示されますが、実際のご利用は15:00〜翌11:00です。
+                </p>
             </div>
         </section>
 

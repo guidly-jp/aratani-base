@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ARATANI BASE 運用支援 継続のご提案</title>
+<style>
+  :root{
+    --ink:#1b1d22;
+    --sub:#5c6370;
+    --muted:#8b93a3;
+    --line:#e4e7ec;
+    --accent:#e8551f;      /* ARATANI orange（やや落ち着かせた） */
+    --accent-soft:#fdf1ec;
+    --head-bg:#22262e;
+    --zebra:#f7f8fa;
+    --hi:#fbf6ec;          /* ハイライト行 */
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  body{
+    font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-serif;
+    color:var(--ink);
+    font-size:10.5pt;
+    line-height:1.75;
+    margin:0;
+  }
+  .page{max-width:190mm; margin:0 auto; padding:14mm 13mm;}
+
+  /* --- タイトル --- */
+  .cover{
+    border-top:4px solid var(--accent);
+    padding-top:14px;
+    margin-bottom:26px;
+  }
+  .cover .eyebrow{
+    font-size:8.5pt; letter-spacing:.22em; color:var(--accent);
+    font-weight:700; margin:0 0 6px;
+  }
+  .cover h1{
+    font-size:19pt; font-weight:800; letter-spacing:.01em;
+    margin:0; line-height:1.3; white-space:nowrap;
+  }
+  .cover .meta{
+    font-size:8.5pt; color:var(--muted);
+    border-top:1px solid var(--line); padding-top:8px;
+    display:flex; justify-content:space-between;
+  }
+
+  /* --- 見出し --- */
+  h2{
+    font-size:13pt; font-weight:800; color:var(--ink);
+    margin:26px 0 12px; padding:6px 0 6px 12px;
+    border-left:4px solid var(--accent);
+    background:linear-gradient(90deg,var(--accent-soft),transparent 70%);
+  }
+  h3{
+    font-size:10.5pt; font-weight:700; color:var(--head-bg);
+    margin:16px 0 7px; padding-bottom:3px;
+    border-bottom:1px solid var(--line);
+  }
+
+  /* --- 本文 --- */
+  p{margin:8px 0;}
+  ul{margin:8px 0; padding-left:1.2em;}
+  li{margin:3px 0;}
+  strong{color:var(--ink); font-weight:700;}
+  .note{font-size:8.5pt; color:var(--muted); margin:4px 0; line-height:1.6;}
+
+  blockquote{
+    margin:12px 0; padding:11px 15px;
+    background:var(--zebra); border-left:3px solid var(--accent);
+    border-radius:0 5px 5px 0;
+    font-size:10pt; color:var(--sub);
+  }
+  blockquote p{margin:0;}
+
+  /* --- テーブル --- */
+  table{
+    width:100%; border-collapse:collapse;
+    margin:10px 0 6px; font-size:9.5pt;
+  }
+  th,td{
+    border:1px solid var(--line);
+    padding:6px 9px; text-align:left; vertical-align:middle;
+  }
+  thead th{
+    background:var(--head-bg); color:#fff; font-weight:600;
+    font-size:9pt; letter-spacing:.02em;
+  }
+  tbody tr:nth-child(even){background:var(--zebra);}
+  td.num,th.num{text-align:right; font-variant-numeric:tabular-nums;}
+  tr.total td{background:var(--hi); font-weight:700;}
+  tr.total td:first-child{color:var(--muted);}
+
+  /* プラン表 */
+  .plan th:nth-child(2){background:#2b3a4a;}
+  .plan th:nth-child(3){background:var(--accent);}
+  .plan td:first-child{width:42%;}
+  .plan .price td{background:var(--hi); font-size:11pt; font-weight:800;}
+  .plan .price td:nth-child(3){color:var(--accent);}
+  .plan .clean td{font-weight:700;}
+  .center{text-align:center;}
+
+  hr{border:none; border-top:1px solid var(--line); margin:24px 0;}
+
+  /* --- 印刷 --- */
+  @media print{
+    .page{padding:0;}
+    h2,h3{break-after:avoid;}
+    table,blockquote{break-inside:avoid;}
+    tr{break-inside:avoid;}
+  }
+  @page{ size:A4; margin:16mm 14mm 18mm; }
+  .newpage{ break-before:page; page-break-before:always; margin-top:0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="cover">
+    <h1>ARATANI BASE 運用支援 継続のご提案</h1>
+  </div>
+
+  <h2>1. これまでの成果<span style="font-size:9pt;font-weight:500;color:var(--muted);">（2025年9月〜2026年8月18日時点）</span></h2>
+
+  <h3>1-1. サマリー（開業からの到達点）</h3>
+  <ul>
+    <li><strong>累計ドロップイン予約：208件</strong>（新規153件／リピート55件）</li>
+    <li><strong>登録顧客数：約124名</strong></li>
+    <li><strong>月謝会員：3室稼働＝月¥90,200（決済ベース）</strong>の安定収入</li>
+    <li><strong>直近は開業来の最高水準</strong>：6月・8月に純売上・予約数がいずれもピークを更新</li>
+  </ul>
+  <blockquote><p>立ち上げ期の「認知ゼロからの集客」フェーズを越え、ドロップインの新規×リピートが積み上がり、月謝も3室に到達。数字の面でも運用が「定着フェーズ」に入ったことが確認できます。</p></blockquote>
+
+  <h3>1-2. 月次 純売上の推移（決済ベース・税込／返金控除後）</h3>
+  <table>
+    <thead><tr><th>月</th><th class="num">純売上</th><th class="num">販売点数</th><th>内訳の目安</th></tr></thead>
+    <tbody>
+      <tr><td>2025-09</td><td class="num">¥1,650</td><td class="num">2</td><td>ドロップイン中心（オープン直後）</td></tr>
+      <tr><td>2025-10</td><td class="num">¥16,005</td><td class="num">19</td><td>ドロップイン立ち上がり</td></tr>
+      <tr><td>2025-11</td><td class="num">¥6,765</td><td class="num">5</td><td>端境期</td></tr>
+      <tr><td>2025-12</td><td class="num">¥83,325</td><td class="num">20</td><td>月謝2室開始（武田・橋本）</td></tr>
+      <tr><td>2026-01</td><td class="num">¥113,575</td><td class="num">28</td><td>月謝＋ドロップイン好調</td></tr>
+      <tr><td>2026-02</td><td class="num">¥87,120</td><td class="num">19</td><td></td></tr>
+      <tr><td>2026-03</td><td class="num">¥84,150</td><td class="num">17</td><td></td></tr>
+      <tr><td>2026-04</td><td class="num">¥76,560</td><td class="num">10</td><td>ドロップイン一時鈍化</td></tr>
+      <tr><td>2026-05</td><td class="num">¥95,205</td><td class="num">28</td><td>回復</td></tr>
+      <tr><td>2026-06</td><td class="num">¥108,770</td><td class="num">29</td><td>過去最高水準</td></tr>
+      <tr><td>2026-07</td><td class="num">¥88,825</td><td class="num">23</td><td>（詳細は1-4）</td></tr>
+      <tr class="total"><td><strong>2026-08</strong></td><td class="num"><strong>¥117,095</strong></td><td class="num"><strong>32</strong></td><td><strong>開業来 最高（8/18時点・途中集計）</strong></td></tr>
+    </tbody>
+  </table>
+  <p class="note">※8月は8/18時点の途中集計で、すでに全期間の最高月です。</p>
+
+  <h3>1-3. ドロップイン予約の推移</h3>
+  <table>
+    <thead><tr><th>月</th><th class="num">予約数</th><th class="num">新規</th><th class="num">リピート</th><th class="num">リピート率</th></tr></thead>
+    <tbody>
+      <tr><td>2025-09</td><td class="num">2</td><td class="num">2</td><td class="num">0</td><td class="num">0%</td></tr>
+      <tr><td>2025-10</td><td class="num">18</td><td class="num">18</td><td class="num">0</td><td class="num">0%</td></tr>
+      <tr><td>2025-11</td><td class="num">6</td><td class="num">6</td><td class="num">0</td><td class="num">0%</td></tr>
+      <tr><td>2025-12</td><td class="num">18</td><td class="num">11</td><td class="num">7</td><td class="num">39%</td></tr>
+      <tr><td>2026-01</td><td class="num">19</td><td class="num">14</td><td class="num">5</td><td class="num">26%</td></tr>
+      <tr><td>2026-02</td><td class="num">14</td><td class="num">8</td><td class="num">6</td><td class="num">43%</td></tr>
+      <tr><td>2026-03</td><td class="num">22</td><td class="num">20</td><td class="num">2</td><td class="num">9%</td></tr>
+      <tr><td>2026-04</td><td class="num">10</td><td class="num">8</td><td class="num">2</td><td class="num">20%</td></tr>
+      <tr><td>2026-05</td><td class="num">24</td><td class="num">20</td><td class="num">4</td><td class="num">17%</td></tr>
+      <tr><td>2026-06</td><td class="num">25</td><td class="num">15</td><td class="num">10</td><td class="num">40%</td></tr>
+      <tr><td>2026-07</td><td class="num">21</td><td class="num">13</td><td class="num">8</td><td class="num">38%</td></tr>
+      <tr class="total"><td><strong>2026-08</strong></td><td class="num"><strong>29</strong></td><td class="num"><strong>18</strong></td><td class="num"><strong>11</strong></td><td class="num"><strong>38%<span style="font-weight:400;font-size:8pt;">（8/18時点）</span></strong></td></tr>
+      <tr class="total"><td>累計</td><td class="num">208</td><td class="num">153</td><td class="num">55</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>直近3ヶ月（6→7→8月）で予約数が高位安定し、8月は月間29件と過去最多。</li>
+    <li>リピート率が直近38〜40%で定着し、初回利用者が常連に育つ流れができています。</li>
+    <li>部屋別はおおむね1名用ルームが主体（8月：1名用22件／2名用7件）。2名利用も少しずつ増加。</li>
+  </ul>
+
+  <h3>1-4. 7月の売上（入金実績）</h3>
+  <table>
+    <thead><tr><th>区分</th><th class="num">決済総額（税込）</th><th class="num">入金額（手数料控除後）</th></tr></thead>
+    <tbody>
+      <tr><td>月謝2室（武田様 BASE03／橋本様 BASE07）</td><td class="num">¥68,200</td><td class="num">¥64,660</td></tr>
+      <tr><td>ドロップイン</td><td class="num">¥20,625</td><td class="num">¥17,529</td></tr>
+      <tr class="total"><td><strong>合計</strong></td><td class="num"><strong>¥88,825</strong></td><td class="num"><strong>約¥82,200</strong></td></tr>
+    </tbody>
+  </table>
+  <p class="note">※入金額は Coubic/GMO の決済手数料（約4.9%＋99円）を差し引いた実入金ベース。</p>
+  <p class="note">※7/31開催の「花火大会プラン」（4件・¥20,000）は6月中に事前決済済みのため決済ベースでは6月計上。イベント利用ベースで見れば7月に¥20,000上乗せ（＝季節イベントが単月売上を押し上げた好例）。</p>
+
+  <h3>1-5. 月謝会員の状況（ストック収入）</h3>
+  <table>
+    <thead><tr><th>部屋</th><th>会員</th><th>プラン</th><th class="num">月額（決済ベース）</th><th>開始</th></tr></thead>
+    <tbody>
+      <tr><td>BASE03</td><td>武田様</td><td>24時間365日</td><td class="num">¥46,200</td><td>2025/12</td></tr>
+      <tr><td>BASE07</td><td>橋本様</td><td>24時間365日（U30割引）</td><td class="num">¥22,000</td><td>2025/12</td></tr>
+      <tr><td>BASE06</td><td>大木様</td><td>24時間365日（U30割引）</td><td class="num">¥22,000</td><td><strong>2026/8 新規</strong></td></tr>
+      <tr class="total"><td>—</td><td>—</td><td><strong>合計</strong></td><td class="num"><strong>¥90,200/月</strong></td><td>—</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>8月にBASE06（大木様）が新規加入し、月謝は3室稼働に。ストック収入が積み上がりました。</li>
+    <li>U30割引プランが2室で機能（若年層の長期契約獲得に寄与）。</li>
+  </ul>
+
+  <hr>
+
+  <h2>2. これからの考え方（立ち上げ期 → 定着期）</h2>
+  <table>
+    <thead><tr><th style="width:16%;"></th><th>立ち上げ期（これまで）</th><th>定着期（これから）</th></tr></thead>
+    <tbody>
+      <tr><td><strong>主眼</strong></td><td>ゼロからの認知獲得・初期集客</td><td>定着した運用の安定維持</td></tr>
+      <tr><td><strong>SNS</strong></td><td>高頻度の発信で認知拡大</td><td>更新の要点をおさえた<strong>月1回程度</strong></td></tr>
+      <tr><td><strong>企画</strong></td><td>オープン企画・各種キャンペーン</td><td><strong>必要時のみ</strong>の特別プラン（イベント連動など）</td></tr>
+      <tr><td><strong>現地対応</strong></td><td>立ち上げ実務全般</td><td><strong>必要な範囲に整理</strong>（下記2プランで選択）</td></tr>
+    </tbody>
+  </table>
+  <p>このフェーズ移行を踏まえ、支援内容を<strong>必要な実務に絞り込み</strong>、月額のご負担も見直した2プランをご用意しました。</p>
+
+  <h2 class="newpage">3. 運用サポート 2プランのご提案</h2>
+  <p>「清掃を貴社側で持たれるか、弊方にお任せいただくか」で、シンプルに2つからお選びいただけます。</p>
+  <table class="plan">
+    <thead><tr><th>項目</th><th class="center">Aプラン｜ライト運用</th><th class="center">Bプラン｜フル運用（清掃込み）</th></tr></thead>
+    <tbody>
+      <tr class="price"><td>月額（税抜）</td><td class="center">¥50,000</td><td class="center">¥100,000</td></tr>
+      <tr><td>予約各社・利用者からのお問い合わせ一次対応</td><td class="center">◯</td><td class="center">◯</td></tr>
+      <tr><td>予約サイト／ポータル掲載の維持・情報更新</td><td class="center">◯</td><td class="center">◯</td></tr>
+      <tr><td>Web・Googleビジネス基本情報の維持</td><td class="center">◯</td><td class="center">◯</td></tr>
+      <tr><td>SNS投稿</td><td class="center">月1回程度</td><td class="center">月1回程度</td></tr>
+      <tr><td>イベント時の特別プラン設定・運用</td><td class="center">スポット対応</td><td class="center">スポット対応</td></tr>
+      <tr><td>月次の簡易レポート</td><td class="center">◯</td><td class="center">◯</td></tr>
+      <tr class="clean"><td>定期清掃（週1〜2回）</td><td class="center">―（貴社にて手配）</td><td class="center">◯（弊方にて実施）</td></tr>
+      <tr><td>契約期間</td><td class="center">3ヶ月・自動更新</td><td class="center">3ヶ月・自動更新</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li><strong>A・Bの違いは「定期清掃の有無」のみ</strong>です。運用サポートの中身は共通で、清掃を切り離した軽量プランがA、清掃まで含めて丸ごとお任せいただくのがBになります。</li>
+    <li>Bプランはこれまでと同じ体制（清掃込み）を維持したい場合の選択肢、Aプランは清掃をご自身側で手配してコストを抑えたい場合の選択肢です。</li>
+    <li>Bプランは、<strong>掃除機を施設内に常設</strong>いただくことを前提とします（貴社にてご用意ください）。清掃用消耗品（ゴミ袋・ウェットティッシュ等）は<strong>月額に含み、別途のご請求はいたしません</strong>。</li>
+  </ul>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ARATANI BASE ドロップイン料金 改定のご提案</title>
+<style>
+  :root{
+    --ink:#1b1d22;
+    --sub:#5c6370;
+    --muted:#8b93a3;
+    --line:#e4e7ec;
+    --accent:#e8551f;      /* ARATANI orange（やや落ち着かせた） */
+    --accent-soft:#fdf1ec;
+    --head-bg:#22262e;
+    --zebra:#f7f8fa;
+    --hi:#fbf6ec;          /* ハイライト行 */
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  body{
+    font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Yu Gothic',sans-serif;
+    color:var(--ink);
+    font-size:10.5pt;
+    line-height:1.75;
+    margin:0;
+  }
+  .page{max-width:190mm; margin:0 auto; padding:14mm 13mm;}
+
+  /* --- タイトル --- */
+  .cover{
+    border-top:4px solid var(--accent);
+    padding-top:14px;
+    margin-bottom:26px;
+  }
+  .cover .eyebrow{
+    font-size:8.5pt; letter-spacing:.22em; color:var(--accent);
+    font-weight:700; margin:0 0 6px;
+  }
+  .cover h1{
+    font-size:19pt; font-weight:800; letter-spacing:.01em;
+    margin:0; line-height:1.3; white-space:nowrap;
+  }
+  .cover .meta{
+    font-size:8.5pt; color:var(--muted);
+    border-top:1px solid var(--line); padding-top:8px;
+    display:flex; justify-content:space-between;
+  }
+
+  /* --- 見出し --- */
+  h2{
+    font-size:13pt; font-weight:800; color:var(--ink);
+    margin:26px 0 12px; padding:6px 0 6px 12px;
+    border-left:4px solid var(--accent);
+    background:linear-gradient(90deg,var(--accent-soft),transparent 70%);
+  }
+  h3{
+    font-size:10.5pt; font-weight:700; color:var(--head-bg);
+    margin:16px 0 7px; padding-bottom:3px;
+    border-bottom:1px solid var(--line);
+  }
+
+  /* --- 本文 --- */
+  p{margin:8px 0;}
+  ul{margin:8px 0; padding-left:1.2em;}
+  li{margin:3px 0;}
+  strong{color:var(--ink); font-weight:700;}
+  .note{font-size:8.5pt; color:var(--muted); margin:4px 0; line-height:1.6;}
+
+  blockquote{
+    margin:12px 0; padding:11px 15px;
+    background:var(--zebra); border-left:3px solid var(--accent);
+    border-radius:0 5px 5px 0;
+    font-size:10pt; color:var(--sub);
+  }
+  blockquote p{margin:0;}
+
+  /* --- テーブル --- */
+  table{
+    width:100%; border-collapse:collapse;
+    margin:10px 0 6px; font-size:9.5pt;
+  }
+  th,td{
+    border:1px solid var(--line);
+    padding:6px 9px; text-align:left; vertical-align:middle;
+  }
+  thead th{
+    background:var(--head-bg); color:#fff; font-weight:600;
+    font-size:9pt; letter-spacing:.02em;
+  }
+  tbody tr:nth-child(even){background:var(--zebra);}
+  td.num,th.num{text-align:right; font-variant-numeric:tabular-nums;}
+  tr.total td{background:var(--hi); font-weight:700;}
+  tr.total td:first-child{color:var(--muted);}
+
+  /* プラン表 */
+  .plan th:nth-child(2){background:#2b3a4a;}
+  .plan th:nth-child(3){background:var(--accent);}
+  .plan td:first-child{width:42%;}
+  .plan .price td{background:var(--hi); font-size:11pt; font-weight:800;}
+  .plan .price td:nth-child(3){color:var(--accent);}
+  .plan .clean td{font-weight:700;}
+  .center{text-align:center;}
+
+  hr{border:none; border-top:1px solid var(--line); margin:24px 0;}
+
+  /* --- 印刷 --- */
+  @media print{
+    .page{padding:0;}
+    h2,h3{break-after:avoid;}
+    table,blockquote{break-inside:avoid;}
+    tr{break-inside:avoid;}
+  }
+  @page{ size:A4; margin:16mm 14mm 18mm; }
+  .newpage{ break-before:page; page-break-before:always; margin-top:0; }
+</style>
+<style>
+  /* 本資料の追加スタイル */
+  .lead{font-size:11pt; line-height:1.85; margin:14px 0 18px;}
+  .keybox{border:1px solid var(--line); border-left:4px solid var(--accent);
+    background:var(--accent-soft); padding:13px 16px; margin:14px 0; border-radius:0 5px 5px 0;}
+  .keybox p{margin:5px 0; font-size:10pt;}
+  .keybox .t{font-weight:800; font-size:10.5pt; margin-bottom:6px;}
+  .warnbox{border:1px solid var(--line); border-left:4px solid #2b3a4a;
+    background:var(--zebra); padding:13px 16px; margin:14px 0; border-radius:0 5px 5px 0;}
+  .warnbox p{margin:5px 0; font-size:10pt;}
+  .warnbox .t{font-weight:800; font-size:10.5pt; margin-bottom:6px; color:#2b3a4a;}
+  ol.dec{margin:10px 0; padding-left:1.4em;}
+  ol.dec li{margin:7px 0;}
+  .bar-wrap{margin:10px 0 4px;}
+  .barrow{display:flex; align-items:center; gap:9px; margin:5px 0; font-size:9.5pt;}
+  .barrow .bl{width:112px; text-align:right; color:var(--sub); line-height:1.3;}
+  .barrow .bt{flex:1; display:flex; align-items:center; gap:8px;}
+  .barrow .bf{height:17px; background:#2b3a4a; border-radius:0 3px 3px 0;}
+  .barrow .bf.hot{background:var(--accent);}
+  .barrow .bv{font-variant-numeric:tabular-nums; font-weight:700; white-space:nowrap;}
+  tr.hilite td{background:var(--hi);}
+  tr.hilite td:first-child{border-left:3px solid var(--accent);}
+  .tagrec{display:inline-block; background:var(--accent); color:#fff; font-size:7.5pt;
+    font-weight:700; padding:1px 6px; border-radius:3px; margin-left:6px; vertical-align:1px;}
+  .price2 td:first-child{width:26%;}
+  .price2 .pv{font-size:11pt; font-weight:800; color:var(--accent);}
+  .sig{margin-top:30px; padding-top:12px; border-top:1px solid var(--line);
+    font-size:9pt; color:var(--muted); text-align:right;}
+</style>
+<style>
+  /* 簡易版の追加スタイル */
+  body{font-size:11pt;}
+  .lead{font-size:11.5pt; line-height:1.9; margin:14px 0 20px;}
+  h2{font-size:14pt;}
+  .stats{display:flex; gap:10px; margin:16px 0 10px;}
+  .stat{flex:1; border:1px solid var(--line); border-radius:6px; padding:14px 14px 16px; background:#fff; display:flex; flex-direction:column;}
+  .stat.hot{border-color:var(--accent); background:var(--accent-soft);}
+  .stat .lb{font-size:9pt; color:var(--sub); line-height:1.5; min-height:2.6em; flex:1;}
+  .stat .big{font-size:22pt; font-weight:800; letter-spacing:-.01em; margin:6px 0 2px; line-height:1.1;}
+  .stat.hot .big{color:var(--accent);}
+  .stat .sub{font-size:9pt; color:var(--muted);}
+  .punch{font-size:13pt; font-weight:800; line-height:1.7; margin:18px 0;
+    padding:16px 20px; background:var(--head-bg); color:#fff; border-radius:6px;}
+  .punch span{color:#ffb08c;}
+  .reason{border:1px solid var(--line); border-radius:6px; padding:0; margin:14px 0; overflow:hidden;}
+  .reason .r{display:flex; gap:14px; padding:14px 18px; border-bottom:1px solid var(--line);}
+  .reason .r:last-child{border-bottom:none;}
+  .reason .rn{flex:0 0 26px; height:26px; border-radius:50%; background:var(--accent); color:#fff;
+    font-weight:800; font-size:10pt; display:flex; align-items:center; justify-content:center;}
+  .reason .rt{flex:1; font-size:10.5pt; line-height:1.75;}
+  .reason .rt b{font-weight:800;}
+  .newtbl th{font-size:10pt;}
+  .newtbl td{font-size:11pt; padding:12px 10px;}
+  .newtbl .pn{font-weight:800; font-size:11.5pt;}
+  .newtbl .np{font-weight:800; font-size:14pt; color:var(--accent); text-align:center; white-space:nowrap;}
+  .newtbl .op{text-align:center; color:var(--muted); white-space:nowrap;}
+  .newtbl .tm{text-align:center; white-space:nowrap; font-size:10pt;}
+  .newtbl tr.hl td{background:var(--hi);}
+  .newtbl tr.hl td:first-child{border-left:3px solid var(--accent);}
+  .arrow{color:var(--muted); text-align:center; width:4%;}
+  .flow{display:flex; gap:8px; margin:16px 0;}
+  .fstep{flex:1; border:1px solid var(--line); border-radius:6px; padding:12px 12px 14px; background:#fff;}
+  .fstep .fd{font-size:8.5pt; color:var(--accent); font-weight:800; letter-spacing:.06em;}
+  .fstep .ft{font-size:9.5pt; line-height:1.6; margin-top:5px;}
+  .ask{border:2px solid var(--accent); border-radius:6px; padding:18px 22px; margin:18px 0; background:var(--accent-soft);}
+  .ask .t{font-size:10pt; font-weight:800; color:var(--accent); letter-spacing:.06em; margin-bottom:8px;}
+  .ask .q{font-size:13pt; font-weight:800; line-height:1.7;}
+  .ask .n{font-size:9.5pt; color:var(--sub); margin-top:8px;}
+  @media print{
+    .stats,.reason,.flow,.ask,.bar-wrap,.punch,table{break-inside:avoid;}
+    h2{break-after:avoid;}
+  }
+  .sig{margin-top:26px; padding-top:10px; border-top:1px solid var(--line);
+    font-size:8.5pt; color:var(--muted); text-align:right;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="cover">
+    <p class="eyebrow">ARATANI BASE</p>
+    <h1>ドロップイン料金 改定のご提案</h1>
+    <div class="meta"><span>株式会社ARATANI BASE 御中</span><span>2026年9月6日</span></div>
+  </div>
+
+  <p class="lead">開業から1年分の予約データがそろいました。結論から申し上げますと、<strong>いまの料金は安すぎます。</strong>とくに夜間です。10月から下記のとおり改定することをご提案いたします。</p>
+
+  <hr>
+
+  <h2>1. いま、いくらで貸しているか</h2>
+
+  <div class="stats">
+    <div class="stat hot">
+      <div class="lb">夜（18:00〜翌9:00）<br>個室を15時間まるごと</div>
+      <div class="big">¥660</div>
+      <div class="sub">1時間あたり <strong>¥44</strong></div>
+    </div>
+    <div class="stat">
+      <div class="lb">昼（9:00〜18:00）<br>3時間使っても9時間使っても</div>
+      <div class="big">¥990</div>
+      <div class="sub">上限があるため同額</div>
+    </div>
+    <div class="stat">
+      <div class="lb">参考：月謝プラン 1名用個室<br>賃料¥33,000＋水光熱費¥11,000</div>
+      <div class="big">¥1,467</div>
+      <div class="sub">1日あたり（月¥44,000÷30日）</div>
+    </div>
+  </div>
+  <p class="note">※いずれも1名用個室・税込。月謝プランは賃料（税込¥33,000）に水光熱費（税抜¥10,000＝税込¥11,000）を加えた実質負担。ドロップインの実績は2026年5〜8月の予約101件を集計。</p>
+
+  <div class="punch">同じ個室を、夜は <span>1時間あたり¥44</span> で貸している状態です。</div>
+
+  <h2>2. しかも、その一番安い夜が、一番混んでいる</h2>
+
+  <div class="bar-wrap">
+    <div class="barrow"><div class="bl">夜18時スタート</div><div class="bt"><div class="bf hot" style="width:62%"></div><div class="bv">34件</div></div></div>
+    <div class="barrow"><div class="bl">朝9時スタート</div><div class="bt"><div class="bf" style="width:40%"></div><div class="bv">22件</div></div></div>
+    <div class="barrow"><div class="bl">昼12〜17時</div><div class="bt"><div class="bf" style="width:45.5%"></div><div class="bv">25件（6時間帯の合計）</div></div></div>
+  </div>
+  <p><strong>予約の3分の1が夜スタートです。</strong>カフェも図書館も他のコワーキングも閉まっている時間帯で、<strong>お客様にとって他に行き先がありません。</strong>そこを一番安くしている、というのが今の状態です。</p>
+
+  <hr>
+
+  <h2>3. 新しい料金表（1名用個室・税込）</h2>
+
+  <table class="newtbl">
+    <thead>
+      <tr><th>プラン</th><th class="center">利用時間</th><th class="center">現在</th><th></th><th class="center">改定案</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="pn">スポット</td><td class="tm">9:00〜18:00 のうち1〜3時間</td>
+        <td class="op">¥330/時</td><td class="arrow">→</td><td class="np">¥550/時</td>
+      </tr>
+      <tr>
+        <td class="pn">デイパス</td><td class="tm">9:00〜18:00 通し</td>
+        <td class="op">¥990</td><td class="arrow">→</td><td class="np">¥1,500</td>
+      </tr>
+      <tr class="hl">
+        <td class="pn">ナイトパス</td><td class="tm">18:00〜翌9:00</td>
+        <td class="op">¥660</td><td class="arrow">→</td><td class="np">¥1,800</td>
+      </tr>
+      <tr>
+        <td class="pn">24時間パス</td><td class="tm">9:00〜翌9:00</td>
+        <td class="op">¥1,650</td><td class="arrow">→</td><td class="np">¥2,800</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">※2名用個室は上記の1.5倍、3名用個室は2倍（現在の部屋ごとの価格差をそのまま使います）。</p>
+
+  <ul>
+    <li><strong>「1時間いくら＋1日上限」という分かりにくい仕組みをやめ、「昼の券」「夜の券」に変えます。</strong>お客様の使い方は今までと変わりません。</li>
+    <li><strong>上げ幅が一番大きいのは夜（¥660 → ¥1,800）です。</strong>それでも1時間あたり¥120で、カフェ1杯分より安い金額です。</li>
+  </ul>
+
+  <hr>
+
+  <h2>4. 売上はどうなるか</h2>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="lb">現在<br>（2026年5〜8月の平均）</div>
+      <div class="big">¥27,800</div>
+      <div class="sub">月25件</div>
+    </div>
+    <div class="stat hot">
+      <div class="lb">改定後の見込み<br>（お客様が3割減った前提）</div>
+      <div class="big">¥32,000</div>
+      <div class="sub">月17件</div>
+    </div>
+    <div class="stat">
+      <div class="lb">かなり厳しめに見た場合<br>（お客様が半分近く減った前提）</div>
+      <div class="big">¥25,300</div>
+      <div class="sub">月14件</div>
+    </div>
+  </div>
+  <p class="note">※ドロップインのみ・税込。2026年5〜8月の実績101件に新しい料金を当てて計算したものです。</p>
+
+  <ul>
+    <li><strong>お客様が3割減っても、売上は増えます。</strong>しかも件数が減るぶん、<strong>清掃とお問い合わせ対応の手間は減ります。</strong></li>
+    <li><strong>一番悪いケースでも、下がるのは月2,500円ほどです。</strong>大きく損をする改定ではありません。</li>
+    <li>正直に申し上げると、<strong>増える金額そのものは月4,000円ほどで大きくありません。</strong>それでも今やる理由は、<strong>安すぎる状態が続くと、月謝プランに移っていただく理由がなくなるためです。</strong></li>
+  </ul>
+
+  <h2>5. 進め方</h2>
+
+  <div class="flow">
+    <div class="fstep"><div class="fd">9月中</div><div class="ft"><strong>ご決裁</strong><br>この料金表でよいかご判断ください</div></div>
+    <div class="fstep"><div class="fd">9月下旬</div><div class="ft"><strong>お客様へご案内</strong><br>直近のご利用者 約20名へ予告メール</div></div>
+    <div class="fstep"><div class="fd">10月1日</div><div class="ft"><strong>改定</strong><br>予約ページとホームページを差し替え</div></div>
+    <div class="fstep"><div class="fd">2027年1月</div><div class="ft"><strong>結果を確認</strong><br>3ヶ月分の売上を見て必要なら調整</div></div>
+  </div>
+  <p class="note">※お客様へのご案内・予約ページの変更・ホームページの差し替えは、すべて弊方で対応いたします。</p>
+
+  <div class="ask">
+    <div class="t">ご決裁いただきたいこと</div>
+    <div class="q">上記の新料金表で、10月1日から改定してよろしいでしょうか。</div>
+    <div class="n">金額の調整や、改定日をずらすご希望があればお知らせください。あわせて、既存のご利用者へ予告のご案内を弊方から送ってよいかもご確認ください。</div>
+  </div>
+
+  <div class="sig">
+    出典：Coubic／GMO 決済明細（予約111件・実施日 2026年5月1日〜8月31日）
+  </div>
+
+</div>
+</body>
+</html>
